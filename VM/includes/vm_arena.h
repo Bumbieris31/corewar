@@ -6,7 +6,7 @@
 /*   By: abumbier <abumbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 15:52:12 by krioliin          #+#    #+#             */
-/*   Updated: 2020/01/15 19:06:51 by abumbier         ###   ########.fr       */
+/*   Updated: 2020/01/16 19:43:11 by abumbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include "corewar_visual.h"
 
 # define OP_NBR 16
+# define DEBUG_MOD 1
 
 typedef struct s_cursor	t_cursor;
 typedef struct s_visual t_visual;
