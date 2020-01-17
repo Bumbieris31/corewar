@@ -1,5 +1,6 @@
 /* ************************************************************************** */
 /*                                                                            */
+<<<<<<< HEAD
 /*                                                        :::      ::::::::   */
 /*   vm_arena.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
@@ -7,6 +8,15 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 15:52:12 by krioliin          #+#    #+#             */
 /*   Updated: 2020/01/16 19:43:11 by abumbier         ###   ########.fr       */
+=======
+/*                                                        ::::::::            */
+/*   vm_arena.h                                         :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: abumbier <abumbier@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2019/12/20 15:52:12 by krioliin       #+#    #+#                */
+/*   Updated: 2020/01/16 20:49:58 by krioliin      ########   odam.nl         */
+>>>>>>> 15a0289c9a19e4d3e7a5d490cef3466a4cc329d4
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +148,7 @@ short				execute_cursor(t_cursor *cursor, uint8_t arena[MEM_SIZE], t_vm *vm);
 short				execute_operation(t_cursor *cursor, t_vm *vm);
 bool				show_arena(t_player **players, short pl_amnt, t_vm *vm);
 int					get_waite_cycle(uint8_t opcode);
+void				congrats_champion(WINDOW *wop, t_player *champiom);
 
 /*
 	****************************** Utilites *************************************
