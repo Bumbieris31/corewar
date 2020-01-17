@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   vm_arena.h                                         :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: abumbier <abumbier@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2019/12/20 15:52:12 by krioliin       #+#    #+#                */
-/*   Updated: 2020/01/17 15:37:38 by asulliva      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   vm_arena.h                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abumbier <abumbier@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/12/20 15:52:12 by krioliin          #+#    #+#             */
+/*   Updated: 2020/01/17 16:03:55 by abumbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include "corewar_visual.h"
 
 # define OP_NBR 16
-# define DEBUG_MOD 0
+# define DEBUG_MOD 1
 
 typedef struct s_cursor	t_cursor;
 typedef struct s_visual t_visual;
@@ -138,6 +138,7 @@ short				execute_cursor(t_cursor *cursor, uint8_t arena[MEM_SIZE], t_vm *vm);
 short				execute_operation(t_cursor *cursor, t_vm *vm);
 bool				show_arena(t_player **players, short pl_amnt, t_vm *vm);
 int					get_waite_cycle(uint8_t opcode);
+void				congrats_champion(WINDOW *wop, t_player *champiom);
 
 /*
 	****************************** Utilites *************************************
@@ -146,7 +147,7 @@ int					get_waite_cycle(uint8_t opcode);
 t_player			*get_player_by_id(t_player **players, short player_id,
 					short player_amnt);
 bool				error_msg(unsigned short erro_num);
-void				introduce_champions(t_player **players, short player_amnt, int colour);
+void				introduce_champions(t_player **players, short player_amnt);
 void				init_op_encode_validation_arr(bool (*op_encode[17])(e_argctype *));
 bool				en_op_code_and_or_xor(e_argctype arg_type[3]);
 bool				en_op_code_ldi_lldi(e_argctype arg_type[3]);
