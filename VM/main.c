@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: krioliin <krioliin@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2019/12/20 15:26:21 by krioliin       #+#    #+#                */
-/*   Updated: 2020/01/14 19:56:06 by krioliin      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abumbier <abumbier@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/12/20 15:26:21 by krioliin          #+#    #+#             */
+/*   Updated: 2020/01/17 16:28:12 by abumbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@ void	init_vm(t_vm *vm)
 	vm->cycle_to_die = CYCLE_TO_DIE;
 	vm->last_alive = vm->players[0]->id;
 }
+
+/*
+**	@desc	- prepares and starts the game
+**	@param	- t_vm *vm, main structure holding everything vm needs
+*/
 
 int		main(int argc, char **argv)
 {
