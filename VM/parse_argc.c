@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   parse_argc.c                                       :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: krioliin <krioliin@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2019/12/21 13:59:58 by krioliin       #+#    #+#                */
-/*   Updated: 2020/01/15 15:53:45 by krioliin      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   parse_argc.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abumbier <abumbier@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/12/21 13:59:58 by krioliin          #+#    #+#             */
+/*   Updated: 2020/01/17 16:49:23 by abumbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,8 @@ short	check_arg(int argc, char **params, int *num, t_flags *flags)
 }
 
 /*
-** Checks if input arguments (flags and player's files name) are correct.
-** Sets flags into t_flag structure.
+**	@desc	- Checks if the amount of input arguments are correct.
+**			- Stores flags into t_flag structure.
 */
 
 bool	args_validation(int argc, char **params, t_flags *flags)
@@ -97,7 +97,7 @@ bool	args_validation(int argc, char **params, t_flags *flags)
 
 	num = 1;
 	ft_bzero(flags, sizeof(t_flags *));
-	flags->dump = 0;//IMPORTANT
+	flags->dump = 0;
 	if (argc < 2)
 		return (false);
 	while (num < argc)
