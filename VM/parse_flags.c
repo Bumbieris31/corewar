@@ -1,16 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   parse_flags.c                                      :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: krioliin <krioliin@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2019/12/21 17:39:09 by krioliin       #+#    #+#                */
-/*   Updated: 2020/01/15 15:13:15 by asulliva      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   parse_flags.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abumbier <abumbier@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/12/21 17:39:09 by krioliin          #+#    #+#             */
+/*   Updated: 2020/01/17 19:48:04 by abumbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm_arena.h"
+
+/*
+**	@desc	- Checks if argument of argc num is -hexdump and validates value.
+**	@param	- t_flags *flags, stores all the flags.
+**			- int *param_num, the argument num that is checked.
+**	@ret	- 0 if flag is not -hexdump.
+**			- -1 if value of the flag is incorrect.
+**			- 1 if value is correct.
+*/
 
 short	is_hexdump(int argc, char **params, int *param_num, t_flags *flags)
 {
@@ -37,6 +46,15 @@ short	is_hexdump(int argc, char **params, int *param_num, t_flags *flags)
 	return (0);
 }
 
+/*
+**	@desc	- Checks if argument of argc num is -dump and validates its value.
+**	@param	- t_flags *flags, stores all the flags.
+**			- int *param_num, the argument num that is checked.
+**	@ret	- 0 if flag is not -dump.
+**			- -1 if value of the flag is incorrect.
+**			- 1 if value is correct.
+*/
+
 short	is_dump(int argc, char **params, int *param_num, t_flags *flags)
 {
 	int	i;
@@ -62,6 +80,11 @@ short	is_dump(int argc, char **params, int *param_num, t_flags *flags)
 	return (0);
 }
 
+/*
+**	@desc	- Adds a new order edit at the end of the array.
+**	@param	- t_flags *flags, stores all the flags.
+*/
+
 void	add_n_flag(t_flags *flags, int from, int n)
 {
 	short		index;
@@ -78,6 +101,13 @@ void	add_n_flag(t_flags *flags, int from, int n)
 	}
 }
 
+/*
+**	@desc	- Checks if the order of the players is correct.
+**	@param	- short *players_order, an array with order edited by -n flag.
+**	@ret	- 0 if players_order already exists.
+**			- 1 if players order has to be edited.
+*/
+
 short	check_n_pos(int n, short *players_order)
 {
 	int		i;
@@ -92,10 +122,18 @@ short	check_n_pos(int n, short *players_order)
 	return (1);
 }
 
+/*
+**	@desc	- Checks if argument of argc num is -n and validates its value.
+**	@param	- Same as is_dump().
+**	@ret	- 0 if the flag is not -n.
+**			- 1 if the flag is valid.
+**			- -1 if the value is incorrect.
+*/
+
 short	is_flag_n(int argc, char **params, int *num, t_flags *flags)
 {
 	int			n;
-	static bool prev_was_nflag;
+	static bool	prev_was_nflag;
 
 	if (!ft_strcmp((const char *)params[*num], "-n"))
 	{
@@ -119,6 +157,15 @@ short	is_flag_n(int argc, char **params, int *num, t_flags *flags)
 	prev_was_nflag = false;
 	return (0);
 }
+
+/*
+**	@desc	- Checks if argument of argc num is -dump and validates its value.
+**	@param	- t_flags *flags, stores all the flags.
+**			- int argc, the argument num that is checked.
+**	@ret	- 0 if the flag passed is not accepted.
+**			- 1 if the flag is valid.
+**			- -1 if the value is incorrect. (from is_hexdump(), is_dump()).
+*/
 
 short	check_flag(int argc, char **params, int *num, t_flags *flags)
 {

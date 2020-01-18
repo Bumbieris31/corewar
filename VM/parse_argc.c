@@ -6,11 +6,15 @@
 /*   By: abumbier <abumbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/21 13:59:58 by krioliin          #+#    #+#             */
-/*   Updated: 2020/01/17 16:49:23 by abumbier         ###   ########.fr       */
+/*   Updated: 2020/01/17 20:59:34 by abumbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm_arena.h"
+
+/*
+**	@desc	- 
+*/
 
 bool	parse_error(void)
 {
@@ -29,6 +33,11 @@ bool	parse_error(void)
 	return (true);
 }
 
+/*
+**	@desc	- Stores players_amount and returns it.
+**	@ret	- players_amount, if functions has been initialized.
+*/
+
 short	get_players_amnt(short players_amnt_init)
 {
 	static short players_amount;
@@ -42,7 +51,7 @@ short	get_players_amnt(short players_amnt_init)
 }
 
 /*
-** Checks if any value of flag n is not bigger than amount of players
+**	@desc	- Validates the players_order values.
 */
 
 bool	check_players_order(short players_order[MAX_PLAYERS],
@@ -60,6 +69,14 @@ bool	check_players_order(short players_order[MAX_PLAYERS],
 	get_players_amnt(players_amnt);
 	return (true);
 }
+
+/*
+**	@desc	- Validates the arguments of corewar.
+**	@param	- t_flags *flags, stores all the flags.
+**			- int *num, the argument num that is checked.
+**	@ret	- 0 if all the arguments are correct.
+**			- -1 if one of the args is incorrect.
+*/
 
 short	check_arg(int argc, char **params, int *num, t_flags *flags)
 {
@@ -89,6 +106,8 @@ short	check_arg(int argc, char **params, int *num, t_flags *flags)
 /*
 **	@desc	- Checks if the amount of input arguments are correct.
 **			- Stores flags into t_flag structure.
+**	@ret	- false, if the any of the arguments is incorrect.
+**			- true, if valid arguments.
 */
 
 bool	args_validation(int argc, char **params, t_flags *flags)
