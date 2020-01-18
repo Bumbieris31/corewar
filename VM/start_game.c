@@ -6,7 +6,11 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/15 15:28:07 by asulliva       #+#    #+#                */
+<<<<<<< HEAD
 /*   Updated: 2020/01/18 16:49:49 by asulliva      ########   odam.nl         */
+=======
+/*   Updated: 2020/01/18 16:39:22 by krioliin      ########   odam.nl         */
+>>>>>>> kristina
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,29 +57,7 @@ int		bury_dead_cursors(t_cursor **head, t_vm *vm)
 	return(corpse_counter);
 }
 
-int			bury_dead_players(t_player **players, short players_amnt)
-{
-	int		corpse_counter;
-	int		i;
-
-	corpse_counter = 0;
-	i = 0;
-	while (i < players_amnt)
-	{
-		if (players[i]->lives == 0)
-		{
-			corpse_counter++;
-			players[i]->lives = DEAD;
-		}
-		else
-			players[i]->lives = 0;
-		players[i]->last_live = 0;
-		i++;
-	}
-	return (corpse_counter);
-}
-
-bool		check(t_vm *vm)
+bool	check(t_vm *vm)
 {
 	static int checks_in_row;
 
@@ -89,8 +71,12 @@ bool		check(t_vm *vm)
 	}
 	vm->nbr_lives = 0;
 	vm->process -= bury_dead_cursors(&vm->cursor, vm);
+<<<<<<< HEAD
 	// vm->alive_players_amt -= bury_dead_players(vm->players, vm->players_amnt);
 	return (1 <= vm->alive_players_amt);
+=======
+	return (0 < vm->process);
+>>>>>>> kristina
 }
 
 bool	execute_one_cycle(t_vm *vm)
@@ -114,7 +100,7 @@ bool	up_to_cycle_to_die(t_vm *vm)
 	static int	cycle_counter;
 
 	someone_alive = true;
-	while (someone_alive)
+	while (someone_alive && 0 < vm->cycle_to_die)
 	{
 		vm->current_cycle = 1;
 		while (vm->current_cycle <= vm->cycle_to_die)
@@ -128,6 +114,7 @@ bool	up_to_cycle_to_die(t_vm *vm)
 				return (dump64(vm));
 		}
 		someone_alive = check(vm);
+		discard_players_lives_calls(vm);
 	}
 	return (true);
 }

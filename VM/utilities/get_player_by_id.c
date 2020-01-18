@@ -6,13 +6,13 @@
 /*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/02 21:16:56 by krioliin       #+#    #+#                */
-/*   Updated: 2020/01/17 19:38:57 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/18 16:41:44 by krioliin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/corewar_visual.h"
 
-int			get_player_id(t_player **players, short player_id, short player_amnt)
+int			get_player_index(t_player **players, short player_id, short player_amnt)
 {
 	int	i;
 
