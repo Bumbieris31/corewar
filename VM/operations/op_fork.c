@@ -23,18 +23,6 @@ static void	copy_regs(t_cursor *new, int32_t reg[16])
 	}
 }
 
-void	insert_new(t_cursor *new, t_vm *vm)
-{
-	new->next = vm->cursor;
-	vm->cursor = new;
-}
-
-void	insert_kid_after_father(t_cursor *cursor, t_cursor *new)
-{
-	new->next = cursor->next;
-	cursor->next = new;
-}
-
 void	insert_to_end(t_cursor *cursor, t_cursor *new)
 {
 	t_cursor *current;

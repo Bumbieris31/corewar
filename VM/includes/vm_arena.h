@@ -6,7 +6,7 @@
 /*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/20 15:52:12 by krioliin       #+#    #+#                */
-/*   Updated: 2020/01/17 20:12:57 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/18 16:33:27 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,6 +163,7 @@ void				vm_free(t_vm **vm);
 short				get_dir_size(uint8_t opcode);
 int					convert(unsigned char *s, int size);
 void				print_arena_pure(unsigned char arena[MEM_SIZE]);
+void				insert_to_end(t_cursor *cursor, t_cursor *new);
 
 /*
 	****************************** Visualisation *******************************
