@@ -6,7 +6,7 @@
 /*   By: abumbier <abumbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/21 13:59:58 by krioliin          #+#    #+#             */
-/*   Updated: 2020/01/17 20:59:34 by abumbier         ###   ########.fr       */
+/*   Updated: 2020/01/18 19:30:21 by abumbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ bool	parse_error(void)
 
 /*
 **	@desc	- Stores players_amount and returns it.
-**	@ret	- players_amount, if functions has been initialized.
+**	@ret	- players_amount, if the function has been initialized.
 */
 
 short	get_players_amnt(short players_amnt_init)

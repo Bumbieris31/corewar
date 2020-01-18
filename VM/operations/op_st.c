@@ -27,8 +27,6 @@ static void	write_value(t_vm *vm, t_cursor *cursor, int type, int value)
 	{
 		index = convert(&vm->arena[cursor->pos + offset], 2);
 		address = (index % IDX_MOD) + cursor->pos;
-		address = (address < 0 ? MEM_SIZE + address : address % MEM_SIZE);
-		ft_printf("ad %d\n", address);
 		write_into_memory(value, vm->arena, address);
 		if (vm->flag->v)
 			visual_sti(vm->v->warena, &(vm->arena[address]), cursor->id, address);
