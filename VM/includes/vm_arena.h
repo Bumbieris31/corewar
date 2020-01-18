@@ -6,11 +6,7 @@
 /*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/20 15:52:12 by krioliin       #+#    #+#                */
-<<<<<<< HEAD
-/*   Updated: 2020/01/18 16:33:27 by asulliva      ########   odam.nl         */
-=======
-/*   Updated: 2020/01/18 16:38:55 by krioliin      ########   odam.nl         */
->>>>>>> kristina
+/*   Updated: 2020/01/18 18:29:53 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

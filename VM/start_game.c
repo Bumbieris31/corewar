@@ -6,11 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/15 15:28:07 by asulliva       #+#    #+#                */
-<<<<<<< HEAD
-/*   Updated: 2020/01/18 16:49:49 by asulliva      ########   odam.nl         */
-=======
-/*   Updated: 2020/01/18 16:39:22 by krioliin      ########   odam.nl         */
->>>>>>> kristina
+/*   Updated: 2020/01/18 18:30:43 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +67,7 @@ bool	check(t_vm *vm)
 	}
 	vm->nbr_lives = 0;
 	vm->process -= bury_dead_cursors(&vm->cursor, vm);
-<<<<<<< HEAD
-	// vm->alive_players_amt -= bury_dead_players(vm->players, vm->players_amnt);
-	return (1 <= vm->alive_players_amt);
-=======
 	return (0 < vm->process);
->>>>>>> kristina
 }
 
 bool	execute_one_cycle(t_vm *vm)
