@@ -6,7 +6,7 @@
 /*   By: abumbier <abumbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 15:26:21 by krioliin          #+#    #+#             */
-/*   Updated: 2020/01/17 16:28:12 by abumbier         ###   ########.fr       */
+/*   Updated: 2020/01/18 19:40:50 by abumbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	init_vm(t_vm *vm)
 
 /*
 **	@desc	- prepares and starts the game
-**	@param	- t_vm *vm, main structure holding everything vm needs
+**	@var	- t_vm *vm, main struct holding everything vm needs
 */
 
 int		main(int argc, char **argv)

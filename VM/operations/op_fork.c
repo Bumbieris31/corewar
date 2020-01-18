@@ -23,18 +23,6 @@ static void	copy_regs(t_cursor *new, int32_t reg[16])
 	}
 }
 
-void	insert_new(t_cursor *new, t_vm *vm)
-{
-	new->next = vm->cursor;
-	vm->cursor = new;
-}
-
-void	insert_kid_after_father(t_cursor *cursor, t_cursor *new)
-{
-	new->next = cursor->next;
-	cursor->next = new;
-}
-
 void	insert_to_end(t_cursor *cursor, t_cursor *new)
 {
 	t_cursor *current;
@@ -56,9 +44,13 @@ bool		op_fork(t_cursor *cursor, t_vm *vm)
 	copy_regs(new, cursor->reg);
 	new->last_live = cursor->last_live;
 	new->carry = cursor->carry;
-	new->wait_cycles = 0;
-	new->pc = new_pc;
 	insert_to_end(cursor, new);
+	new->pos += new_pc;
+	new->pos %= MEM_SIZE;
+	new->opcode = vm->arena[new->pos];
+	new->pc =
+	calculate_program_counter(new->opcode, vm->arena[new->pos + 1]);
+	new->wait_cycles = get_waite_cycle(new->opcode);
 	vm->process++;
 	return (true);
 }
