@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/15 15:28:07 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/17 20:37:25 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/18 16:49:49 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ bool		check(t_vm *vm)
 	}
 	vm->nbr_lives = 0;
 	vm->process -= bury_dead_cursors(&vm->cursor, vm);
-	vm->alive_players_amt -= bury_dead_players(vm->players, vm->players_amnt);
+	// vm->alive_players_amt -= bury_dead_players(vm->players, vm->players_amnt);
 	return (1 <= vm->alive_players_amt);
 }
 

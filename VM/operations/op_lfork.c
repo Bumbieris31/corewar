@@ -30,7 +30,7 @@ bool		op_lfork(t_cursor *cursor, t_vm *vm)
 
 	new_pc = get_value(vm, cursor);
 	new = init_cursor(cursor->id, cursor->pos, cursor->opcode, vm->arena[cursor->pos + 1]);
-	copy_regs(new, cursor->reg);
+	cp_regs(new, cursor->reg);
 	new->last_live = cursor->last_live;
 	new->carry = cursor->carry;
 	insert_to_end(cursor, new);
