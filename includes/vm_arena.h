@@ -1,26 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-<<<<<<< HEAD
-/*                                                        :::      ::::::::   */
-/*   vm_arena.h                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: abumbier <abumbier@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/20 15:52:12 by krioliin          #+#    #+#             */
-/*   Updated: 2020/01/16 19:43:11 by abumbier         ###   ########.fr       */
-=======
 /*                                                        ::::::::            */
 /*   vm_arena.h                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/20 15:52:12 by krioliin       #+#    #+#                */
-<<<<<<< HEAD
-/*   Updated: 2020/01/16 20:49:58 by krioliin      ########   odam.nl         */
->>>>>>> 15a0289c9a19e4d3e7a5d490cef3466a4cc329d4
-=======
-/*   Updated: 2020/01/18 16:38:55 by krioliin      ########   odam.nl         */
->>>>>>> 1f7ddbc8d0e324e3d6c2ca1b331d27a1ca857002
+/*   Updated: 2020/01/18 16:15:38 by krioliin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +21,9 @@
 # include "corewar_visual.h"
 
 # define OP_NBR 16
-<<<<<<< HEAD
-# define DEBUG_MOD 1
-=======
 # define DEBUG_MOD 0
 # define DEAD -1000
 
->>>>>>> 1f7ddbc8d0e324e3d6c2ca1b331d27a1ca857002
 
 typedef struct s_cursor	t_cursor;
 typedef struct s_visual t_visual;
@@ -79,7 +61,6 @@ typedef	struct		s_player
 	int				code_size;
 	uint8_t			*code;
 	int				start_pos;
-	/* For visualisation */
 	int				lives;
 	int				last_live;
 }					t_player;
@@ -94,6 +75,7 @@ typedef struct		s_vm
 	int				cycle_to_die;
 	int				nbr_lives;
 	int				process;
+	int				alive_players_amt;
 	short			players_amnt;
 	int				last_alive;
 	t_player		**players;
@@ -139,7 +121,7 @@ bool				get_player_exec_code(t_player *player, const int fd);
 void				set_player_id(t_player *player,
 					short players_order[MAX_PLAYERS], short num,
 					short players_amnt);
-int					get_player_index(t_player **players, short player_id,
+int					get_player_id(t_player **players, short player_id,
 					short player_amnt);
 t_cursor			*init_cursor(int id, int pos, int opcode, int encoding_byte);
 
@@ -164,7 +146,6 @@ short				execute_cursor(t_cursor *cursor, uint8_t arena[MEM_SIZE], t_vm *vm);
 short				execute_operation(t_cursor *cursor, t_vm *vm);
 bool				show_arena(t_player **players, short pl_amnt, t_vm *vm);
 int					get_waite_cycle(uint8_t opcode);
-void				discard_players_lives_calls(t_vm *vm);
 void				congrats_champion(WINDOW *wop, t_player *champiom);
 
 /*

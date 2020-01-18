@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   op_live.c                                          :+:    :+:            */
+/*   discard_players_lives_calls.c                      :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: krioliin <krioliin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/01/08 13:44:31 by krioliin       #+#    #+#                */
-/*   Updated: 2020/01/18 16:59:24 by krioliin      ########   odam.nl         */
+/*   Created: 2020/01/18 16:32:17 by krioliin       #+#    #+#                */
+/*   Updated: 2020/01/18 16:38:32 by krioliin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm_arena.h"
 
-bool		op_live(t_cursor *cursor, t_vm *vm)
+void	discard_players_lives_calls(t_vm *vm)
 {
-	int		val;
-	int		index;
+	short index;
 
-	val = convert(&vm->arena[cursor->pos + 1], 4);
-	// val = (val < 0 ? val * -1 : val);
-	cursor->last_live = vm->current_cycle;
-	// if (val > 0 && val <= vm->players_amnt)
-	if (cursor->reg[0] == val)
+	index = 0;
+	while (index < vm->players_amnt)
 	{
-		index = get_player_index(vm->players, val, vm->players_amnt);
-		vm->players[index]->lives++;
-		vm->players[index]->last_live = vm->current_cycle;
-		vm->nbr_lives++;
-		vm->last_alive = val;
+		vm->players[index]->lives = 0;
+		vm->players[index]->last_live = 0;
 		if (vm->flag->v)
 			display_live_calls(vm->v->winfo, vm->players[index]);
+		index++;
 	}
-	return (true);
 }

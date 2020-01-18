@@ -17,7 +17,7 @@ static void	write_value(t_vm *vm, t_cursor *cursor, int type, int value)
 	int	offset;
 	int	address;
 
-	offset = (type == REG ? 3 : 4);
+	offset = 3;
 	if (type == REG)
 	{
 		index = vm->arena[cursor->pos + offset] - 1;
@@ -25,7 +25,7 @@ static void	write_value(t_vm *vm, t_cursor *cursor, int type, int value)
 	}
 	else if (type == IND)
 	{
-		index = vm->arena[cursor->pos + offset] % IDX_MOD;
+		index = convert(&vm->arena[cursor->pos + offset], 2);
 		address = (index % IDX_MOD) + cursor->pos;
 		write_into_memory(value, vm->arena, address);
 		if (vm->flag->v)
