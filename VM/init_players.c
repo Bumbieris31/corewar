@@ -1,16 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   init_players.c                                     :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: krioliin <krioliin@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2019/12/21 19:59:32 by krioliin       #+#    #+#                */
-/*   Updated: 2020/01/17 19:08:04 by asulliva      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   init_players.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abumbier <abumbier@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/12/21 19:59:32 by krioliin          #+#    #+#             */
+/*   Updated: 2020/01/18 20:29:17 by abumbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/vm_arena.h"
+
+/*
+**	@desc	- Saves the player comment.
+*/
 
 bool	get_player_comment(t_player *player, const int fd)
 {
@@ -24,6 +28,10 @@ bool	get_player_comment(t_player *player, const int fd)
 	}
 	return (false);
 }
+
+/*
+**	@desc	- Saves the player name.
+*/
 
 bool	get_player_name(t_player *player, const int fd)
 {
@@ -39,8 +47,14 @@ bool	get_player_name(t_player *player, const int fd)
 }
 
 /*
-** Magic header is a signature of the file and means
-** file is of a certain type (make analogy to the extension).
+**	@desc	- Validates the magic header at the beginning of a .cor file.
+**	@var	- uint32_t	magic_number_input, 4 byte var for storing a header \
+**			- from file.
+**			- uint32_t	magic_number_reference, 4 byte var for storing the \
+**			- correct header.
+**			- uint8_t	*m_in, 1 byte variable to compare 4 bytes of a header \
+**			- to the original header.
+**			- uint8_t	*m_ref,
 */
 
 bool	is_magic_header(const int fd)

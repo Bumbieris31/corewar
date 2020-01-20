@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: abumbier <abumbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/18 19:27:56 by abumbier          #+#    #+#             */
-/*   Updated: 2020/01/18 19:29:08 by abumbier         ###   ########.fr       */
+/*   Created: 2019/12/20 15:52:12 by krioliin          #+#    #+#             */
+/*   Updated: 2020/01/18 19:42:36 by abumbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,6 +167,7 @@ void				vm_free(t_vm **vm);
 short				get_dir_size(uint8_t opcode);
 int					convert(unsigned char *s, int size);
 void				print_arena_pure(unsigned char arena[MEM_SIZE]);
+void				insert_to_end(t_cursor *cursor, t_cursor *new);
 
 /*
 	****************************** Visualisation *******************************
