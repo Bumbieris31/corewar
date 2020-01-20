@@ -7,11 +7,13 @@ static int	get_reg_num(t_vm *vm, t_cursor *cursor)
 	int		reg_num;
 
 	offset = 2;
-	reg_num = vm->arena[cursor->pos + offset] - 1;
+	reg_num = vm->arena[cursor->pos + offset];
+	if (reg_num <= 0)
+		return (1);
 	return (reg_num);
 }
 
-static void	write_value(t_vm *vm, t_cursor *cursor, int type, int value)
+static void	write_value(t_vm *vm, t_cursor *cursor, e_argctype type, int32_t value)
 {
 	int	index;
 	int	offset;
@@ -26,10 +28,14 @@ static void	write_value(t_vm *vm, t_cursor *cursor, int type, int value)
 	else if (type == IND)
 	{
 		index = convert(&vm->arena[cursor->pos + offset], 2);
-		address = (index % IDX_MOD) + cursor->pos;
+
+		address = cursor->pos + (index % IDX_MOD);
+		while (address < 0)						// new
+			address = MEM_SIZE + address;		// new
+		address = address % MEM_SIZE;
 		write_into_memory(value, vm->arena, address);
 		if (vm->flag->v)
-			visual_sti(vm->v->warena, &(vm->arena[address]), cursor->id, address);
+			visual_st(vm->v->warena, &(vm->arena[address]), cursor->id, address);
 	}
 }
 
@@ -37,15 +43,13 @@ bool		op_st(t_cursor *cursor, t_vm *vm)
 {
 	e_argctype	args[3];
 	int			reg_num;
-	int			value;
+	int32_t		value;
 
-	if (cursor && vm)
-	{
-		decode_encoding_byte(vm->arena[cursor->pos + 1], args);
-		reg_num = get_reg_num(vm, cursor);
-		value = cursor->reg[reg_num];
-		write_value(vm, cursor, args[1], value);
-		return (true);
-	}
-	return (false);
+	decode_encoding_byte(vm->arena[cursor->pos + 1], args);
+	reg_num = get_reg_num(vm, cursor);
+	value = cursor->reg[reg_num - 1];
+	if (0 < value)
+		ft_printf("");
+	write_value(vm, cursor, args[1], value);
+	return (true);
 }

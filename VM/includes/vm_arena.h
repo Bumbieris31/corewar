@@ -1,5 +1,6 @@
 /* ************************************************************************** */
 /*                                                                            */
+<<<<<<< HEAD
 /*                                                        :::      ::::::::   */
 /*   vm_arena.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
@@ -7,6 +8,15 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 15:52:12 by krioliin          #+#    #+#             */
 /*   Updated: 2020/01/18 19:40:44 by abumbier         ###   ########.fr       */
+=======
+/*                                                        ::::::::            */
+/*   vm_arena.h                                         :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: abumbier <abumbier@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2019/12/20 15:52:12 by krioliin       #+#    #+#                */
+/*   Updated: 2020/01/20 15:38:54 by asulliva      ########   odam.nl         */
+>>>>>>> 9a13b64f7be2a8ea4312a9dd078ae53fe1c4dbb5
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +32,6 @@
 
 # define OP_NBR 16
 # define DEBUG_MOD 0
-# define DEAD -1000
-
 
 typedef struct s_cursor	t_cursor;
 typedef struct s_visual t_visual;
@@ -78,6 +86,7 @@ typedef struct		s_vm
 	int				process;
 	short			players_amnt;
 	int				last_alive;
+	int				cycles_passed;
 	t_player		**players;
 	uint8_t			arena[MEM_SIZE];
 	t_flags			*flag;
@@ -91,7 +100,6 @@ typedef enum				e_argctype
 	DIR,
 	IND
 }							e_argctype;
-
 
 void				test_reg(void);
 
