@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   start_game.c                                       :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2020/01/15 15:28:07 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/18 18:30:43 by asulliva      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   start_game.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abumbier <abumbier@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/15 15:28:07 by asulliva          #+#    #+#             */
+/*   Updated: 2020/01/20 18:41:01 by abumbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,6 @@ bool	up_to_cycle_to_die(t_vm *vm)
 	someone_alive = true;
 	while (someone_alive && 0 < vm->cycle_to_die)
 	{
-		vm->current_cycle = 1;
 		while (vm->current_cycle <= vm->cycle_to_die)
 		{
 			execute_one_cycle(vm);
@@ -104,6 +103,8 @@ bool	up_to_cycle_to_die(t_vm *vm)
 			else if (vm->flag->dump == cycle_counter)
 				return (dump64(vm));
 		}
+		vm->current_cycle = 0;
+		vm->cycles_passed += 1;
 		someone_alive = check(vm);
 		discard_players_lives_calls(vm);
 	}
