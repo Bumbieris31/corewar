@@ -1,26 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-<<<<<<< HEAD
 /*                                                        :::      ::::::::   */
 /*   vm_arena.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abumbier <abumbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 15:52:12 by krioliin          #+#    #+#             */
-/*   Updated: 2020/01/16 19:43:11 by abumbier         ###   ########.fr       */
-=======
-/*                                                        ::::::::            */
-/*   vm_arena.h                                         :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: abumbier <abumbier@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2019/12/20 15:52:12 by krioliin       #+#    #+#                */
-<<<<<<< HEAD
-/*   Updated: 2020/01/16 20:49:58 by krioliin      ########   odam.nl         */
->>>>>>> 15a0289c9a19e4d3e7a5d490cef3466a4cc329d4
-=======
-/*   Updated: 2020/01/18 16:38:55 by krioliin      ########   odam.nl         */
->>>>>>> 1f7ddbc8d0e324e3d6c2ca1b331d27a1ca857002
+/*   Updated: 2020/01/20 18:39:28 by abumbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +25,12 @@
 # define DEBUG_MOD 1
 =======
 # define DEBUG_MOD 0
+<<<<<<< HEAD
 # define DEAD -1000
 
 >>>>>>> 1f7ddbc8d0e324e3d6c2ca1b331d27a1ca857002
+=======
+>>>>>>> d5c3a48902175d05abec995f8cda4293f6857ee9
 
 typedef struct s_cursor	t_cursor;
 typedef struct s_visual t_visual;
@@ -96,6 +85,7 @@ typedef struct		s_vm
 	int				process;
 	short			players_amnt;
 	int				last_alive;
+	int				cycles_passed;
 	t_player		**players;
 	uint8_t			arena[MEM_SIZE];
 	t_flags			*flag;
@@ -109,7 +99,6 @@ typedef enum				e_argctype
 	DIR,
 	IND
 }							e_argctype;
-
 
 void				test_reg(void);
 
