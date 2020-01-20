@@ -6,7 +6,7 @@
 #    By: asulliva <asulliva@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/12/28 15:09:07 by krioliin       #+#    #+#                 #
-#    Updated: 2020/01/18 16:40:18 by krioliin      ########   odam.nl          #
+#    Updated: 2020/01/20 15:39:17 by asulliva      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,7 @@ $(NAME):
 
 clean:
 	@rm -f *.o
+	@rm -rf *.dSYM
 
 fclean: clean
 	@rm -f $(NAME)

@@ -6,7 +6,7 @@
 /*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/20 15:52:12 by krioliin       #+#    #+#                */
-/*   Updated: 2020/01/18 18:29:53 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/20 15:38:54 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@
 
 # define OP_NBR 16
 # define DEBUG_MOD 0
-# define DEAD -1000
-
 
 typedef struct s_cursor	t_cursor;
 typedef struct s_visual t_visual;
@@ -78,6 +76,7 @@ typedef struct		s_vm
 	int				process;
 	short			players_amnt;
 	int				last_alive;
+	int				cycles_passed;
 	t_player		**players;
 	uint8_t			arena[MEM_SIZE];
 	t_flags			*flag;
@@ -91,7 +90,6 @@ typedef enum				e_argctype
 	DIR,
 	IND
 }							e_argctype;
-
 
 void				test_reg(void);
 
