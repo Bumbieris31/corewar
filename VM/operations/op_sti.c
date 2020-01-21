@@ -6,7 +6,7 @@
 /*   By: krioliin <krioliin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/09 18:04:40 by krioliin       #+#    #+#                */
-/*   Updated: 2020/01/19 18:48:44 by krioliin      ########   odam.nl         */
+/*   Updated: 2020/01/21 17:25:21 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,19 @@ int		get_arg_val(e_argctype arg_type, uint8_t arena[MEM_SIZE],
 	return (val);
 }
 
+static int	swap_32(int nb)
+{
+    int b1;
+    int b2;
+    int b3;
+    int b4;
+    b1 = (nb & 0x000000ff) << 24;
+    b2 = (nb & 0x0000ff00) << 8;
+    b3 = (nb & 0x00ff0000) >> 8;
+    b4 = (nb & 0xff000000) >> 24;
+    return (b1 | b2 | b3 | b4);
+}
+
 /*
 	padding = 3;
 	opcode(1) + encodebyte(1) + first arg REG(1)
@@ -84,7 +97,7 @@ bool	op_sti(t_cursor *cursor, t_vm *vm)
 	int			padding;
 
 	decode_encoding_byte(vm->arena[cursor->pos + 1], args);
-	val_to_write = cursor->reg[vm->arena[cursor->pos + 2] - REG];
+	val_to_write = swap_32(cursor->reg[vm->arena[cursor->pos + 2] - REG]);
 	padding = 3;
 	address = get_arg_val(args[1], vm->arena, cursor, &padding);
 	address += get_arg_val(args[2], vm->arena, cursor, &padding);

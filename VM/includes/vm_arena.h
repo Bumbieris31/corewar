@@ -6,7 +6,7 @@
 /*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/20 15:52:12 by krioliin       #+#    #+#                */
-/*   Updated: 2020/01/20 15:38:54 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/21 19:06:10 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,14 @@
 typedef struct s_cursor	t_cursor;
 typedef struct s_visual t_visual;
 typedef struct s_player t_player;
+typedef struct s_args t_args;
+
+struct				s_args
+{
+	int				size;
+	int				value;
+	int				type;
+};
 
 struct				s_cursor
 {

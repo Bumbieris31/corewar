@@ -7,7 +7,6 @@ static int	get_value(t_vm *vm, t_cursor *cursor)
 
 	value = convert(&vm->arena[cursor->pos + 1], 2);
 	value += cursor->pos;
-	value = (value < 0 ? value : value % MEM_SIZE);
 	return (value);
 }
 

@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/15 15:28:07 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/20 15:39:04 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/21 19:21:48 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ bool	execute_one_cycle(t_vm *vm)
 bool	up_to_cycle_to_die(t_vm *vm)
 {
 	bool		someone_alive;
-	static int	cycle_counter;
+	static int	cycle;
 
 	someone_alive = true;
 	while (someone_alive && 0 < vm->cycle_to_die)
@@ -96,11 +96,11 @@ bool	up_to_cycle_to_die(t_vm *vm)
 		while (vm->current_cycle <= vm->cycle_to_die)
 		{
 			execute_one_cycle(vm);
-			cycle_counter++;
+			cycle++;
 			vm->current_cycle += 1;
-			if (vm->flag->hexdump == cycle_counter)
+			if (vm->flag->hexdump == cycle)
 				return (show_arena(vm->players, vm->players_amnt, vm));
-			else if (vm->flag->dump == cycle_counter)
+			else if (vm->flag->dump == cycle)
 				return (dump64(vm));
 		}
 		vm->current_cycle = 0;
@@ -111,17 +111,102 @@ bool	up_to_cycle_to_die(t_vm *vm)
 	return (true);
 }
 
+// bool	start_game(t_vm *vm)
+// {
+// 	t_player *the_champion;
+
+// 	if (up_to_cycle_to_die(vm))
+// 	{
+// 		the_champion = get_player_by_id(vm->players, vm->last_alive, vm->players_amnt);
+// 		if (vm->flag->v == true)
+// 			congrats_champion(vm->v->wop, the_champion);
+// 		else
+// 			ft_printf("Contestant %d, \"%s\", has won !\n", vm->last_alive, the_champion->name);
+// 	}
+// 	return (true);
+// }
+
+void	check_octal(t_vm *vm, t_cursor *c, int octal)
+{
+	int		i;
+	int		size;
+	t_args	*args;
+
+	
+}
+
+void	cursor(t_vm *vm, t_cursor *c)
+{
+	t_args	*args;
+	int		size;
+
+	ft_printf("c->opcode %#x\n", c->opcode);
+	if (is_encoding_byte(c->opcode))
+		check_octal(vm, c, vm->arena[(c->pos + 1) % MEM_SIZE]);
+	else
+	{
+		args = ft_memalloc(sizeof(t_args));
+		args->size = get_dir_size(c->opcode);
+		size = args->size + 1;
+		args->value = convert(&vm->arena[c->pos + 1], args->size);
+		args->type = DIR;
+		//do operation
+	}
+	
+}
+
+void	execute(t_vm *vm)
+{
+	t_cursor	*curr;
+
+	curr = vm->cursor;
+	while (curr)
+	{
+		cursor(vm, curr);
+		curr = curr->next;
+	}
+	if (vm->flag->v)
+		refresh_arena(vm);
+}
+
+bool	game_loop(t_vm *vm)
+{
+	bool	alive;
+	int		cycle;
+
+	alive = true;
+	cycle = 0;
+	while (alive && 0 < vm->cycle_to_die)
+	{
+		while (vm->current_cycle <= vm->cycle_to_die)
+		{
+			execute(vm);
+			vm->current_cycle += 1;
+			cycle++;
+			if (vm->flag->hexdump == cycle)
+				return (show_arena(vm->players, vm->players_amnt, vm));
+			else if (vm->flag->dump == cycle)
+				return (dump64(vm));
+		}
+		vm->current_cycle = 0;
+		vm->cycles_passed++;
+		alive = check(vm);
+		discard_players_lives_calls(vm);
+	}
+	return (true);
+}
+
 bool	start_game(t_vm *vm)
 {
-	t_player *the_champion;
+	t_player	*champ;
 
-	if (up_to_cycle_to_die(vm))
+	if (game_loop(vm))
 	{
-		the_champion = get_player_by_id(vm->players, vm->last_alive, vm->players_amnt);
+		champ = get_player_by_id(vm->players, vm->last_alive, vm->players_amnt);
 		if (vm->flag->v == true)
-			congrats_champion(vm->v->wop, the_champion);
+			congrats_champion(vm->v->wop, champ);
 		else
-			ft_printf("Contestant %d, \"%s\", has won !\n", vm->last_alive, the_champion->name);
+			ft_printf("Contestant %d, \"%s\", has won !\n", vm->last_alive, champ->name);
 	}
 	return (true);
 }

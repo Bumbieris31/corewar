@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/30 16:35:54 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/08 18:16:28 by krioliin      ########   odam.nl         */
+/*   Updated: 2020/01/21 17:43:53 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,5 @@ int	convert(unsigned char *s, int size)
 		return ((char)temp);
 	else if (size == 2)
 		return ((short)temp);
-	return ((int)temp);
+	return (temp);
 }
