@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/21 19:25:13 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/21 21:01:11 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/21 21:54:58 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,6 @@ int		check_flag(int ac, char **av, int *i, t_flags *flags);
 int 	is_flag_n(int argc, char **params, int *num, t_flags *flags);
 int		check_champion(char *file_name);
 int		champ_name(char *name);
+int		get_amount(int nb_init);
+char	**save_players(char *name);
 #endif

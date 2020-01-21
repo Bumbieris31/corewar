@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/21 19:34:02 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/21 21:30:04 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/21 21:54:29 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 **	@return	- int nb_players, amount of players
 */
 
-static int	get_amount(int nb_init)
+int			get_amount(int nb_init)
 {
 	static int	nb_players;
 
