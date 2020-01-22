@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/21 19:25:13 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/22 19:41:50 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/22 20:06:26 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,6 +181,7 @@ void	decode(int octal, e_argctype args[3]);
 int		get_pc(int opcode, int octal);
 int		dump64(t_vm *vm);
 int		wait_cycle(int opcode);
+void	put_value(t_byte *arena, int index, void *val);
 
 /*
 ***************************** PARSING ARGS ******************************
@@ -214,4 +215,5 @@ void	start_game(t_vm *vm);
 void	execute(t_vm *vm);
 void	mv_cursor(t_vm *vm, t_cursor *c, int move);
 t_args  *get_args(t_cursor *c, t_byte octal, t_byte *arena);
+void	do_op(t_vm *vm, t_cursor *c, t_args *args, int size);
 #endif

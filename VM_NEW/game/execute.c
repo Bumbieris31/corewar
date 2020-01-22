@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/22 17:55:13 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/22 19:49:40 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/22 20:06:15 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ static void	execute_op(t_vm *vm, t_cursor *c)
 		size = args->size + 1;
 		args->value = get_bytes(ARENA, get_index(c->pos, 1), args->size);
 		args->type = DIR;
-		// do_op(vm, c, args, size);	
+		do_op(vm, c, args, size);
 	}
 }
 
@@ -132,7 +132,12 @@ void		execute(t_vm *vm)
 	c = CURSORS;
 	while (c)
 	{
-		execute_op(vm, c);
+		if (c->wait_cycles > 0)
+			c->wait_cycles--;
+		if (c->wait_cycles && (c->opcode >= 1 && c->opcode <= 16))
+			execute_op(vm, c);
+		else if (!c->wait_cycles)
+			mv_cursor(vm, c, 1);
 		c = c->next;
 	}
 }
