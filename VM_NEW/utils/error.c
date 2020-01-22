@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/21 19:31:40 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/22 12:55:02 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/22 15:53:58 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 /*
 **	@desc	- function prints the usage of the program
 */
+
 static void	usage(void)
 {
 	int		fd;
@@ -47,7 +48,6 @@ void		error(char *message, char *file)
 			ft_printf(" %s in file %s\n", message, file);
 		else
 			ft_putendl(message);
-		
 	}
 	exit(0);
 }

@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/22 14:29:46 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/22 14:37:15 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/22 15:53:07 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 int		arg_size(int type, int opcode)
 {
 	int	size;
-	
+
 	if (type == DIR)
 		size = g_op_tab[opcode].dir_size;
 	else if (type == IND)

@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/21 19:24:02 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/22 12:55:25 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/22 15:52:30 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static t_vm	*init(void)
 	new->flag = ft_memalloc(sizeof(t_flags));
 	if (!new || !new->flag)
 		error("Malloc error", NULL);
-	return (new);	
+	return (new);
 }
 
 int			main(int ac, char **av)
@@ -34,5 +34,5 @@ int			main(int ac, char **av)
 	vm = init();
 	parse_args(ac, av, vm->flag);
 	parse_champs(vm);
-	// ft_printf("%s\n", g_op_tab[1].name);
+	init_game(vm);
 }

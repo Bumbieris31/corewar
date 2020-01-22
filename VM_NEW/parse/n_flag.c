@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/21 20:18:40 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/22 12:56:26 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/22 15:55:53 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static int	check_n_pos(int n, short *play_order)
 **	@return	- 1 if flag, 0 if not flag
 */
 
-int 		is_flag_n(int ac, char **av, int *i, t_flags *flags)
+int			is_flag_n(int ac, char **av, int *i, t_flags *flags)
 {
 	int			n;
 	static int	prev_was_nflag;
@@ -73,10 +73,10 @@ int 		is_flag_n(int ac, char **av, int *i, t_flags *flags)
 	if (!ft_strcmp((const char *)av[*i], "-n"))
 	{
 		if (*i == ac - 2)
-			error("-n flag needs ieric value", NULL);
+			error("-n flag needs numeric value", NULL);
 		*i = *i + 1;
 		if (!av[*i])
-			error("-n flag needs ieric value", NULL);
+			error("-n flag needs numeric value", NULL);
 		n = ft_atoi(av[*i]);
 		if (n < 1 || MAX_PLAYERS < n || !check_champion(av[*i + 1]))
 			error("Invalid value for -n flag", NULL);

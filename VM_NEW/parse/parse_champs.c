@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/22 12:03:41 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/22 15:23:07 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/22 15:57:22 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,21 +103,20 @@ static t_champ	init_champ(char *file, int fd)
 	if (!null_byte(fd))
 		error("Parsing champion", file);
 	if (!champ_code_size(&new, fd))
-		error("Parsing champion", file);	
+		error("Parsing champion", file);
 	if (!get_champ_comment(&new, fd))
-		error("Parsing champion", file);	
+		error("Parsing champion", file);
 	if (!null_byte(fd))
 		error("Parsing champion", file);
 	if (!get_champ_code(&new, fd))
-		error("Parsing champion", file);	
+		error("Parsing champion", file);
 	new.last_live = 0;
 	new.lives = 0;
 	close(fd);
 	return (new);
-	
 }
 
-void	print_champ(t_champ champ)
+void			print_champ(t_champ champ)
 {
 	ft_printf(".name [%s]\n.comment [%s]\n", champ.name, champ.comment);
 	ft_printf("code size [%d]\n", champ.size);

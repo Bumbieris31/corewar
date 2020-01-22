@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/21 19:54:25 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/22 12:56:08 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/22 15:55:26 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,5 @@ int			check_flag(int ac, char **av, int *i, t_flags *flags)
 	if (ret)
 		return (ret);
 	ret = is_flag_n(ac, av, i, flags);
-	return (ret);	
+	return (ret);
 }

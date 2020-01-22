@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/21 19:34:02 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/22 12:55:47 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/22 15:56:15 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ static int	check_arg(int ac, char **av, int *i, t_flags *flags)
 	}
 	else
 		return (0);
-	return (1);	
+	return (1);
 }
 
 /*
@@ -92,7 +92,7 @@ static int	check_arg(int ac, char **av, int *i, t_flags *flags)
 **			- t_flags *flags, initialized flag struct
 */
 
-void	parse_args(int ac, char **av, t_flags *flags)
+void		parse_args(int ac, char **av, t_flags *flags)
 {
 	int		i;
 

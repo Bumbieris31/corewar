@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   op.h                                               :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: zaz <marvin@42.fr>                           +#+                     */
+/*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2013/10/04 11:33:27 by zaz            #+#    #+#                */
-/*   Updated: 2020/01/22 15:03:46 by asulliva      ########   odam.nl         */
+/*   Created: 2020/01/22 15:59:06 by asulliva       #+#    #+#                */
+/*   Updated: 2020/01/22 15:59:42 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,17 +64,17 @@ typedef struct					s_header
 	char						comment[COMMENT_LENGTH + 1];
 }								t_header;
 
-typedef struct                  s_op
+typedef struct					s_op
 {
-	char                        *name;
-	t_byte                      nb_arg;
-	t_byte                      args[3];
-	t_byte                      opcode;
-	unsigned int                cycle;
-	char                        *description;
-	t_byte                      octal;
-	t_byte                      dir_size;
-}                               t_op;
+	char						*name;
+	t_byte						nb_arg;
+	t_byte						args[3];
+	t_byte						opcode;
+	unsigned int				cycle;
+	char						*description;
+	t_byte						octal;
+	t_byte						dir_size;
+}								t_op;
 
-extern t_op                     g_op_tab[17];
+extern t_op						g_op_tab[17];
 #endif

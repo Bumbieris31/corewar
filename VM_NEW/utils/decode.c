@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/22 14:40:28 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/22 14:46:00 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/22 15:54:17 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static e_argctype	get_type(unsigned char dec_num, short fraction_num)
 **			- e_argctype args[3], array to fill
 */
 
-void	decode(int octal, e_argctype args[3])
+void				decode(int octal, e_argctype args[3])
 {
 	unsigned char	mask[3];
 	unsigned char	byte_fr[3];

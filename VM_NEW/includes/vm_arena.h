@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/21 19:25:13 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/22 15:20:59 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/22 15:51:32 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # define DEBUG_MOD 0
 # define NB_PLAYERS vm->nb_players
 # define CHAMPS vm->champs
+# define ARENA vm->arena
 
 typedef struct s_vm t_vm;
 typedef struct s_flags t_flags;
@@ -134,4 +135,9 @@ int		get_champ_code(t_champ *champ, const int fd);
 void	set_champ(t_champ *champ, short player_order[MAX_PLAYERS],\
 		int num, int nb_players);
 
+/*
+********************************* INIT **********************************
+*/
+void	init_game(t_vm *vm);
+void	dump64(t_vm *vm);
 #endif
