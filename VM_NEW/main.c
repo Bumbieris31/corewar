@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/21 19:24:02 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/22 15:52:30 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/22 17:27:31 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,6 @@ int			main(int ac, char **av)
 	parse_args(ac, av, vm->flag);
 	parse_champs(vm);
 	init_game(vm);
+	dump64(vm);
+	start_game(vm);
 }

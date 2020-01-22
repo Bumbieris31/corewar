@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/22 15:51:18 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/22 15:51:57 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/22 17:36:53 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static char	*get_hex(int n, int len)
 	return (ret);
 }
 
-void		dump64(t_vm *vm)
+int			dump64(t_vm *vm)
 {
 	int i;
 	int j;
@@ -56,4 +56,5 @@ void		dump64(t_vm *vm)
 		line += 64;
 		i++;
 	}
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/22 15:38:16 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/22 15:54:30 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/22 17:27:22 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,24 +27,10 @@ static void	place_champ(t_byte *arena, t_champ champ)
 	pos = champ.start_pos;
 	while (i < champ.size)
 	{
-		arena[pos] = champ.code[i];
+		arena[pos % MEM_SIZE] = champ.code[i];
 		pos++;
 		i++;
 	}
-}
-
-void		print_arena(t_byte *arena)
-{
-	int		i;
-
-	i = 0;
-	ft_putendl("");
-	while (i < 23)
-	{
-		ft_printf("[%.2x]", arena[i]);
-		i++;
-	}
-	ft_putendl("");
 }
 
 /*
@@ -63,5 +49,5 @@ void		init_game(t_vm *vm)
 		place_champ(ARENA, CHAMPS[i]);
 		i++;
 	}
-	dump64(vm);
+	init_cursors(vm);
 }

@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/21 19:25:13 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/22 15:51:32 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/22 17:46:00 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,48 @@
 # define NB_PLAYERS vm->nb_players
 # define CHAMPS vm->champs
 # define ARENA vm->arena
+# define GAME vm->game
+# define CURSORS GAME->cursors
+# define FLAG vm->flag
 
 typedef struct s_vm t_vm;
 typedef struct s_flags t_flags;
 typedef struct s_args t_args;
 typedef struct s_champ t_champ;
+typedef struct s_cursor t_cursor;
+typedef struct s_game t_game;
+
+
+/*
+**	@desc	- struct that holds cursors in a linked list
+**	@param	- long id,
+**			- int moved, 1 or 0, to know if it moved recently
+**			- int carry, 1 or 0, carry for ZJMP
+**			- int opcode, current operationcode 
+**			- int last_live, last live call of cursor
+**			- int wait_cycles, total amont of waitcycles for this operation
+**			- int pos, current position of the cursor
+**			- int pc, amount of bytes needed to jump to next operation
+**			- int reg[REG_NUMBER], registries for this cursor
+**			- t_cursor *next, next cursor (if any)
+*/
+
+struct			s_cursor
+{
+	long		id;
+	int			moved;
+	int			carry;
+	int			opcode;
+	int			last_live;
+	int			wait_cycles;
+	int			pos;
+	int			pc;
+	int			reg[REG_NUMBER];
+	t_cursor	*next;
+	/* For visualisation */
+	int			prev_xy[2];
+	int			prev_val;
+};
 
 /*
 **	@desc	- struct holds info for all champs
@@ -44,7 +81,7 @@ typedef struct s_champ t_champ;
 **			- int code, exec code of the player
 */
 
-struct	s_champ
+struct		s_champ
 {
 	int		id;
 	int		size;
@@ -64,7 +101,7 @@ struct	s_champ
 **			the -n flag
 */
 
-struct	s_flags
+struct		s_flags
 {
 	int		dump;
 	int		v;
@@ -78,11 +115,35 @@ struct	s_flags
 **			- int type, flag for type of argument
 */
 
-struct s_args
+struct		s_args
 {
 	int		value;
 	int		size;
 	int		type;
+};
+
+/*
+**	@desc	- struct that holds all data of the game
+**	@param	- int winner, id of the winner
+**			- int cycles, current nb of cycles
+**			- int lives, amount of live calls
+**			- int processes, amount of processes running
+**			- int cycles_to_die, cycles till next check
+**			- int last_live, last live call
+**			- int nb_ctd, nb of cycle to die checks performed
+**			- t_cursor *cursors, linked list of cursors in the game
+*/
+
+struct			s_game
+{
+	int			winner;
+	int			cycles;
+	int			lives;
+	int			processes;
+	int			cycles_to_die;
+	int			last_live;
+	int			nb_ctd;
+	t_cursor	*cursors;
 };
 
 /*
@@ -94,12 +155,13 @@ struct s_args
 **			- t_champs *champ, champions
 */
 
-struct  s_vm
+struct		s_vm
 {
 	short	nb_players;
 	t_byte	arena[MEM_SIZE];
 	t_flags	*flag;
 	t_champ	*champs;
+	t_game	*game;
 };
 
 typedef enum				e_argctype
@@ -117,6 +179,8 @@ int		swap_32(int nb);
 int		arg_size(int type, int opcode);
 void	decode(int octal, e_argctype args[3]);
 int		get_pc(int opcode, int octal);
+int		dump64(t_vm *vm);
+int		wait_cycle(int opcode);
 
 /*
 ***************************** PARSING ARGS ******************************
@@ -139,5 +203,10 @@ void	set_champ(t_champ *champ, short player_order[MAX_PLAYERS],\
 ********************************* INIT **********************************
 */
 void	init_game(t_vm *vm);
-void	dump64(t_vm *vm);
+void	init_cursors(t_vm *vm);
+
+/*
+********************************* GAME **********************************
+*/
+void	start_game(t_vm *vm);
 #endif
