@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/22 12:03:41 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/22 14:47:09 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/22 15:23:07 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,8 @@ void	print_champ(t_champ champ)
 {
 	ft_printf(".name [%s]\n.comment [%s]\n", champ.name, champ.comment);
 	ft_printf("code size [%d]\n", champ.size);
+	ft_printf("starting pos [%d]\n", champ.start_pos);
+	ft_printf("champ id [%d]\n", champ.id);
 }
 
 /*
@@ -142,6 +144,7 @@ void			parse_champs(t_vm *vm)
 	while (i < NB_PLAYERS)
 	{
 		CHAMPS[i] = init_champ(files[i], 0);
+		set_champ(&CHAMPS[i], vm->flag->play_order, i, NB_PLAYERS);
 		print_champ(CHAMPS[i]);
 		i++;
 	}
