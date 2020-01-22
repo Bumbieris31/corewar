@@ -1,38 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   swap32.c                                           :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/01/21 19:24:02 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/22 12:55:25 by asulliva      ########   odam.nl         */
+/*   Created: 2020/01/22 13:29:02 by asulliva       #+#    #+#                */
+/*   Updated: 2020/01/22 13:30:19 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/vm_arena.h"
+#include "../includes/vm_arena.h"
 
 /*
-**	@desc	- function initializes main struct
+**	@desc	- function swaps bits in 4 bytes
+**	@paran	- int nb, number to be swapped
+**	@return	- the swapped number
 */
 
-static t_vm	*init(void)
+int		swap_32(int nb)
 {
-	t_vm	*new;
+	int b1;
+	int b2;
+	int b3;
+	int b4;
 
-	new = ft_memalloc(sizeof(t_vm));
-	new->flag = ft_memalloc(sizeof(t_flags));
-	if (!new || !new->flag)
-		error("Malloc error", NULL);
-	return (new);	
-}
-
-int			main(int ac, char **av)
-{
-	t_vm	*vm;
-
-	vm = init();
-	parse_args(ac, av, vm->flag);
-	parse_champs(vm);
-	// ft_printf("%s\n", g_op_tab[1].name);
+	b1 = (nb & 0x000000ff) << 24;
+	b2 = (nb & 0x0000ff00) << 8;
+	b3 = (nb & 0x00ff0000) >> 8;
+	b4 = (nb & 0xff000000) >> 24;
+	return (b1 | b2 | b3 | b4);
 }

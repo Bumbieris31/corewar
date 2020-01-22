@@ -6,11 +6,11 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/21 20:30:58 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/21 21:45:11 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/22 12:06:35 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/vm_arena.h"
+#include "../includes/vm_arena.h"
 
 /*
 **	@desc	- checks file is valid

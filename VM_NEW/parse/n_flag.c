@@ -6,11 +6,11 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/21 20:18:40 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/21 21:40:37 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/22 12:56:26 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/vm_arena.h"
+#include "../includes/vm_arena.h"
 
 /*
 **	@desc	- function adds -n flag to player order
@@ -73,15 +73,15 @@ int 		is_flag_n(int ac, char **av, int *i, t_flags *flags)
 	if (!ft_strcmp((const char *)av[*i], "-n"))
 	{
 		if (*i == ac - 2)
-			error("-n flag needs ieric value");
+			error("-n flag needs ieric value", NULL);
 		*i = *i + 1;
 		if (!av[*i])
-			error("-n flag needs ieric value");
+			error("-n flag needs ieric value", NULL);
 		n = ft_atoi(av[*i]);
 		if (n < 1 || MAX_PLAYERS < n || !check_champion(av[*i + 1]))
-			error("Invalid value for -n flag");
+			error("Invalid value for -n flag", NULL);
 		if (!check_n_pos(n, flags->play_order))
-			error("Invalid value for -n flag");
+			error("Invalid value for -n flag", NULL);
 		if (!prev_was_nflag)
 			prev_was_nflag = 1;
 		add_n_flag(flags, 0, n);

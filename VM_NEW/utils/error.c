@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/21 19:31:40 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/21 21:46:20 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/22 12:55:02 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,18 @@ static void	usage(void)
 **	@param	- char *message, message to be displayed
 */
 
-void		error(char *message)
+void		error(char *message, char *file)
 {
 	if (!ft_strcmp(message, "usage"))
 		usage();
 	else
 	{
 		ft_putstr("Error: ");
-		ft_putendl(message);
+		if (file)
+			ft_printf(" %s in file %s\n", message, file);
+		else
+			ft_putendl(message);
+		
 	}
 	exit(0);
 }

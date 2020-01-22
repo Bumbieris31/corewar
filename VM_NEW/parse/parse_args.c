@@ -6,11 +6,11 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/21 19:34:02 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/21 21:54:29 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/22 12:55:47 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/vm_arena.h"
+#include "../includes/vm_arena.h"
 
 /*
 **	@desc	- function sets and returns static var nb_players
@@ -99,11 +99,11 @@ void	parse_args(int ac, char **av, t_flags *flags)
 	i = 1;
 	flags->dump = 0;
 	if (ac < 2)
-		error("usage");
+		error("usage", NULL);
 	while (i < ac)
 	{
 		if (!check_arg(ac, av, &i, flags))
-			error("Invalid argument");
+			error("Invalid argument", NULL);
 		i++;
 	}
 }

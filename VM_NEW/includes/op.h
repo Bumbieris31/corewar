@@ -6,7 +6,7 @@
 /*   By: zaz <marvin@42.fr>                           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2013/10/04 11:33:27 by zaz            #+#    #+#                */
-/*   Updated: 2020/01/21 21:50:40 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/22 15:03:46 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@
 # define NBR_LIVE				21
 # define MAX_CHECKS				10
 
-typedef char					t_byte;
+typedef unsigned char			t_byte;
 
 # define T_REG					1
 # define T_DIR					2
