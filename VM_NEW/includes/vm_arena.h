@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/21 19:25:13 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/22 17:46:00 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/22 19:41:50 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,6 +198,8 @@ int		champ_code_size(t_champ *champ, const int fd);
 int		get_champ_code(t_champ *champ, const int fd);
 void	set_champ(t_champ *champ, short player_order[MAX_PLAYERS],\
 		int num, int nb_players);
+int		get_bytes(t_byte *arena, int idx, int amount);
+int		get_index(int current, int move);
 
 /*
 ********************************* INIT **********************************
@@ -209,4 +211,7 @@ void	init_cursors(t_vm *vm);
 ********************************* GAME **********************************
 */
 void	start_game(t_vm *vm);
+void	execute(t_vm *vm);
+void	mv_cursor(t_vm *vm, t_cursor *c, int move);
+t_args  *get_args(t_cursor *c, t_byte octal, t_byte *arena);
 #endif

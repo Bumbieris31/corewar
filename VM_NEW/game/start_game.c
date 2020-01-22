@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/22 17:27:58 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/22 17:54:56 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/22 19:46:18 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ static int	dead_cursors(t_cursor **head)
 	{
 		*head = prev->next;
 		ft_memdel((void**)&prev);
+		if (*head == NULL)
+			return (100);
 		prev = *head;
 		body_count++;
 	}
@@ -111,11 +113,12 @@ static int	game_loop(t_vm *vm)
 
 void		start_game(t_vm *vm)
 {
-	t_champ	*champ;
+	t_champ	champ;
 
+	champ = CHAMPS[0];
 	if (game_loop(vm))
 	{
-		champ = get_player(CHAMPS, GAME->last_live, NB_PLAYERS);
-		ft_printf("Contestant %d, \"%s\", has won !\n", GAME->last_live, champ->name);
+		// champ = get_player(CHAMPS, GAME->last_live, NB_PLAYERS);
+		ft_printf("Contestant %d, \"%s\", has won !\n", GAME->last_live, champ.name);
 	}
 }
