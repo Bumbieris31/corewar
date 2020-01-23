@@ -6,7 +6,7 @@
 /*   By: krioliin <krioliin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/28 15:40:03 by krioliin       #+#    #+#                */
-/*   Updated: 2020/01/22 17:13:40 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/23 12:24:51 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 
 typedef struct s_vm		t_vm;
 typedef struct s_cursor	t_cursor;
+typedef struct s_args	t_args;
+
 
 /*
 ** Ops with size T_DIR 4 bytes
@@ -44,26 +46,20 @@ typedef struct s_cursor	t_cursor;
 # define LLDI 0x0e
 # define LFORK 0x0f
 
-bool		op_live(t_cursor *cursor, t_vm *vm);
-bool		op_add(t_cursor *cursor, t_vm *vm);
-bool		op_aff(t_cursor *cursor, t_vm *vm);
-bool		op_and(t_cursor *cursor, t_vm *vm);
-bool		op_fork(t_cursor *cursor, t_vm *vm);
-bool		op_lfork(t_cursor *cursor, t_vm *vm);
-bool		op_st(t_cursor *cursor, t_vm *vm);
-bool		op_sti(t_cursor *cursor, t_vm *vm);
-bool		op_ld(t_cursor *cursor, t_vm *vm);
-bool		op_ldi(t_cursor *cursor, t_vm *vm);
-bool		op_lld(t_cursor *cursor, t_vm *vm);
-bool		op_lldi(t_cursor *cursor, t_vm *vm);
-bool		op_or(t_cursor *cursor, t_vm *vm);
-bool		op_xor(t_cursor *cursor, t_vm *vm);
-bool		op_sub(t_cursor *cursor, t_vm *vm);
-bool		op_zjmp(t_cursor *cursor, t_vm *vm);
-
-// int			get_arg_val(e_argctype arg_type, uint8_t arena[MEM_SIZE],
-// 			t_cursor *cursor, int *padding);
-// void		write_into_memory(int32_t val_to_write, uint8_t *arena,\
-// int address);
+void	live(t_vm *vm, t_cursor *c, t_args *args);
+void	ld(t_vm *vm, t_cursor *c, t_args *args);
+void	st(t_vm *vm, t_cursor *c, t_args *args);
+void	add(t_cursor *c, t_args *args);
+void	sub(t_cursor *c, t_args *args);
+void	and(t_vm *vm, t_cursor *c, t_args *args);
+void	or(t_vm *vm, t_cursor *c, t_args *args);
+void	xor(t_vm *vm, t_cursor *c, t_args *args);
+void	zjmp(t_vm *vm, t_cursor *c, t_args *args);
+void	ldi(t_vm *vm, t_cursor *c, t_args *args);
+void	sti(t_vm *vm, t_cursor *c, t_args *args);
+void	op_fork(t_vm *vm, t_cursor *c, t_args *args, int mod);
+void	lld(t_vm *vm, t_cursor *c, t_args *args);
+void	lldi(t_vm *vm, t_cursor *c, t_args *args);
+void	aff(t_cursor *c, t_args *args);
 
 #endif

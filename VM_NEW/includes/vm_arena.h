@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/21 19:25:13 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/22 20:06:26 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/23 12:34:13 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,6 +182,7 @@ int		get_pc(int opcode, int octal);
 int		dump64(t_vm *vm);
 int		wait_cycle(int opcode);
 void	put_value(t_byte *arena, int index, void *val);
+int		get_player(t_vm *vm, t_champ *champs, int id);
 
 /*
 ***************************** PARSING ARGS ******************************

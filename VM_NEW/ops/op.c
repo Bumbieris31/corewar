@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   do_op.c                                            :+:    :+:            */
+/*   op.c                                               :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/22 20:03:39 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/22 20:14:30 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/23 12:26:38 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,27 +19,27 @@
 **			- t_args *args, arguments
 */
 
-static void		do_op2(t_vm *vm, t_cursor *cursor, t_args *args)
+static void		do_op2(t_vm *vm, t_cursor *c, t_args *args)
 {
 	int	opcode;
 
-	opcode = cursor->opcode;
+	opcode = c->opcode;
 	if (opcode == ZJMP)
-		zjmp(vm, cursor, args);
+		zjmp(vm, c, args);
 	else if (opcode == LDI)
-		ldi(vm, cursor, args);
+		ldi(vm, c, args);
 	else if (opcode == STI)
-		sti(vm, cursor, args);
+		sti(vm, c, args);
 	else if (opcode == FORK)
-		op_fork(vm, cursor, args, IDX_MOD);
+		op_fork(vm, c, args, IDX_MOD);
 	else if (opcode == LLD)
-		lld(vm, cursor, args);
+		lld(vm, c, args);
 	else if (opcode == LLDI)
-		lldi(vm, cursor, args);
+		lldi(vm, c, args);
 	else if (opcode == LFORK)
-		op_fork(vm, cursor, args, MEM_SIZE);
+		op_fork(vm, c, args, MEM_SIZE);
 	else if (opcode == AFF)
-		aff(cursor, args);
+		aff(c, args);
 }
 
 /*
@@ -72,8 +72,8 @@ void	do_op(t_vm *vm, t_cursor *c, t_args *args, int size)
 	else if (opcode == XOR)
 		xor(vm, c, args);
 	else
-		do_op_2(vm, c, args);
+		do_op2(vm, c, args);
 	if (opcode != ZJMP || (opcode == ZJMP && !c->carry))
-		move_c(vm, c, size);
+		mv_cursor(vm, c, size);
 	free(args);
 }
