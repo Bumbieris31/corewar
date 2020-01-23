@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 12:20:52 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/23 13:15:50 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/23 18:45:35 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ void and (t_vm * vm, t_cursor *c, t_args *args)
 	i = 0;
 	while (i < 2)
 	{
-		if (args[i].type == REG)
+		if (args[i].type == T_REG)
 			temp[i] = c->reg[args[i].value - 1];
-		if (args[i].type == DIR)
+		if (args[i].type == T_DIR)
 			temp[i] = args[i].value;
-		if (args[i].type == IND)
+		if (args[i].type == T_IND)
 			temp[i] = get_bytes(ARENA, get_index(c->pos, (args[i].value % IDX_MOD)), 4);
 		i++;
 	}
@@ -59,11 +59,11 @@ void or (t_vm * vm, t_cursor *c, t_args *args)
 	i = 0;
 	while (i < 2)
 	{
-		if (args[i].type == REG)
+		if (args[i].type == T_REG)
 			temp[i] = c->reg[args[i].value - 1];
-		if (args[i].type == DIR)
+		if (args[i].type == T_DIR)
 			temp[i] = args[i].value;
-		if (args[i].type == IND)
+		if (args[i].type == T_IND)
 			temp[i] = get_bytes(ARENA, get_index(c->pos, (args[i].value % IDX_MOD)), 4);
 		i++;
 	}
@@ -88,11 +88,11 @@ void xor (t_vm * vm, t_cursor *c, t_args *args) {
 	i = 0;
 	while (i < 2)
 	{
-		if (args[i].type == REG)
+		if (args[i].type == T_REG)
 			temp[i] = c->reg[args[i].value - 1];
-		if (args[i].type == DIR)
+		if (args[i].type == T_DIR)
 			temp[i] = args[i].value;
-		if (args[i].type == IND)
+		if (args[i].type == T_IND)
 			temp[i] = get_bytes(ARENA, get_index(c->pos, (args[i].value % IDX_MOD)), 4);
 		i++;
 	}

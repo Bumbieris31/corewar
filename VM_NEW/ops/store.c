@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 12:20:58 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/23 13:30:32 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/23 18:44:01 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ void	st(t_vm *vm, t_cursor *c, t_args *args)
 
 	a1 = args[0];
 	a2 = args[1];
-	if (a2.type == REG)
+	if (a2.type == T_REG)
 		c->reg[a2.value - 1] = c->reg[a1.value - 1];
-	else if (a2.type == IND)
+	else if (a2.type == T_IND)
 	{
 		val = swap_32(c->reg[a1.value - 1]);
 		index = get_index(c->pos, (a2.value % IDX_MOD));
@@ -56,11 +56,11 @@ void	sti(t_vm *vm, t_cursor *c, t_args *args)
 	i = 0;
 	while (i < 3)
 	{
-		if (args[i].type == REG)
+		if (args[i].type == T_REG)
 			temp[i] = c->reg[args[i].value - 1];
-		if (args[i].type == DIR)
+		if (args[i].type == T_DIR)
 			temp[i] = args[i].value;
-		if (args[i].type == IND)
+		if (args[i].type == T_IND)
 			temp[i] = get_bytes(ARENA,
 			get_index(c->pos, args[i].value % IDX_MOD), 4);
 		i++;

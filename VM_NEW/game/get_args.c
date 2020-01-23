@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/22 19:20:26 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/23 18:18:06 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/23 18:43:19 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,22 +40,22 @@ static t_args	get_arg(int opcode, t_byte type)
 {
 	t_args	arg;
 
-	if ((type & 3) == REG)
+	if ((type & 3) == T_REG)
 	{
 		arg.size = 1;
-		arg.type = REG;
+		arg.type = T_REG;
 		return (arg);
 	}
-	else if ((type & 3) == DIR)
+	else if ((type & 3) == T_DIR)
 	{
 		arg.size = g_op_tab[opcode].dir_size;
-		arg.type = DIR;
+		arg.type = T_DIR;
 		return (arg);
 	}
 	else
 	{
 		arg.size = 2;
-		arg.type = IND;
+		arg.type = T_IND;
 		return (arg);
 	}
 }
@@ -86,12 +86,6 @@ t_args			*get_args(t_cursor *c, t_byte octal, t_byte *arena)
 		args[i].size);
 		shift -= 2;
 		op_i += args[i].size;
-		i++;
-	}
-	i = 0;
-	while (i < g_op_tab[c->opcode].nb_arg)
-	{
-		ft_printf("value %d\tsize %d\ttype %d\n", args[i].value, args[i].size, args[i].type);
 		i++;
 	}
 	return (args);

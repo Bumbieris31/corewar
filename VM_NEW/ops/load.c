@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 12:20:54 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/23 13:44:14 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/23 18:43:38 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ void	ld(t_vm *vm, t_cursor *c, t_args *args)
 
 	a1 = args[0];
 	reg_nb = args[1].value - 1;
-	if (a1.type == IND)
+	if (a1.type == T_IND)
 		c->reg[reg_nb] = get_bytes(ARENA, get_index(c->pos,
 		(a1.value % IDX_MOD)), 4);
-	else if (a1.type == DIR)
+	else if (a1.type == T_DIR)
 		c->reg[reg_nb] = a1.value;
 	c->carry = (c->reg[reg_nb] == 0 ? 1 : 0);
 }

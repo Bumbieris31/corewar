@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/22 17:55:13 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/23 17:55:18 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/23 18:49:18 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ static void	check_octal(t_vm *vm, t_cursor *c)
 	i = 0;
 	while (i < g_op_tab[c->opcode].nb_arg)
 	{
+		ft_printf("value %d\tsize %d\ttype %d\n", args[i].value, args[i].size, args[i].type);
 		if ((args[i].type == REG && (args[i].value < 1 || args[i].value < 16))
 		|| !(args[i].type & g_op_tab[c->opcode].args[i]))
 		{
