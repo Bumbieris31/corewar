@@ -6,14 +6,36 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/22 19:20:26 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/22 19:43:40 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/23 18:18:06 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/vm_arena.h"
 
 /*
+**	@desc	- function gets opcode for cursor
+**	@param	- t_byte opcode, opcode to read
+**			- t_cursor *c, current cursor
 */
+
+void			opcode(t_byte opcode, t_cursor *c)
+{
+	c->moved = 0;
+	c->opcode = opcode;
+	if (opcode > 0 && NB_OPS >= opcode)
+		c->wait_cycles = g_op_tab[opcode].cycle;
+	else
+		c->wait_cycles = 0;
+
+}
+
+/*
+**	@desc	- function gets single argument
+**	@param	- int opcode, operation code
+**			- t_byte type, type of the argument
+**	@return	- t_args arg, single argument struct
+*/
+
 static t_args	get_arg(int opcode, t_byte type)
 {
 	t_args	arg;
@@ -64,6 +86,12 @@ t_args			*get_args(t_cursor *c, t_byte octal, t_byte *arena)
 		args[i].size);
 		shift -= 2;
 		op_i += args[i].size;
+		i++;
+	}
+	i = 0;
+	while (i < g_op_tab[c->opcode].nb_arg)
+	{
+		ft_printf("value %d\tsize %d\ttype %d\n", args[i].value, args[i].size, args[i].type);
 		i++;
 	}
 	return (args);

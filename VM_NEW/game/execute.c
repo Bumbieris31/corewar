@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/22 17:55:13 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/22 20:06:15 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/23 17:55:18 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ static void	check_octal(t_vm *vm, t_cursor *c)
 		}
 		i++;
 	}
-	// do_op(vm, c, args, size);
+	do_op(vm, c, args, size);
 }
 
 /*
@@ -132,9 +132,11 @@ void		execute(t_vm *vm)
 	c = CURSORS;
 	while (c)
 	{
+		if (c->moved)
+			opcode(ARENA[c->pos], c);
 		if (c->wait_cycles > 0)
 			c->wait_cycles--;
-		if (c->wait_cycles && (c->opcode >= 1 && c->opcode <= 16))
+		if (!c->wait_cycles && (c->opcode >= 1 && c->opcode <= 16))
 			execute_op(vm, c);
 		else if (!c->wait_cycles)
 			mv_cursor(vm, c, 1);

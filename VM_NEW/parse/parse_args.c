@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/21 19:34:02 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/22 15:56:15 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/23 16:08:28 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void		parse_args(int ac, char **av, t_flags *flags)
 	int		i;
 
 	i = 1;
-	flags->dump = 0;
+	flags->dump = -1;
 	if (ac < 2)
 		error("usage", NULL);
 	while (i < ac)

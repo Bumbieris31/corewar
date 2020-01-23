@@ -6,7 +6,7 @@
 #    By: asulliva <asulliva@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/21 19:23:26 by asulliva       #+#    #+#                 #
-#    Updated: 2020/01/23 12:34:05 by asulliva      ########   odam.nl          #
+#    Updated: 2020/01/23 17:30:52 by asulliva      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,10 +22,11 @@ SRC			= main.c\
 			utils/error.c utils/get_player.c utils/swap32.c utils/arg_size.c\
 			utils/decode.c utils/get_pc.c utils/dump64.c utils/wait_cycles.c\
 			utils/get_bytes.c utils/get_index.c utils/put_value.c utils/op.c\
-			init_game/init_game.c init_game/init_cursors.c\
-			game/start_game.c game/execute.c game/cursor.c game/get_args.c\
+			utils/format_check.c\
+			init_game/init_game.c init_game/swap_champs.c init_game/cursor.c\
+			game/start_game.c game/execute.c game/get_args.c\
 			ops/op.c ops/math.c ops/misc.c ops/bitwise.c ops/store.c\
-			ops/load.c
+			ops/load.c ops/fork.c
 
 all: $(NAME)
 

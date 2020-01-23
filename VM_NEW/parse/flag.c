@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/21 19:54:25 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/22 15:55:26 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/23 17:27:09 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	is_dump(int ac, char **av, int *param_num, t_flags *flags)
 	i = 0;
 	if (!ft_strcmp((const char *)av[*param_num], "-dump"))
 	{
-		if ((*param_num == ac - 1 || flags->dump))
+		if ((*param_num == ac - 1 || flags->dump != -1))
 			error("Dump flag needs numeric value", NULL);
 		else
 		{

@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/21 19:25:13 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/23 13:52:15 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/23 17:31:07 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 
 # define OP_NBR 16
 # define DEBUG_MOD 0
+# define NB_OPS 0x10
 # define NB_PLAYERS vm->nb_players
 # define CHAMPS vm->champs
 # define ARENA vm->arena
@@ -144,6 +145,8 @@ struct			s_game
 	int			last_live;
 	int			nb_ctd;
 	t_cursor	*cursors;
+	int			checks;
+	int			cursors_id;
 };
 
 /*
@@ -183,6 +186,7 @@ int			dump64(t_vm *vm);
 int			wait_cycle(int opcode);
 void		put_value(t_byte *arena, int index, void *val);
 int			get_player(t_vm *vm, t_champ *champs, int id);
+int			format_check(char *format, char *s);
 
 /*
 ***************************** PARSING ARGS ******************************
@@ -207,16 +211,19 @@ int			get_index(int current, int move);
 ********************************* INIT **********************************
 */
 void		init_game(t_vm *vm);
-void		init_cursors(t_vm *vm);
+void		swap_champs(t_champ *champs, int nb_champs);
+t_cursor	*cp_cursor(t_cursor *src, int pos, long id);
+void		mv_cursor(t_vm *vm, t_cursor *c, int move);
+void		add_cursor(t_cursor **head, t_cursor *new);
+t_cursor	*rm_cursor(t_cursor *head, long id);
+t_cursor	*new_cursor(int position, int r1, long id);
 
 /*
 ********************************* GAME **********************************
 */
 void		start_game(t_vm *vm);
 void		execute(t_vm *vm);
-void		mv_cursor(t_vm *vm, t_cursor *c, int move);
-t_cursor	*cp_cursor(t_cursor *src, int pos, long id);
-void		add_cursor(t_cursor **head, t_cursor *new);
 t_args  	*get_args(t_cursor *c, t_byte octal, t_byte *arena);
 void		do_op(t_vm *vm, t_cursor *c, t_args *args, int size);
+void		opcode(t_byte opcode, t_cursor *c);
 #endif
