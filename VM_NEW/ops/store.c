@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 12:20:58 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/23 12:58:58 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/23 13:30:32 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,34 @@ void	st(t_vm *vm, t_cursor *c, t_args *args)
 	}
 }
 
-// void	sti(t_vm *vm, t_cursor *c, t_args *args);
+/*
+**	@desc	- function writes value from reg that 1st argument
+**	@param	- t_vm *vm, main struct
+**			- t_cursor *c, current cursor
+**			- t_args *args, arguments
+*/
+
+void	sti(t_vm *vm, t_cursor *c, t_args *args)
+{
+	int		temp[3];
+	int		i;
+	int		index;
+
+	i = 0;
+	while (i < 3)
+	{
+		if (args[i].type == REG)
+			temp[i] = c->reg[args[i].value - 1];
+		if (args[i].type == DIR)
+			temp[i] = args[i].value;
+		if (args[i].type == IND)
+			temp[i] = get_bytes(ARENA,
+			get_index(c->pos, args[i].value % IDX_MOD), 4);
+		i++;
+	}
+	temp[0] = swap_32(temp[0]);
+	index = get_index(c->pos, (temp[1] + temp[2]) % IDX_MOD);
+	put_value(ARENA, index, &temp[0]);
+	if (FLAG->v)
+		;
+}

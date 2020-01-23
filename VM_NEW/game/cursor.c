@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/22 19:08:18 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/22 19:40:26 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/23 13:52:07 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ t_cursor	*cp_cursor(t_cursor *src, int pos, long id)
 	new->id = id;
 	return (new);
 }
+
 /*
 **  @desc   - function moves cursor to new location
 **  @param  - t_vm *vm, main struct
@@ -45,4 +46,12 @@ void		mv_cursor(t_vm *vm, t_cursor *c, int move)
 	c->pos = get_index(old_pos, move);
 	if (FLAG->v)
 		;
+}
+
+void		add_cursor(t_cursor **head, t_cursor *new)
+{
+	if (!head)
+		return ;
+	new->next = *head;
+	*head = new;
 }

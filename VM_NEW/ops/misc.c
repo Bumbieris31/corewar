@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 12:20:48 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/23 12:54:46 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/23 13:46:33 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,18 @@ void	live(t_vm *vm, t_cursor *c, t_args *args)
 	}
 }
 
-// void	aff(t_cursor *c, t_args *args);
+/*
+**	@desc	- function takes value from reg and 
+**	@param	- t_cursor *c, current cursor
+**			- t_args *args, arguments print (char)value
+*/
+
+void	aff(t_cursor *c, t_args *args)
+{
+	char	c;
+	int		reg_nb;
+
+	reg_nb = args[0].value - 1;
+	c = (char)c->reg[reg_nb];
+	write(1, &c, 1);
+}

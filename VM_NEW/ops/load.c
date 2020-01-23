@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 12:20:54 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/23 12:53:40 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/23 13:44:14 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,83 @@ void	ld(t_vm *vm, t_cursor *c, t_args *args)
 	c->carry = (c->reg[reg_nb] == 0 ? 1 : 0);
 }
 
-// void	ldi(t_vm *vm, t_cursor *c, t_args *args);
-// void	lld(t_vm *vm, t_cursor *c, t_args *args);
-// void	lldi(t_vm *vm, t_cursor *c, t_args *args);
+/*
+**	@desc	- function saves value into reg that was 3rd argument
+**	@param	- t_vm *vm, main struct
+**			- t_cursor *c, current cursor
+**			- t_args *args, arguments
+*/
+
+void	ldi(t_vm *vm, t_cursor *c, t_args *args)
+{
+	int		temp[2];
+	int		i;
+	int		reg_nb;
+
+	reg_nb = args[2].value - 1;
+	i = 0;
+	while (i < 2)
+	{
+		if (args[i].type == T_REG)
+			temp[i] = c->reg[args[i].value - 1];
+		if (args[i].type == T_DIR)
+			temp[i] = args[i].value;
+		if (args[i].type == T_IND)
+			temp[i] = get_bytes(ARENA, get_index(c->pos,
+			args[i].value % IDX_MOD), 4);
+		i++;
+	}
+	c->reg[reg_nb] = get_bytes(ARENA,
+	get_index(c->pos, (temp[0] + temp[1]) % IDX_MOD), 4);
+}
+
+/*
+**	@desc	- more powerful ld
+**	@param	- t_vm *vm, main struct
+**			- t_cursor, current cursor
+**			- t_args *args, arguments
+*/
+
+void	lld(t_vm *vm, t_cursor *c, t_args *args)
+{
+	int		reg_nb;
+	t_args	a1;
+
+	a1 = args[0];
+	reg_nb = args[1].value - 1;
+	if (a1.type == IND)
+		c->reg[reg_nb] = get_bytes(ARENA, get_index(c->pos, a1.value), 4);
+	else if (a1.type == DIR)
+		c->reg[reg_nb] = a1.value;
+	c->carry = (c->reg[reg_nb] == 0 ? 1 : 0);
+}
+
+/*
+**	@desc	- more powerful ldi
+**	@param	- t_vm *vm, main struct
+**			- t_cursor, current cursor
+**			- t_args *args, arguments
+*/
+
+void	lldi(t_vm *vm, t_cursor *c, t_args *args)
+{
+	int		i;
+	int		temp[2];
+	int		reg_nb;
+
+	i = 0;
+	reg_nb = args[2].value - 1;
+	while (i < 2)
+	{
+		if (args[i].type == REG)
+			temp[i] = c->reg[args[i].value - 1];
+		if (args[i].type == DIR)
+			temp[i] = args[i].value;
+		if (args[i].type == IND)
+			temp[i] = get_bytes(ARENA, get_index(c->pos,
+			args[i].value % IDX_MOD), 4);
+		i++;
+	}
+	c->reg[reg_nb] = get_bytes(ARENA,
+	get_index(c->pos, (temp[0] + temp[1]) % MEM_SIZE), 4);
+}
