@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/21 20:30:58 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/22 15:54:48 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/24 15:57:18 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 **	@return	- 1 on success, 0 on failure
 */
 
-static int	check_file(char *name)
+int	check_file(char *name)
 {
 	int		fd;
 	char	c;
@@ -46,62 +46,12 @@ static int	check_file(char *name)
 **	@return	- 1 on succes, 0 on failure
 */
 
-int			check_champion(char *name)
+int	check_name(char *name)
 {
 	int		len;
 
 	len = ft_strlen(name);
 	if (5 <= len && ft_strstr(&name[len - 4], ".cor"))
 		return (1);
-	return (0);
-}
-
-/*
-**	@desc	- function saves new players and returns filenames
-**	@param	- char *name, name of the file
-**	@return	- char **player_files, the names of the files
-*/
-
-char		**save_players(char *name)
-{
-	static char	**player_files;
-	static int	i;
-
-	if (i == 0)
-		player_files = (char**)ft_memalloc(sizeof(char*) * MAX_PLAYERS);
-	if (name && !ft_strcmp((const char*)name, "free it"))
-	{
-		while (0 < i)
-		{
-			i--;
-			ft_strdel(&player_files[i]);
-		}
-		free(player_files);
-	}
-	else if (name)
-	{
-		player_files[i] = (char *)ft_memalloc(ft_strlen(name));
-		player_files[i] = (char *)ft_strcpy(player_files[i], name);
-		i++;
-	}
-	return (player_files);
-}
-
-/*
-**	@desc	- main champion parsing function
-**	@param	- char *name, champ file
-**	@return	- 1 on succes, 0 on failure
-*/
-
-int			champ_name(char *name)
-{
-	if (check_champion(name))
-	{
-		if (check_file(name))
-		{
-			save_players(name);
-			return (1);
-		}
-	}
 	return (0);
 }

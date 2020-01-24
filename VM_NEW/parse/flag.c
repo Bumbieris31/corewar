@@ -6,83 +6,46 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/21 19:54:25 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/23 17:27:09 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/24 18:23:09 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/vm_arena.h"
 
+void	n_flag(t_vm *vm, char **av, int ac, int i)
+{
+	if (i >= ac - 1 || !format_check("%d", av[i + 1]))
+		error("-n flag needs numeric value", NULL);
+	if (NB_PLAYERS < ft_atoi(av[i + 1]))
+		error("value for -n flag larger than number of players", av[i + 1]);
+}
+
 /*
-**	@desc	- function checks for dump flag
-**	@param	- int ac, nb of arguments
+**	@desc	- function parses the flags
+**	@param	- t_vm *vm, main struct
+**			- int ac, amount of args
 **			- char **av, arguments
-**			- int *param_num, current arg index
-**			- t_flags *flags, initialized flag struct
-**	@return	- 1 if flag, 0 if not
 */
 
-static int	is_dump(int ac, char **av, int *param_num, t_flags *flags)
+void		flags(t_vm *vm, int ac, char **av)
 {
-	int	i;
+	int		i;
 
-	i = 0;
-	if (!ft_strcmp((const char *)av[*param_num], "-dump"))
+	i = 1;
+	while (i < ac)
 	{
-		if ((*param_num == ac - 1 || flags->dump != -1))
-			error("Dump flag needs numeric value", NULL);
-		else
+		if (!ft_strcmp(av[i], "-dump"))
 		{
-			*param_num = *param_num + 1;
-			while (av[*param_num][i])
-			{
-				if (!ft_isdigit(av[*param_num][i]))
-					error("Dump flag needs numeric value", NULL);
-				i++;
-			}
-			flags->dump = ft_atoi(av[*param_num]);
-			return (1);
+			if (i >= ac - 1)
+				error("-dump flag needs numeric value", NULL);
+			if (ft_atoi(av[i + 1]) < 0)
+				error("Invalid value for -dump", av[i + 1]);
+			FLAG->dump = ft_atoi(av[i + 1]);
 		}
+		else if (!ft_strcmp(av[i], "-v"))
+			FLAG->v = 1;
+		// else if (!ft_strcmp(av[i], "-n"))
+		// 	n_flag(vm, av, ac, i);
+		i++;
 	}
-	return (0);
-}
-
-/*
-**	@desc	- function checks for visual flag
-**	@param	- char **av, arguments
-**			- int *i, current arg index
-**			- t_flags *flags, initialized flag struct
-**	@return	- 1 if flag, 0 if not
-*/
-
-static int	is_visual(char **av, int *i, t_flags *flags)
-{
-	if (!ft_strcmp(av[*i], "-v"))
-	{
-		flags->v = 1;
-		return (1);
-	}
-	return (0);
-}
-
-/*
-**	@desc	- main flag checking function
-**	@param	- int ac, nb of arguments
-**			- char **av, arguments
-**			- int *i, index of arg we are at
-**			- t_flags *flags, initialized flag struct
-**	@return	- 0 if no flags, !0 if flags
-*/
-
-int			check_flag(int ac, char **av, int *i, t_flags *flags)
-{
-	int	ret;
-
-	ret = is_dump(ac, av, i, flags);
-	if (ret)
-		return (ret);
-	ret = is_visual(av, i, flags);
-	if (ret)
-		return (ret);
-	ret = is_flag_n(ac, av, i, flags);
-	return (ret);
 }

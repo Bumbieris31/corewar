@@ -1,58 +1,55 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   champ_utils.c                                      :+:    :+:            */
+/*   get_champ.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/01/22 13:23:20 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/22 15:54:45 by asulliva      ########   odam.nl         */
+/*   Created: 2020/01/24 17:20:39 by asulliva       #+#    #+#                */
+/*   Updated: 2020/01/24 18:23:24 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/vm_arena.h"
 
 /*
-**  @desc   - function checks for nullbytes in file
-**  @param  - const int fd, file descriptor
-**  @return - 0 on error, !0 on succes
+**	@desc	- function gets champ name out of file
+**	@param	- t_champ *champ, pointer to champ
+**			- const int fd, file descriptor
+**	@return	- 1 on success, 0 on error
 */
 
-int			null_byte(const int fd)
+int			get_champ_name(t_champ *champ, const int fd)
 {
-	uint32_t	null_byte;
-	uint8_t		*null_byte_ref;
+	char	champ_name[PROG_NAME_LENGTH + 1];
 
-	if ((read(fd, &null_byte, 4) <= 4))
+	ft_bzero(champ_name, PROG_NAME_LENGTH + 1);
+	if (read(fd, champ_name, PROG_NAME_LENGTH) >= PROG_NAME_LENGTH)
 	{
-		null_byte_ref = (uint8_t *)&null_byte;
-		return (
-		null_byte_ref[0] == 0 &&
-		null_byte_ref[1] == 0 &&
-		null_byte_ref[2] == 0 &&
-		null_byte_ref[3] == 0);
+		champ->name = ft_strdup(champ_name);
+		return (1);
 	}
 	return (0);
 }
 
 /*
-**	@desc	- function checks if the code size is correct
-**	@param	- t_champ *champ, pointer to champion
-**			- const int fd, file descriptor for champ
+**	@desc	- function gets champ comment out of file
+**	@param	- t_champ *champ, pointer to champ
+**			- const int fd, file descriptor
 **	@return	- 1 on success, 0 on error
 */
 
-int			champ_code_size(t_champ *champ, const int fd)
+int			get_champ_comment(t_champ *champ, const int fd)
 {
-	uint32_t num;
+	char	champ_comment[COMMENT_LENGTH + 1];
 
-	if (read(fd, &num, 4) < 4)
-		return (0);
-	num = swap_32(num);
-	if (CHAMP_MAX_SIZE < num)
-		return (0);
-	champ->size = (int)num;
-	return (1);
+	ft_bzero(champ_comment, COMMENT_LENGTH + 1);
+	if (read(fd, champ_comment, COMMENT_LENGTH) >= COMMENT_LENGTH)
+	{
+		champ->comment = ft_strdup(champ_comment);
+		return (1);
+	}
+	return (0);
 }
 
 /*
@@ -88,7 +85,7 @@ static int	check_regs(t_byte *code, t_byte opcode, int pc)
 **	@return	- 1 on success, 0 on error
 */
 
-static int	check_code(t_byte *code, int size)
+int			check_code(t_vm *vm, t_champ *c, t_byte *code, int size)
 {
 	int		pc;
 	t_byte	opcode;
@@ -104,26 +101,11 @@ static int	check_code(t_byte *code, int size)
 		}
 		pc += get_pc(opcode, code[pc + 1]);
 	}
-	return (1);
-}
-
-/*
-**	@desc	- function gets exec code out of file
-**	@param	- t_champ *champ, pointer to champion
-**			- const int fd, file descriptor for champ file
-**	@return	- 1 on success, 0 on error
-*/
-
-int			get_champ_code(t_champ *champ, const int fd)
-{
-	int		ret;
-
-	champ->code = (t_byte *)ft_memalloc(champ->size);
-	ft_bzero(champ->code, champ->size);
-	ret = read(fd, champ->code, champ->size);
-	if (ret != champ->size)
-		return (0);
-	if (!check_code(champ->code, champ->size))
-		return (0);
+	c->start_pos = (MEM_SIZE / NB_PLAYERS) * (vm->champ_id - 1);
+	ft_memcpy(&ARENA[c->start_pos], code, c->size);
+	c->id = vm->champ_id;
+	c->lives = 0;
+	c->last_live = 0;
+	vm->champ_id++;
 	return (1);
 }
