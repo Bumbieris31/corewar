@@ -6,7 +6,7 @@
 /*   By: abumbier <abumbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 15:52:12 by krioliin          #+#    #+#             */
-/*   Updated: 2020/01/20 18:39:28 by abumbier         ###   ########.fr       */
+/*   Updated: 2020/01/24 21:10:51 by abumbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,11 @@
 # include "operations.h"
 # include "corewar_visual.h"
 
+# define POSITION(x) ((x) % MEM_SIZE)
 # define OP_NBR 16
-<<<<<<< HEAD
-# define DEBUG_MOD 1
-=======
 # define DEBUG_MOD 0
-<<<<<<< HEAD
 # define DEAD -1000
 
->>>>>>> 1f7ddbc8d0e324e3d6c2ca1b331d27a1ca857002
-=======
->>>>>>> d5c3a48902175d05abec995f8cda4293f6857ee9
 
 typedef struct s_cursor	t_cursor;
 typedef struct s_visual t_visual;
