@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/21 19:25:13 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/24 18:21:35 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/26 16:23:26 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,8 +130,7 @@ struct		s_args
 **			- int lives, amount of live calls
 **			- int processes, amount of processes running
 **			- int cycles_to_die, cycles till next check
-**			- int last_live, last live call
-**			- int nb_ctd, nb of cycle to die checks performed
+**			- int nb_checks, nb of checks performed
 **			- t_cursor *cursors, linked list of cursors in the game
 */
 
@@ -142,11 +141,10 @@ struct			s_game
 	int			lives;
 	int			processes;
 	int			cycles_to_die;
-	int			last_live;
-	int			nb_ctd;
-	t_cursor	*cursors;
+	int			nb_checks;
 	int			checks;
-	int			cursors_id;
+	long		cursors_id;
+	t_cursor	*cursors;
 };
 
 /*
@@ -168,27 +166,19 @@ struct		s_vm
 	t_game	*game;
 };
 
-typedef enum				e_argctype
-{
-	REG = 1,
-	DIR,
-	IND
-}							e_argctype;
-
 /*
 ********************************* UTILS *********************************
 */
 void		error(char *message, char *file);
 int			swap_32(int nb);
 int			arg_size(int type, int opcode);
-void		decode(int octal, e_argctype args[3]);
-int			get_pc(int opcode, int octal);
 int			dump64(t_vm *vm);
 int			wait_cycle(int opcode);
 void		put_value(t_byte *arena, int index, void *val);
 int			get_player(t_vm *vm, t_champ *champs, int id);
 int			format_check(char *format, char *s);
 int			get_index(int current, int move);
+int			get_bytes(t_byte *arena, int idx, int amount);
 
 /*
 ******************************** PARSING ********************************
@@ -200,22 +190,7 @@ void		flags(t_vm *vm, int ac, char **av);
 void		get_champs(t_vm *vm, char **av, int ac);
 int			get_champ_comment(t_champ *champ, const int fd);
 int			get_champ_name(t_champ *champ, const int fd);
-int			check_code(t_vm *vm, t_champ *c, t_byte *code, int size);
-// void		parse_args(int ac, char **av, t_flags *flags);
-// int			check_flag(int ac, char **av, int *i, t_flags *flags);
-// int 		is_flag_n(int argc, char **params, int *num, t_flags *flags);
-// int			check_champion(char *file_name);
-// int			champ_name(char *name);
-// int			get_amount(int nb_init);
-// char		**save_players(char *name);
-// void		parse_champs(t_vm *vm);
-// int			null_byte(const int fd);
-// int			champ_code_size(t_champ *champ, const int fd);
-// int			get_champ_code(t_champ *champ, const int fd);
-// void		set_champ(t_champ *champ, short player_order[MAX_PLAYERS],\
-// 			int num, int nb_players);
-// int			get_bytes(t_byte *arena, int idx, int amount);
-// int			get_index(int current, int move);
+int			check_code(t_vm *vm, t_champ *c, t_byte *code/*, int size*/);
 
 /*
 ********************************* INIT **********************************

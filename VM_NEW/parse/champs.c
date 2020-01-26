@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/24 16:58:48 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/24 18:22:58 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/26 16:23:49 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ static t_champ	read_file(t_vm *vm, char *file, int fd)
 		error("No nullbytes in the right places ", file);
 	code = ft_memalloc(sizeof(t_byte) * new.size);
 	read(fd, code, new.size);
-	if (!check_code(vm, &new, code, new.size))
+	if (!check_code(vm, &new, code))
 		error("Invalid executable code for ", file);
 	close(fd);
 	return (new);

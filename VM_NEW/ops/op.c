@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/22 20:03:39 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/23 12:26:38 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/26 16:49:55 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	do_op(t_vm *vm, t_cursor *c, t_args *args, int size)
 {
 	int	opcode;
 
+	ft_printf("gets here\n");
 	opcode = c->opcode;
 	if (opcode == LIVE)
 		live(vm, c, args);

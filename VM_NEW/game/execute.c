@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/22 17:55:13 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/23 18:49:18 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/26 16:49:42 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ static int	get_size(t_byte opcode, t_byte octal, int nb_arg)
 	size = 0;
 	while (i < nb_arg)
 	{
-		if (((octal >> shift) & 3) == REG)
+		if (((octal >> shift) & 3) == T_REG)
 			size += 1;
-		else if (((octal >> shift) & 3) == DIR)
+		else if (((octal >> shift) & 3) == T_DIR)
 			size += g_op_tab[opcode].dir_size;
-		else if (((octal >> shift) & 3) == IND)
+		else if (((octal >> shift) & 3) == 3)
 			size += 2;
 		i++;
 		shift -= 2;
@@ -85,9 +85,8 @@ static void	check_octal(t_vm *vm, t_cursor *c)
 	i = 0;
 	while (i < g_op_tab[c->opcode].nb_arg)
 	{
-		ft_printf("value %d\tsize %d\ttype %d\n", args[i].value, args[i].size, args[i].type);
-		if ((args[i].type == REG && (args[i].value < 1 || args[i].value < 16))
-		|| !(args[i].type & g_op_tab[c->opcode].args[i]))
+		if ((args[i].type == T_REG && (args[i].value < 1 || args[i].value > 16))
+			|| !(args[i].type & g_op_tab[c->opcode].args[i]))
 		{
 			free(args);
 			return (mv_cursor(vm, c, size));
@@ -116,7 +115,7 @@ static void	execute_op(t_vm *vm, t_cursor *c)
 		args->size = g_op_tab[c->opcode].dir_size;
 		size = args->size + 1;
 		args->value = get_bytes(ARENA, get_index(c->pos, 1), args->size);
-		args->type = DIR;
+		args->type = T_DIR;
 		do_op(vm, c, args, size);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/22 15:59:06 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/22 15:59:42 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/26 16:00:26 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef unsigned char			t_byte;
 
 # define T_REG					1
 # define T_DIR					2
-# define T_IND					2
+# define T_IND					4
 # define T_LAB					8
 
 # define PROG_NAME_LENGTH		128

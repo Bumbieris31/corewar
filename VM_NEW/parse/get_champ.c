@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/24 17:20:39 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/24 18:23:24 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/26 16:22:59 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,54 +53,14 @@ int			get_champ_comment(t_champ *champ, const int fd)
 }
 
 /*
-**	@desc	- function checks if T_REG args are in bounds
-**	@param	- int *code, exec code
-**			- int opcode, opcode to check
-**			- int pc, program counter (jump to next op)
-**	@return	- 1 on success, 0 on error
-*/
-
-static int	check_regs(t_byte *code, t_byte opcode, int pc)
-{
-	e_argctype	args[3];
-	int			i;
-
-	i = 0;
-	decode(code[pc + 1], args);
-	pc += 2;
-	while (i < 3)
-	{
-		if (args[i] == T_REG && REG_NUMBER < code[pc])
-			return (0);
-		pc += arg_size(args[i], opcode);
-		i++;
-	}
-	return (1);
-}
-
-/*
 **	@desc	- functions checks the exec code for errors
 **	@param	- int *code, exec code
 **			- int size, size of the code
 **	@return	- 1 on success, 0 on error
 */
 
-int			check_code(t_vm *vm, t_champ *c, t_byte *code, int size)
+int			check_code(t_vm *vm, t_champ *c, t_byte *code/*, int size*/)
 {
-	int		pc;
-	t_byte	opcode;
-
-	pc = 0;
-	while (pc < size)
-	{
-		opcode = code[pc];
-		if (g_op_tab[opcode].octal == 1)
-		{
-			if (!check_regs(code, opcode, pc))
-				return (0);
-		}
-		pc += get_pc(opcode, code[pc + 1]);
-	}
 	c->start_pos = (MEM_SIZE / NB_PLAYERS) * (vm->champ_id - 1);
 	ft_memcpy(&ARENA[c->start_pos], code, c->size);
 	c->id = vm->champ_id;

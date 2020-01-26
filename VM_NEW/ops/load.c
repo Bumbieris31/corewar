@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 12:20:54 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/23 18:43:38 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/26 16:27:07 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,9 @@ void	lld(t_vm *vm, t_cursor *c, t_args *args)
 
 	a1 = args[0];
 	reg_nb = args[1].value - 1;
-	if (a1.type == IND)
+	if (a1.type == T_IND)
 		c->reg[reg_nb] = get_bytes(ARENA, get_index(c->pos, a1.value), 4);
-	else if (a1.type == DIR)
+	else if (a1.type == T_DIR)
 		c->reg[reg_nb] = a1.value;
 	c->carry = (c->reg[reg_nb] == 0 ? 1 : 0);
 }
@@ -102,11 +102,11 @@ void	lldi(t_vm *vm, t_cursor *c, t_args *args)
 	reg_nb = args[2].value - 1;
 	while (i < 2)
 	{
-		if (args[i].type == REG)
+		if (args[i].type == T_REG)
 			temp[i] = c->reg[args[i].value - 1];
-		if (args[i].type == DIR)
+		if (args[i].type == T_DIR)
 			temp[i] = args[i].value;
-		if (args[i].type == IND)
+		if (args[i].type == T_IND)
 			temp[i] = get_bytes(ARENA, get_index(c->pos,
 			args[i].value % IDX_MOD), 4);
 		i++;
