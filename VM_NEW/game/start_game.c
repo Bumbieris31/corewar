@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/22 17:27:58 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/26 16:14:46 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/26 18:43:26 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ static int	check(t_vm *vm, int cycles)
 		GAME->cycles_to_die -= CYCLE_DELTA;
 		GAME->checks = 0;
 	}
-	GAME->nb_checks += GAME->cycles_to_die;
 	GAME->lives = 0;
 	return (0);
 }

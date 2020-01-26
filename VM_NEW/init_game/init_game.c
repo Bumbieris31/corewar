@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/22 15:38:16 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/26 17:25:28 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/26 18:47:35 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ void		init_game(t_vm *vm)
 	GAME = (t_game*)ft_memalloc(sizeof(t_game));
 	GAME->winner = NB_PLAYERS;
 	GAME->cycles_to_die = CYCLE_TO_DIE;
-	GAME->nb_checks = CYCLE_TO_DIE;
 	GAME->cursors_id = 1;
 	GAME->processes = NB_PLAYERS;
 	set_cursors(vm);

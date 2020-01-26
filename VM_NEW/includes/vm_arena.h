@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/21 19:25:13 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/26 16:23:26 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/26 18:43:37 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ struct		s_args
 **			- int lives, amount of live calls
 **			- int processes, amount of processes running
 **			- int cycles_to_die, cycles till next check
-**			- int nb_checks, nb of checks performed
+**			- int checks, nb of checks performed
 **			- t_cursor *cursors, linked list of cursors in the game
 */
 
@@ -141,7 +141,6 @@ struct			s_game
 	int			lives;
 	int			processes;
 	int			cycles_to_die;
-	int			nb_checks;
 	int			checks;
 	long		cursors_id;
 	t_cursor	*cursors;
