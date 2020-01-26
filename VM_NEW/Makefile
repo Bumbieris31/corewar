@@ -6,7 +6,7 @@
 #    By: asulliva <asulliva@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/21 19:23:26 by asulliva       #+#    #+#                 #
-#    Updated: 2020/01/26 16:26:04 by asulliva      ########   odam.nl          #
+#    Updated: 2020/01/26 17:14:42 by asulliva      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,8 +24,8 @@ SRC			= main.c\
 			utils/format_check.c\
 			init_game/init_game.c init_game/cursor.c\
 			game/start_game.c game/execute.c game/get_args.c\
-			ops/op.c ops/math.c ops/misc.c ops/bitwise.c ops/store.c\
-			ops/load.c ops/fork.c\
+			ops/op.c ops/store.c ops/misc.c ops/fork.c ops/load.c ops/math.c\
+			ops/bitwise.c
 
 all: $(NAME)
 

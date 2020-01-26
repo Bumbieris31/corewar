@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/22 15:51:18 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/22 17:36:53 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/26 17:27:37 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,6 @@ int			dump64(t_vm *vm)
 		line += 64;
 		i++;
 	}
+	exit(0);
 	return (1);
 }

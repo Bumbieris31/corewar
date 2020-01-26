@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/22 15:38:16 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/26 16:25:12 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/26 17:25:28 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ static void	set_cursors(t_vm *vm)
 		champ = CHAMPS[i];
 		add_cursor(&CURSORS,
 		new_cursor(champ.start_pos, champ.id * -1, GAME->cursors_id));
-		ft_printf("champ id [%d]\n", champ.id);
 		GAME->cursors_id++;
 		i++;
 	}
