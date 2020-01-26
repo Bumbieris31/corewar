@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 12:20:50 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/23 14:57:52 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/26 18:00:10 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,11 @@ void	op_fork(t_vm *vm, t_cursor *c, t_args *args, int mod)
 {
 	t_cursor	*new;
 
-	new = cp_cursor(c, get_index(c->pos, args->value % mod), c->id);
+	new = cp_cursor(c,
+	get_index(c->pos, (args->value % mod)), GAME->cursors_id);
 	add_cursor(&CURSORS, new);
 	GAME->processes++;
+	GAME->cursors_id++;
 	if (FLAG->v)
 		;
 }

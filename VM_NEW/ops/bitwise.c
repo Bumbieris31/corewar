@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 12:20:52 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/23 18:45:35 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/26 17:48:43 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,8 @@ and writes the result into the reg passed as the 3rd arg
 **			- t_args *args, arguments
 */
 
-void xor (t_vm * vm, t_cursor *c, t_args *args) {
+void xor (t_vm * vm, t_cursor *c, t_args *args)
+{
 	int i;
 	int val;
 	int temp[2];

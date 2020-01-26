@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/22 19:08:18 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/26 17:24:00 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/26 17:57:12 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ t_cursor	*cp_cursor(t_cursor *src, int pos, long id)
 	ft_memcpy(new, src, sizeof(t_cursor));
 	new->pos = pos;
 	new->id = id;
+	new->moved = 1;
 	return (new);
 }
 
