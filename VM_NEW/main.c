@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/21 19:24:02 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/28 16:37:28 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/28 18:15:03 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,5 @@ int			main(int ac, char **av)
 	parse(vm, ac, av);
 	init_game(vm);
 	start_game(vm);
-	free_vm(vm);
+	// free_vm(vm);
 }

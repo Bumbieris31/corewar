@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/21 19:25:13 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/28 16:45:38 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/28 18:43:57 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,15 +94,14 @@ struct			s_champ
 **	@desc	- struct for the option flags
 **	@param	- int dump, sets the cycles for the dump flag
 **			- int v, 1 or 0 for visualizer
-**			- short player_order[MAX_PLAYERS], stores the player order for
-**			the -n flag
+**			- int n, the -n flag 1 for yes 0 for no
 */
 
 struct			s_flags
 {
 	int			dump;
 	int			v;
-	short		play_order[MAX_PLAYERS];
+	int			n;
 };
 
 /*
