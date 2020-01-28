@@ -6,7 +6,11 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/15 15:28:07 by asulliva       #+#    #+#                */
+<<<<<<< HEAD
 /*   Updated: 2020/01/21 19:21:48 by asulliva      ########   odam.nl         */
+=======
+/*   Updated: 2020/01/25 19:29:08 by krioliin      ########   odam.nl         */
+>>>>>>> 07eb134b2a1f6d94ec4ad4e2b05ca1f6bea6649a
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +92,10 @@ bool	execute_one_cycle(t_vm *vm)
 bool	up_to_cycle_to_die(t_vm *vm)
 {
 	bool		someone_alive;
+<<<<<<< HEAD
 	static int	cycle;
+=======
+>>>>>>> 07eb134b2a1f6d94ec4ad4e2b05ca1f6bea6649a
 
 	someone_alive = true;
 	while (someone_alive && 0 < vm->cycle_to_die)
@@ -96,15 +103,22 @@ bool	up_to_cycle_to_die(t_vm *vm)
 		while (vm->current_cycle <= vm->cycle_to_die)
 		{
 			execute_one_cycle(vm);
+<<<<<<< HEAD
 			cycle++;
 			vm->current_cycle += 1;
 			if (vm->flag->hexdump == cycle)
 				return (show_arena(vm->players, vm->players_amnt, vm));
 			else if (vm->flag->dump == cycle)
+=======
+			vm->cycle_counter += 1;
+			vm->current_cycle += 1;
+			if (vm->flag->hexdump == vm->cycle_counter)
+				return (show_arena(vm->players, vm->players_amnt, vm));
+			else if (vm->flag->dump == vm->cycle_counter)
+>>>>>>> 07eb134b2a1f6d94ec4ad4e2b05ca1f6bea6649a
 				return (dump64(vm));
 		}
 		vm->current_cycle = 0;
-		vm->cycles_passed += 1;
 		someone_alive = check(vm);
 		discard_players_lives_calls(vm);
 	}
