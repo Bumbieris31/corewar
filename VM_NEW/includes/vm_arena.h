@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/21 19:25:13 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/26 18:43:37 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/28 15:38:02 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,6 +178,7 @@ int			get_player(t_vm *vm, t_champ *champs, int id);
 int			format_check(char *format, char *s);
 int			get_index(int current, int move);
 int			get_bytes(t_byte *arena, int idx, int amount);
+void		free_vm(t_vm *vm);
 
 /*
 ******************************** PARSING ********************************

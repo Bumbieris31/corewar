@@ -6,7 +6,7 @@
 #    By: asulliva <asulliva@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/21 19:23:26 by asulliva       #+#    #+#                 #
-#    Updated: 2020/01/26 17:14:42 by asulliva      ########   odam.nl          #
+#    Updated: 2020/01/28 15:38:25 by asulliva      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SRC			= main.c\
 			utils/error.c utils/get_player.c utils/swap32.c utils/arg_size.c\
 			utils/dump64.c utils/wait_cycles.c\
 			utils/get_bytes.c utils/get_index.c utils/put_value.c utils/op.c\
-			utils/format_check.c\
+			utils/format_check.c utils/free.c\
 			init_game/init_game.c init_game/cursor.c\
 			game/start_game.c game/execute.c game/get_args.c\
 			ops/op.c ops/store.c ops/misc.c ops/fork.c ops/load.c ops/math.c\
