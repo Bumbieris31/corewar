@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/21 19:25:13 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/28 18:43:57 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/28 18:51:01 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,12 +186,12 @@ void			get_champs(t_vm *vm, char **av, int ac);
 int				get_champ_comment(t_champ *champ, const int fd);
 int				get_champ_name(t_champ *champ, const int fd);
 int				check_code(t_vm *vm, t_champ *c, t_byte *code);
+void			switch_champs(t_vm *vm, int ac, char **av);
 
 /*
 ********************************* INIT **********************************
 */
 void			init_game(t_vm *vm);
-void			swap_champs(t_champ *champs, int nb_champs);
 t_cursor		*cp_cursor(t_cursor *src, int pos, long id);
 void			mv_cursor(t_vm *vm, t_cursor *c, int move);
 void			add_cursor(t_cursor **head, t_cursor *new);
