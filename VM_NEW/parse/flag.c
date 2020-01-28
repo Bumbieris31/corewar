@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/21 19:54:25 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/28 18:49:53 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/28 18:53:46 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ void			switch_champs(t_vm *vm, int ac, char **av)
 		(i - 2 > -1 && ft_strcmp(av[i - 2], "-n"))) && check_name(av[i]))
 		{
 			new[idx] = CHAMPS[nb_arg];
+			new[idx].id = idx + 1;
 			idx++;
 		}
 		if (check_name(av[i]))
