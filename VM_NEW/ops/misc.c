@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 12:20:48 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/26 16:43:12 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/28 16:42:09 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,15 @@ void	live(t_vm *vm, t_cursor *c, t_args *args)
 	{
 		CHAMPS[args->value - 1].lives++;
 		CHAMPS[args->value - 1].last_live = c->last_live;
-		GAME->winner = args->value;
+		GAME->last_live = args->value;
 		GAME->lives++;
 	}
 }
 
 /*
-**	@desc	- function takes value from reg and 
+**	@desc	- function takes value from reg and prints char value
 **	@param	- t_cursor *cursor, current cursor
-**			- t_args *args, arguments print (char)value
+**			- t_args *args, arguments
 */
 
 void	aff(t_cursor *cursor, t_args *args)

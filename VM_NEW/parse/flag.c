@@ -6,18 +6,27 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/21 19:54:25 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/24 18:23:09 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/28 16:37:42 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/vm_arena.h"
 
-void	n_flag(t_vm *vm, char **av, int ac, int i)
+void		n_flag(t_vm *vm, char **av, int ac, int i)
 {
+	short	idx;
+
+	idx = 0;
 	if (i >= ac - 1 || !format_check("%d", av[i + 1]))
 		error("-n flag needs numeric value", NULL);
 	if (NB_PLAYERS < ft_atoi(av[i + 1]))
-		error("value for -n flag larger than number of players", av[i + 1]);
+		error("value for -n flag larger than number of players ", av[i + 1]);
+	while (idx < NB_PLAYERS)
+	{
+		if (idx == ft_atoi(av[i + 1]) - 1)
+			FLAG->play_order[idx] = ft_atoi(av[i + 1]);
+		idx++;
+	}
 }
 
 /*
@@ -44,8 +53,14 @@ void		flags(t_vm *vm, int ac, char **av)
 		}
 		else if (!ft_strcmp(av[i], "-v"))
 			FLAG->v = 1;
-		// else if (!ft_strcmp(av[i], "-n"))
-		// 	n_flag(vm, av, ac, i);
+		else if (!ft_strcmp(av[i], "-n"))
+			n_flag(vm, av, ac, i);
+		i++;
+	}
+	i = 0;
+	while (i < NB_PLAYERS)
+	{
+		ft_printf("%d\n", FLAG->play_order[i]);
 		i++;
 	}
 }

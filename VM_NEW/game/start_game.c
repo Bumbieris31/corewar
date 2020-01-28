@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/22 17:27:58 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/26 18:43:26 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/28 16:38:35 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	check_live(t_vm *vm, int cycles)
 /*
 **	@desc	- funtion checks if there are still processes alive
 **	@param	- t_vm *vm, main struct
-**			- int cycles, 
+**			- int cycles, current cycle, used to call live funcion
 **	@return	- 1 if still processes, 0 if not
 */
 
@@ -79,5 +79,5 @@ void		start_game(t_vm *vm)
 			cycles = check(vm, cycles);
 	}
 	ft_printf("Contestant %d, \"%s\", has won !\n",
-	GAME->winner, CHAMPS[GAME->winner - 1].name);
+	GAME->last_live, CHAMPS[GAME->last_live - 1].name);
 }
