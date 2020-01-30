@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/30 20:09:35 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/30 15:07:27 by krioliin      ########   odam.nl         */
+/*   Updated: 2020/01/30 16:26:15 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include "../../ft_printf/includes/ft_printf.h"
-# include "../../vm/includes/op.h"
+# include "../../VM/includes/op.h"
 
 # define LIVE		0x01
 # define LD			0x02
