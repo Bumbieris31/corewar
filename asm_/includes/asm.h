@@ -6,7 +6,7 @@
 /*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/05 14:15:46 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/03 14:39:41 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/02/03 14:41:34 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,7 @@ void					get_label(t_asm *data, char **line);
 void					get_next_label(t_asm *data, char *name);
 t_label					*make_label(t_asm *data, char *s, int line);
 int						find_label(t_label *label, char *name, int line);
+char					*clean_label(char *label);
 
 /*
 **	name_comment.c

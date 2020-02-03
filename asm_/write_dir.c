@@ -6,13 +6,13 @@
 /*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/18 19:44:42 by abumbier       #+#    #+#                */
-/*   Updated: 2020/02/03 14:39:11 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/02/03 14:41:24 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/asm.h"
 
-static char	*clean_label(char *label)
+char		*clean_label(char *label)
 {
 	char	*new;
 	int		i;
