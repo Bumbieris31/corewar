@@ -6,7 +6,7 @@
 /*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/05 14:15:46 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/30 16:26:38 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/02/03 14:39:41 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 
 # include <fcntl.h>
 # include <unistd.h>
-// # include "../../ft_printf/includes/libft.h"
 # include "../../ft_printf/includes/ft_printf.h"
 # include "../../VM/includes/op.h"
 
@@ -51,18 +50,14 @@ enum					e_oper {
 	AFF = 0x10
 };
 
-# define DIR_ARG1	(int[]) {LIVE, LD, AND, OR, XOR, ZJMP,\
-					LDI, FORK, LLD, LLDI, LFORK}
-# define DIR_ARG2	(int[]) {AND, OR, XOR, LDI, STI, LLDI}
+# define DIR_ARG1	(int[]) {LIVE,LD,AND,OR,XOR,ZJMP,LDI,FORK,LLD,LLDI,LFORK}
+# define DIR_ARG2	(int[]) {AND,OR,XOR,LDI,STI,LLDI}
 # define DIR_ARG3	(int[]) {STI}
-# define IND_ARG1	(int[]) {LD, AND, OR, XOR, LDI, LLD, LLDI}
-# define IND_ARG2	(int[]) {ST, AND, OR, XOR, STI}
-# define REG_ARG1	(int[]) {ST, ADD, SUB, OR, XOR, LDI,\
-					STI, LLDI, AFF}
-# define REG_ARG2	(int[]) {LD, ST, ADD, SUB, AND, OR, XOR,\
-					LDI, STI, LLD, LLDI}
-# define REG_ARG3	(int[]) {ADD, SUB, AND, OR, XOR, LDI,\
-					STI, LLDI}
+# define IND_ARG1	(int[]) {LD,AND,OR,XOR,LDI,LLD,LLDI}
+# define IND_ARG2	(int[]) {ST,AND,OR,XOR,STI}
+# define REG_ARG1	(int[]) {ST,ADD,SUB,OR,XOR,LDI,STI,LLDI,AFF}
+# define REG_ARG2	(int[]) {LD,ST,ADD,SUB,AND,OR,XOR,LDI,STI,LLD,LLDI}
+# define REG_ARG3	(int[]) {ADD,SUB,AND,OR,XOR,LDI,STI,LLDI}
 
 struct					s_parts {
 	char				*name;
@@ -128,6 +123,7 @@ void					get_label(t_asm *data, char **line);
 */
 void					get_next_label(t_asm *data, char *name);
 t_label					*make_label(t_asm *data, char *s, int line);
+int						find_label(t_label *label, char *name, int line);
 
 /*
 **	name_comment.c

@@ -6,7 +6,7 @@
 /*   By: krioliin <krioliin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/28 14:54:45 by krioliin       #+#    #+#                */
-/*   Updated: 2020/01/29 19:33:18 by krioliin      ########   odam.nl         */
+/*   Updated: 2020/02/03 14:29:31 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,5 @@ bool			need_crutch(t_format_spec *spec, uint64_t data);
 short int		is_nan_inf(long double value, char **float_str);
 char			*ft_strjoinone(char *s, char c);
 char			**ft_strsplit(char const *s, char c);
-
 
 #endif

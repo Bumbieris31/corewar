@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/30 19:39:31 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/30 15:09:14 by krioliin      ########   odam.nl         */
+/*   Updated: 2020/02/03 14:30:27 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static t_oop	*new_op(t_dsm *data)
 **	@return	- string with the name of the operation with a space at the end
 */
 
-static char	*set_name(int op_code)
+static char		*set_name(int op_code)
 {
 	static char **names = NULL;
 
@@ -81,7 +81,7 @@ static char	*set_name(int op_code)
 **			- int *size, the total size read given as a pointer
 */
 
-void		get_line(t_dsm *data, int op, int *size)
+void			get_line(t_dsm *data, int op, int *size)
 {
 	t_oop	*new;
 	int		ret;
@@ -104,7 +104,7 @@ void		get_line(t_dsm *data, int op, int *size)
 **	@param	- t_dsm *data, main struct
 */
 
-void		get_exec_code(t_dsm *data)
+void			get_exec_code(t_dsm *data)
 {
 	int	s;
 	int	ret;

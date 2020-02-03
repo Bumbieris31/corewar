@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/23 12:20:48 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/29 14:48:53 by krioliin      ########   odam.nl         */
+/*   Updated: 2020/02/03 14:28:43 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ void	live(t_vm *vm, t_cursor *c, t_args *args)
 		GAME->last_live = args->value;
 		GAME->lives++;
 		if (FLAG->v)
-			display_live_calls(vm->v->winfo, CHAMPS[args->value - 1], GAME->cycles);
+			display_live_calls(vm->v->winfo,
+			CHAMPS[args->value - 1], GAME->cycles);
 	}
 }
 

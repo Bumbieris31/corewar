@@ -6,7 +6,7 @@
 /*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/05 14:17:50 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/06 15:11:42 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/02/03 14:33:03 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 static t_asm	*init(int ac, char **av)
 {
 	t_asm	*data;
-	// char	*temp;
 
 	data = (t_asm*)ft_memalloc(sizeof(t_asm));
 	data->parts = NULL;
