@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   free.c                                             :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: abumbier <abumbier@student.42.fr>            +#+                     */
+/*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/06 18:18:10 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/05 17:14:25 by abumbier      ########   odam.nl         */
+/*   Updated: 2020/01/05 16:59:27 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ void	free_arr(char **arr1, char ***arr2, int flag)
 
 	if ((!flag || flag == 2) && *arr1)
 	{
-		if (*arr1)
-			free(*arr1);
+		free(*arr1);
 		*arr1 = NULL;
 	}
 	if (flag && arr2 && *arr2)
@@ -34,13 +33,11 @@ void	free_arr(char **arr1, char ***arr2, int flag)
 		i = 0;
 		while (arr2[0][i])
 		{
-			if (arr2[0][i])
-				free(arr2[0][i]);
+			free(arr2[0][i]);
 			arr2[0][i] = 0;
 			i++;
 		}
-		if (*arr2)
-			free(*arr2);
+		free(*arr2);
 		*arr2 = 0;
 	}
 }
@@ -52,10 +49,8 @@ void	free_labels(t_label *label)
 	while (label)
 	{
 		curr = label->next;
-		if (label->name)
-			free(label->name);
-		if (label)
-			free(label);
+		free(label->name);
+		free(label);
 		label = curr;
 	}
 }
@@ -67,10 +62,8 @@ void	free_parts(t_parts *parts)
 	while (parts)
 	{
 		curr = parts->next;
-		if (parts->name)
-			free(parts->name);
-		if (parts)
-			free(parts);
+		free(parts->name);
+		free(parts);
 		parts = curr;
 	}
 }
@@ -82,12 +75,9 @@ void	free_parts(t_parts *parts)
 
 void	free_data(t_asm *data)
 {
-	if (data && data->comment)
-		free(data->comment);
-	if (data && data->name)
-		free(data->name);
+	free(data->comment);
+	free(data->name);
 	free_labels(data->labels);
 	free_parts(data->parts);
-	if (data)
-		free(data);
+	free(data);
 }

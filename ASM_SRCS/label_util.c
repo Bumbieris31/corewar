@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   label_util.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: abumbier <abumbier@student.42.fr>            +#+                     */
+/*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/12 15:12:06 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/05 16:59:43 by abumbier      ########   odam.nl         */
+/*   Updated: 2020/02/03 15:33:14 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
