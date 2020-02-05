@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   controlla.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
+/*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/03 14:34:26 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/03 14:40:11 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/02/05 15:48:48 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ int			check_instruction(char *s)
 		return (XOR);
 	else
 		return (check_instruction2(s));
-	return (0x00);
 }
 
 int			find_label(t_label *label, char *name, int line)
