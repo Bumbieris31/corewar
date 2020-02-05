@@ -3,94 +3,82 @@
 /*                                                        ::::::::            */
 /*   ft_strsplit_ws.c                                   :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
+/*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/10 14:35:55 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/29 19:42:07 by krioliin      ########   odam.nl         */
+/*   Updated: 2020/02/05 16:39:09 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
+/*MOVE TO HEADER*/
+#define SPACE	32
+#define TAB		9
 
-static int	ft_iswhitespace(char c)
+int		count_words(char const *s)
 {
-	if (c == ' ' || c == '\t')
-		return (1);
-	return (0);
-}
-
-static int	ft_countwords(char const *s)
-{
-	int word_count;
-	int i;
-
-	word_count = 0;
-	i = 0;
-	while (s[i] != 0)
-	{
-		if (!ft_iswhitespace(s[i]) &&\
-		(ft_iswhitespace(s[i + 1]) || s[i + 1] == '\0'))
-			word_count++;
-		i++;
-	}
-	return (word_count);
-}
-
-static void	ft_cpychars(char const *s, char *word, int start, int stop)
-{
-	int i;
+	int	words;
+	int	i;
 
 	i = 0;
-	while (start < stop)
+	words = 0;
+	while (s[i])
 	{
-		word[i] = s[start];
-		start++;
+		if ((s[i] != SPACE || s[i] != TAB) && \
+		(s[i + 1] == SPACE || s[i + 1] == TAB || s[i + 1] == '\0'))
+			words++;
 		i++;
 	}
-	word[i] = '\0';
+	return (words);
 }
 
-static char	**ft_cpwrds(char **words, char const *s)
+static char	**ft_strsplit_end(char **arr, int y)
 {
-	int i;
-	int j;
-	int start;
-	int stop;
+	arr[y] = NULL;
+	return (arr);
+}
 
-	i = -1;
-	j = 0;
-	start = 0;
-	stop = 0;
+int		find_ws(const char *s)
+{
+	int	i;
+
+	i = 0;
 	while (s[i] != '\0')
 	{
-		if (ft_iswhitespace(s[i]) || s[i] == '\0')
-			start = i + 1;
-		if (s[i] != '\0' && !ft_iswhitespace(s[i]) && (s[i + 1] == '\0' ||
-			ft_iswhitespace(s[i + 1])))
-		{
-			stop = i + 1;
-			words[j] = (char*)ft_memalloc(sizeof(char) * (stop - start + 1));
-			ft_cpychars(s, words[j], start, stop);
-			j++;
-		}
+		if (s[i] == SPACE || s[i] == TAB)
+			return (i);
 		i++;
 	}
-	words[j] = 0;
-	return (words);
+	return (-1);
 }
 
 char		**ft_strsplit_ws(char const *s)
 {
-	char	**words;
-	int		w_count;
+	size_t	i;
+	int		y;
+	char	**arr;
+	int		end;
+	int		word_c;
 
-	if (s)
+	y = 0;
+	i = 0;
+	word_c = count_words(s);
+	arr = s ? (char **)malloc(word_c * sizeof(char *) + 1) : 0;
+	if (arr == NULL || arr == 0)
+		return (NULL);
+	while (s[i] && y < word_c)
 	{
-		w_count = ft_countwords(s);
-		words = (char**)ft_memalloc(sizeof(char*) * (w_count + 1));
-		if (words)
-			return (ft_cpwrds(words, s));
+		while (s[i] == SPACE || s[i] == TAB)
+			i++;
+		end = find_ws(&s[i]);
+		if ((end > -1)
+			|| ((end = findchr(&s[i], '\0')) > -1))
+		{
+			arr[y] = ft_strsub(s, i, end);
+			y++;
+			i += end;
+		}
 	}
-	return (0);
+	return (ft_strsplit_end(arr, y));
 }
