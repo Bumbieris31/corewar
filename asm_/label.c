@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/10 14:31:21 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/05 16:59:35 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/02/05 15:14:45 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 
 int			check_instruction(char *s)
 {
+	if (!s)
+		ft_printf("jemoeder\n");
 	if (ft_strchr(s, LABEL_CHAR))
 		return (0x00);
 	if (ft_strequ(s, "live"))
@@ -156,7 +158,8 @@ void		parse_label(t_asm *data, char *s)
 
 	data->wfd = 0;
 	split = NULL;
-	split = ft_strsplit_ws(s);
+	split = ft_strsplit(s, ' ');
+	ft_printf("kanker %s\n", s);
 	if (check_instruction(split[0]))
 		parse_instruction(data, split);
 	else

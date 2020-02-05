@@ -6,11 +6,11 @@ FAVORITE		:= atoi itoa ftoa itoa_base
 MEM				:= bzero memalloc memcpy memccpy memcmp memchr memdel memmove memset
 OTHER			:= count_digit foreach isalnum isprint isalpha isascii \
 				isdigit range recursive_factorial tolower toupper \
-				strjoinone
+				strjoinone strsplit_ws
 PUT				:= putchar putchar_fd putendl_fd putendl putnbr_fd putnbr putstr_fd putstr
 STR				:= sqrt strcat strcmp strcpy strdup strlen strncat strncmp \
 				strncpy strnstr strrchr strstr strchr strlcat strnew strdel strclr \
-				striter striteri strmap strmapi strequ strnequ strsub strsplit strsplit_ws strjoin \
+				striter striteri strmap strmapi strequ strnequ strsub strsplit strjoin \
 				superjoin strrev
 SPECIFIC_NAME	:= other/kr_count_words other/space favorite/findchr favorite/itoa64
 
