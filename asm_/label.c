@@ -6,7 +6,7 @@
 /*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/10 14:31:21 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/05 17:01:06 by abumbier      ########   odam.nl         */
+/*   Updated: 2020/02/05 19:41:53 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,7 +156,8 @@ void		parse_label(t_asm *data, char *s)
 
 	data->wfd = 0;
 	split = NULL;
-	split = ft_strsplit_ws(s);
+	split = ft_strsplit(s, ' ');
+	ft_printf("kanker %s\n", s);
 	if (check_instruction(split[0]))
 		parse_instruction(data, split);
 	else
