@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   label_util.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
+/*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/12 15:12:06 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/03 15:33:14 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/02/05 15:54:18 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ void		get_next_label(t_asm *data, char *name)
 		if (s && !ft_strequ("", s))
 		{
 			last = 0;
-			split = ft_strsplit_ws(s);
+			split = ft_strsplit(s, ' ');
 			if (check_instruction(split[0]))
 			{
 				set_lines(new, data->lines);

@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   label.c                                            :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
+/*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/10 14:31:21 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/05 16:59:35 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/02/05 16:39:26 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,11 @@
 **			- returns 0 if not an instruction
 */
 
+#include <stdio.h>						//																	REMOVE CMD X
+
 int			check_instruction(char *s)
 {
+	printf("error str => '%s'\n", s);
 	if (ft_strchr(s, LABEL_CHAR))
 		return (0x00);
 	if (ft_strequ(s, "live"))
