@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/06 14:54:36 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/06 15:46:34 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/02/06 17:15:38 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	usage(void)
 **	@param	- string message to be printed
 */
 
-void	error(char *message, int line)
+void		error(char *message, int line)
 {
 	if (ft_strequ(message, "usage"))
 		usage();

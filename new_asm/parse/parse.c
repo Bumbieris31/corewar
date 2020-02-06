@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 15:51:26 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/06 17:06:56 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/02/06 17:15:28 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void		print_p(t_parts *parts)
 		curr = curr->next;
 	}
 }
+
 /*
 **	@desc	- main parsing function
 **	@param	- t_asm *data, main struct

@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 15:29:36 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/06 17:11:35 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/02/06 17:15:03 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ struct					s_asm {
 	char				*comment;
 	char				*char_name;
 	t_label				*labels;
-	t_parts				*parts;	
+	t_parts				*parts;
 };
 /*
 *************************************PARSE*************************************

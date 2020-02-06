@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 15:28:53 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/06 17:13:00 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/02/06 17:15:15 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void		check_file(char *file)
 		error("File exstension must be .s", 0);
 }
 
-int			main(int ac, char **av)
+int				main(int ac, char **av)
 {
 	t_asm	*data;
 
