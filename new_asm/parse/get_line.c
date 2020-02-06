@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   parse.c                                            :+:    :+:            */
+/*   get_line.c                                         :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: abumbier <abumbier@student.42.fr>            +#+                     */
+/*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/12/05 18:51:51 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/05 16:59:56 by asulliva      ########   odam.nl         */
+/*   Created: 2020/02/06 15:53:41 by asulliva       #+#    #+#                */
+/*   Updated: 2020/02/06 15:55:02 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/asm.h"
+#include "../includes/asm.h"
 
 /*
 **	@desc	- function trims a string split on comment_char
@@ -63,42 +63,4 @@ int			get_line(t_asm *data, int fd, char **s, char **split)
 	if (split)
 		*s = set_trimmed(split, tmp);
 	return (ret);
-}
-
-/*
-**	@desc	- function picks which parsing function to call
-**	@param	- t_asm *data, main struct
-**			- char *s, line read from the file
-*/
-
-void		choose_parse(t_asm *data, char *s)
-{
-	if (s && ft_strlen(s) > 0)
-	{
-		if (!ft_strncmp(s, NAME_CMD_STRING, ft_strlen(NAME_CMD_STRING)))
-			parse_nc(data, s, 0);
-		else if (!ft_strncmp(s, COMMENT_CMD_STRING,\
-		ft_strlen(COMMENT_CMD_STRING)))
-			parse_nc(data, s, 1);
-		else
-			parse_label(data, s);
-	}
-}
-
-/*
-**	@desc	- main parsing function
-**	@param	- t_asm *data, main struct
-*/
-
-void		parse(t_asm *data)
-{
-	char	*s;
-
-	while (get_line(data, data->rfd, &s, NULL))
-	{
-		if (s && ft_strlen(s) > 0)
-			choose_parse(data, s);
-		free(s);
-	}
-	free(s);
 }

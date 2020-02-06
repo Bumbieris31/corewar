@@ -3,21 +3,23 @@
 #                                                         ::::::::             #
 #    Makefile                                           :+:    :+:             #
 #                                                      +:+                     #
-#    By: abumbier <abumbier@student.42.fr>            +#+                      #
+#    By: asulliva <asulliva@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
-#    Created: 2019/12/05 14:20:22 by asulliva       #+#    #+#                 #
-#    Updated: 2020/02/06 15:23:23 by asulliva      ########   odam.nl          #
+#    Created: 2020/02/06 15:28:37 by asulliva       #+#    #+#                 #
+#    Updated: 2020/02/06 16:58:07 by asulliva      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= asm
-SRCS	= main error parse free name_comment label instruction check_syntax \
-valid_oper_line label_util token create_cor swap_endian \
-write_cor_file encoding_byte write_size write_champ_byte write_dir
+SRCS	= main \
+			utils/error utils/instruction utils/label_util utils/get_value\
+			utils/rm_comma\
+			parse/parse parse/get_line parse/name_comment parse/label\
+			parse/parse_op parse/get_label\
+			free/free_arr
 HEADER	= includes/asm.h
 CC		= gcc
-FLAGS	= -Wall -Werror -Wextra
-HEADER	= includes/dsm.h
+FLAGS	= -Wall -Werror -Wextra -g
 LIB		= ../ft_printf/libftprintf.a
 OBJS	:= $(SRCS:%=%.o)
 SRCS	:= $(SRCS:%=%.c)

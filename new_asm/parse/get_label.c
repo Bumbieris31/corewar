@@ -1,45 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   label_util.c                                       :+:    :+:            */
+/*   get_label.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/12/12 15:12:06 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/03 15:33:14 by asulliva      ########   odam.nl         */
+/*   Created: 2020/02/06 16:29:14 by asulliva       #+#    #+#                */
+/*   Updated: 2020/02/06 17:03:19 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/asm.h"
-
-/*
-**	@desc	- removes label_char from string
-**	@param	- char *s, string to be modified
-**	@return	- char *new, new string without label_char
-*/
-
-static char	*rm_label_char(char *s, int line)
-{
-	char	*new;
-	int		i;
-	int		count;
-
-	new = ft_strdup(s);
-	i = 0;
-	count = 0;
-	while (new[i])
-	{
-		if (new[i] == LABEL_CHAR)
-		{
-			count++;
-			new[i] = '\0';
-		}
-		i++;
-	}
-	if (count > 1)
-		error("Invalid syntax", line);
-	return (new);
-}
+#include "../includes/asm.h"
 
 /*
 **	@desc	- function adds label if a label is followed by a label
@@ -75,27 +46,6 @@ static void	set_lines(t_label *head, int line)
 		curr->line = line;
 		curr = curr->next;
 	}
-}
-
-/*
-**	@desc	- fuction makes a new label object
-**	@param	- char *s, name of the label
-**			- int line, line number the label points to
-*/
-
-t_label		*make_label(t_asm *data, char *s, int line)
-{
-	t_label	*new;
-	char	*name;
-
-	name = rm_label_char(s, data->lines);
-	if (!check_label(name))
-		error("Invalid label name", data->lines);
-	new = (t_label*)malloc(sizeof(t_label));
-	new->name = name;
-	new->line = line;
-	new->next = NULL;
-	return (new);
 }
 
 /*
@@ -147,4 +97,55 @@ void		get_next_label(t_asm *data, char *name)
 		set_lines(new, data->lines);
 		add_label(data, &new);
 	}
+}
+
+/*
+**	@desc	- function checks if label syntax is valid
+**	@param	- char *label, label to check
+**			- int line, nb of the line label is in
+*/
+
+static void	label_syntax(char *label, int line)
+{
+	int		i;
+	int		count;
+
+	i = 0;
+	count = 0;
+	while (label[i])
+	{
+		if (label[i] == LABEL_CHAR)
+			count++;
+		i++;
+	}
+	if (count > 1)
+		error("Invalid label syntax", line);
+}
+
+/*
+**	@desc	- function gets the label and all the variables
+**	@param	- t_asm *data, main struct
+**			- char **line, line read, split on whitespace
+*/
+
+void		get_label(t_asm *data, char **line)
+{
+	t_label		*new;
+	char		**split;
+
+	split = NULL;
+	label_syntax(line[0], data->lines);
+	split = ft_strsplit(line[0], LABEL_CHAR);
+	if (split[1])
+	{
+		new = make_label(data, split[0], data->lines);
+		add_label(data, &new);
+		ft_strclr(line[0]);
+		line[0] = ft_strdup(split[1]);
+		ft_printf("[%s][%d]\n", new->name, new->line);
+		parse_instruction(data, line);
+	}
+	else
+		get_next_label(data, split[0]);
+	free_arr(NULL, &split, 1);
 }

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   token.c                                            :+:    :+:            */
+/*   get_value.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/12/12 15:25:38 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/05 17:00:06 by asulliva      ########   odam.nl         */
+/*   Created: 2020/02/06 16:52:25 by asulliva       #+#    #+#                */
+/*   Updated: 2020/02/06 17:12:43 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/asm.h"
+#include "../includes/asm.h"
 
 /*
 **	@desc	- function get a registry value
@@ -103,5 +103,12 @@ int			get_token(char *s)
 	if (ret)
 		return (ret);
 	else
-		return (get_argument(s));
+	{
+		if (s[0] == 'r')
+			return (REG);
+		else if (s[0] == DIRECT_CHAR)
+			return (DIR);
+		else
+			return (IND);
+	}
 }

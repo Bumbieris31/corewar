@@ -1,45 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   instruction.c                                      :+:    :+:            */
+/*   parse_op.c                                         :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: abumbier <abumbier@student.42.fr>            +#+                     */
+/*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/12/10 17:29:07 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/05 16:59:29 by asulliva      ########   odam.nl         */
+/*   Created: 2020/02/06 16:26:27 by asulliva       #+#    #+#                */
+/*   Updated: 2020/02/06 17:10:49 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/asm.h"
-
-/*
-**	@desc	- function removes SEPARATOR_CHAR (standard ',') from a string
-**	@param	- char *s, string which might have SEPARATOR_CHAR
-**	@return	- char *new, new string without SEPARATOR_CHAR
-*/
-
-char		*rm_comma(char *s, int line)
-{
-	char	*new;
-	int		i;
-	int		count;
-
-	new = ft_strdup(s);
-	i = 0;
-	count = 0;
-	while (new[i])
-	{
-		if (new[i] == SEPARATOR_CHAR)
-		{
-			count++;
-			new[i] = '\0';
-		}
-		i++;
-	}
-	if (count > 1)
-		error("Invalid syntax", line);
-	return (new);
-}
+#include "../includes/asm.h"
 
 /*
 **	@desc	- make new instruction object
@@ -85,22 +56,6 @@ void		add_instruction(t_asm *data, t_parts *new)
 	while (curr->next)
 		curr = curr->next;
 	curr->next = new;
-}
-
-/*
-**	@desc	- function gets argument token from string
-**	@param	- char *s, string to check
-**	@return	- token corresponding to argument
-*/
-
-int			get_argument(char *s)
-{
-	if (s[0] == 'r')
-		return (REG);
-	else if (s[0] == DIRECT_CHAR)
-		return (DIR);
-	else
-		return (IND);
 }
 
 /*

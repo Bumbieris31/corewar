@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   main.c                                             :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: abumbier <abumbier@student.42.fr>            +#+                     */
+/*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/12/05 14:17:50 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/06 15:11:42 by asulliva      ########   odam.nl         */
+/*   Created: 2020/02/06 15:28:53 by asulliva       #+#    #+#                */
+/*   Updated: 2020/02/06 17:13:00 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 static t_asm	*init(int ac, char **av)
 {
 	t_asm	*data;
-	// char	*temp;
 
 	data = (t_asm*)ft_memalloc(sizeof(t_asm));
 	data->parts = NULL;
@@ -51,53 +50,17 @@ static void		check_file(char *file)
 		error("File exstension must be .s", 0);
 }
 
-void			print_labels(t_label *head)
-{
-	t_label	*curr;
-
-	curr = head;
-	while (curr)
-	{
-		ft_printf("%-15s\tline %d\n", curr->name, curr->line);
-		curr = curr->next;
-	}
-}
-
-void			print_parts(t_parts *head)
-{
-	t_parts	*curr;
-
-	curr = head;
-	while (curr)
-	{
-		ft_printf("%-10s : %-15d = %-10d\tline %d\n",\
-		curr->name, curr->token, curr->value, curr->line);
-		curr = curr->next;
-	}
-}
-
-/*
-**	@desc	- main controller function
-**	@param	- int ac, the number of arguments
-**			- char **av, the arguments
-**	@return	- 0
-*/
-
-int				main(int ac, char **av)
+int			main(int ac, char **av)
 {
 	t_asm	*data;
 
 	if (ac < 2)
-		error("usage ./asm <file_name>", 0);
+		error("usage", 0);
 	check_file(av[ac - 1]);
 	data = init(ac, av);
 	if (!data)
 		error("Invalid file", 0);
 	parse(data);
 	close(data->rfd);
-	check_syntax(data->parts);
-	create_cor(data);
-	close(data->wfd);
-	free_data(data);
 	return (0);
 }

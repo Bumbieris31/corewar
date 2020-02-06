@@ -5,12 +5,12 @@
 /*                                                     +:+                    */
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/12/07 13:04:41 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/05 16:59:41 by asulliva      ########   odam.nl         */
+/*   Created: 2020/02/06 16:02:41 by asulliva       #+#    #+#                */
+/*   Updated: 2020/02/06 16:14:00 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/asm.h"
+#include "../includes/asm.h"
 
 /*
 **	@desc	- function checks if the command are right (.name && .comment)
@@ -32,11 +32,11 @@ static void	check_cmd(t_asm *data, char *s, int type)
 }
 
 /*
-**  @desc   - function counts the quotes on the line with .name and .comment
-**  @param  - char *s, the .name or .comment string (one line)
-**  @return - return 2 if 2 quotes in line
-**          - return 1 if 1 quote in line
-**          - return 0 if no quotes AKA and error
+**	@desc	- function counts the quotes on the line with .name and .comment
+**	@param	- char *s, the .name or .comment string (one line)
+**	@return - return 2 if 2 quotes in line
+**			- return 1 if 1 quote in line
+**			- return 0 if no quotes AKA and error
 */
 
 static int	count_quotes(char *s)
@@ -61,10 +61,10 @@ static int	count_quotes(char *s)
 }
 
 /*
-**  @desc   - function gets .name and .comment if it is multiple lines
-**  @param  - t_asm *data, main struct
-**          - char **s, pointer to line read from the line and to start at
-**          - int type, 0 if name, 1 if comment
+**	@desc	- function gets .name and .comment if it is multiple lines
+**	@param	- t_asm *data, main struct
+**			- char **s, pointer to line read from the line and to start at
+**			- int type, 0 if name, 1 if comment
 */
 
 static void	multi_line(t_asm *data, char **s, int type)
@@ -97,7 +97,7 @@ static void	multi_line(t_asm *data, char **s, int type)
 **	@desc	- function parses the .name and .comment commands
 **	@param	- t_asm *data, main struct
 **			- char *s, line read from the file
-**          - int type, 0 if name, 1 if comment
+**			- int type, 0 if name, 1 if comment
 */
 
 void		parse_nc(t_asm *data, char *s, int type)
@@ -120,10 +120,10 @@ void		parse_nc(t_asm *data, char *s, int type)
 	}
 	check_cmd(data, s, type);
 	if (type == 0 && !data->name)
-		data->name = s;
+		data->name = ft_strdup(s);
 	else if (type == 1 && !data->comment)
-		data->comment = s;
+		data->comment = ft_strdup(s);
 	else
 		error("Redefinition of .name or .comment", data->lines);
-	free_arr(NULL, &split, 1);
+	free_arr(&s, &split, 1);
 }
