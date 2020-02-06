@@ -6,7 +6,7 @@
 /*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/05 14:15:46 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/05 19:38:27 by abumbier      ########   odam.nl         */
+/*   Updated: 2020/02/06 15:23:31 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 
 # include <fcntl.h>
 # include <unistd.h>
-# include "../../ft_printf/libft/includes/libft.h"
 # include "../../ft_printf/includes/ft_printf.h"
 # include "../../VM/includes/op.h"
 
