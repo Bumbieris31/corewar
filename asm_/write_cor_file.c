@@ -6,13 +6,13 @@
 /*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/13 19:01:19 by abumbier       #+#    #+#                */
-/*   Updated: 2020/01/05 17:00:13 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/02/06 20:13:19 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/asm.h"
 
-void		write_magic_header(int wfd)
+static void		write_magic_header(int wfd)
 {
 	int	magic;
 
@@ -20,7 +20,7 @@ void		write_magic_header(int wfd)
 	write(wfd, &magic, 4);
 }
 
-void		write_str(char *name, int limit, int wfd)
+void			write_str(char *name, int limit, int wfd)
 {
 	int		i;
 	char	c;
@@ -37,7 +37,7 @@ void		write_str(char *name, int limit, int wfd)
 		write_null_bytes(i, wfd);
 }
 
-void		write_cor_file(t_asm *data)
+void			write_cor_file(t_asm *data)
 {
 	write_magic_header(data->wfd);
 	write_str(data->name, PROG_NAME_LENGTH, data->wfd);

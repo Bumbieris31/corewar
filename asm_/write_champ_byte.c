@@ -6,7 +6,7 @@
 /*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/16 18:33:41 by abumbier       #+#    #+#                */
-/*   Updated: 2020/01/05 17:00:11 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/02/06 20:19:20 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void		write_reg(int value, int wfd)
 {
-	char reg;
+	char	reg;
 
 	reg = (char)value;
 	if (!reg)
@@ -25,10 +25,13 @@ static void		write_reg(int value, int wfd)
 
 void			write_ind(int value, int wfd)
 {
-	short ind;
-	short swap;
+	short	ind;
+	short	swap;
 
 	ind = (short)value;
+	/*
+		add label
+	*/
 	if (!ind)
 	{
 		write_null_bytes(2, wfd);

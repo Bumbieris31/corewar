@@ -6,7 +6,7 @@
 #    By: asulliva <asulliva@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/02/06 15:28:37 by asulliva       #+#    #+#                 #
-#    Updated: 2020/02/06 16:58:07 by asulliva      ########   odam.nl          #
+#    Updated: 2020/02/06 20:20:18 by abumbier      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,11 @@ SRCS	= main \
 			utils/rm_comma\
 			parse/parse parse/get_line parse/name_comment parse/label\
 			parse/parse_op parse/get_label\
-			free/free_arr
+			free/free_arr\
+			syntax/check_syntax syntax/valid_oper_line\
+			write/write_cor_file write/write_champ_byte write/create_cor\
+			write/encoding_byte
+
 HEADER	= includes/asm.h
 CC		= gcc
 FLAGS	= -Wall -Werror -Wextra -g

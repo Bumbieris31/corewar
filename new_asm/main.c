@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 15:28:53 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/06 17:15:15 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/02/06 20:21:55 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,8 @@ int				main(int ac, char **av)
 		error("Invalid file", 0);
 	parse(data);
 	close(data->rfd);
+	check_syntax(data->parts);
+	create_cor(data);
+//	close(data->wfd)
 	return (0);
 }

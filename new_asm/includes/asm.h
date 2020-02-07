@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 15:29:36 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/06 17:15:03 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/02/06 20:18:29 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,4 +101,25 @@ char					*rm_comma(char *s, int line);
 **************************************FREE*************************************
 */
 void					free_arr(char **arr1, char ***arr2, int flag);
+
+/*
+*************************************SYNTAX************************************
+*/
+void					check_syntax(t_parts *file);
+int						valid_oper_line(t_parts **oper);
+
+/*
+**************************************WRITE************************************
+*/
+void					create_cor(t_asm *data);
+char					encoding_byte(t_parts *oper);
+void					print_bits(unsigned char octet);
+void					write_champ_byte(t_asm *data);
+void					write_cor_file(t_asm *data);
+void					write_dir(t_asm *data, t_parts *parts, int op);
+void					write_ind(int value, int wfd);
+void					write_null_bytes(int n, int wfd);
+void					write_str(char *name, int limit, int wfd);
+void					write_size(t_parts *parts, int wfd);
+
 #endif

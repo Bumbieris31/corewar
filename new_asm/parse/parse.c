@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 15:51:26 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/06 17:15:28 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/02/06 19:50:09 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void		print_l(t_label *labels)
 {
 	t_label	*curr;
 
-	ft_printf("gets here\n");
 	curr = labels;
 	while (curr)
 	{
@@ -52,7 +51,7 @@ void		print_p(t_parts *parts)
 	curr = parts;
 	while (curr)
 	{
-		ft_printf("[%d]\t[%d]\t[%d]\n", curr->token, curr->line, curr->value);
+		ft_printf("[%d]\t[%d]\t[%d]\t\t\t[%s]\n", curr->token, curr->line, curr->value, curr->name);
 		curr = curr->next;
 	}
 }
