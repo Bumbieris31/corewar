@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 16:29:14 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/06 17:03:19 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/02/07 19:36:14 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,13 +136,13 @@ void		get_label(t_asm *data, char **line)
 	split = NULL;
 	label_syntax(line[0], data->lines);
 	split = ft_strsplit(line[0], LABEL_CHAR);
-	if (split[1])
+	if (split[1])												// check also for a line to add if line[1] exists
 	{
 		new = make_label(data, split[0], data->lines);
 		add_label(data, &new);
 		ft_strclr(line[0]);
 		line[0] = ft_strdup(split[1]);
-		ft_printf("[%s][%d]\n", new->name, new->line);
+		ft_printf("[%s][%d]\n", new->name, new->line);						// CMD X
 		parse_instruction(data, line);
 	}
 	else

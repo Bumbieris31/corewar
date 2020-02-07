@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 16:26:27 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/06 17:10:49 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/02/07 19:30:42 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,15 +64,16 @@ void		add_instruction(t_asm *data, t_parts *new)
 **			- char **line, line split on whitespace
 */
 
-void		parse_instruction(t_asm *data, char **line)
+void		parse_instruction(t_asm *data, char **line_parts)
 {
 	t_parts	*new;
 	int		i;
 
 	i = 0;
-	while (line[i])
+	while (line_parts[i])
 	{
-		new = make_instruction(get_token(line[i]), data->lines, line[i]);
+		new = make_instruction(get_token(line_parts[i]), data->lines, \
+		line_parts[i]);
 		add_instruction(data, new);
 		i++;
 	}

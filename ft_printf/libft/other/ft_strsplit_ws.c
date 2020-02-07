@@ -6,13 +6,13 @@
 /*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/10 14:35:55 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/05 16:39:09 by abumbier      ########   odam.nl         */
+/*   Updated: 2020/02/07 19:34:39 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
-/*MOVE TO HEADER*/
+/*MOVE TO HEADER*/																	//		CMD X
 #define SPACE	32
 #define TAB		9
 

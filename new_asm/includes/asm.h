@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 15:29:36 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/06 20:18:29 by abumbier      ########   odam.nl         */
+/*   Updated: 2020/02/07 19:22:45 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # define DIR_ARG3	(int[]) {STI}
 # define IND_ARG1	(int[]) {LD,AND,OR,XOR,LDI,LLD,LLDI}
 # define IND_ARG2	(int[]) {ST,AND,OR,XOR,STI}
-# define REG_ARG1	(int[]) {ST,ADD,SUB,OR,XOR,LDI,STI,LLDI,AFF}
+# define REG_ARG1	(int[]) {ST,ADD,SUB,AND,OR,XOR,LDI,STI,LLDI,AFF}
 # define REG_ARG2	(int[]) {LD,ST,ADD,SUB,AND,OR,XOR,LDI,STI,LLD,LLDI}
 # define REG_ARG3	(int[]) {ADD,SUB,AND,OR,XOR,LDI,STI,LLDI}
 
@@ -96,6 +96,8 @@ t_label					*make_label(t_asm *data, char *s, int line);
 int						get_token(char *s);
 int						get_value(int token, int line, char *s);
 char					*rm_comma(char *s, int line);
+int						swap_4_bytes(int num);
+short					swap_2_bytes(short nb);
 
 /*
 **************************************FREE*************************************

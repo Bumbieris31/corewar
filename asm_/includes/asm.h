@@ -6,7 +6,7 @@
 /*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/05 14:15:46 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/05 14:59:08 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/02/07 19:22:43 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ enum					e_oper {
 # define DIR_ARG3	(int[]) {STI}
 # define IND_ARG1	(int[]) {LD, AND, OR, XOR, LDI, LLD, LLDI}
 # define IND_ARG2	(int[]) {ST, AND, OR, XOR, STI}
-# define REG_ARG1	(int[]) {ST, ADD, SUB, OR, XOR, LDI,\
+# define REG_ARG1	(int[]) {ST, ADD, SUB, AND, OR, XOR, LDI,\
 					STI, LLDI, AFF}
 # define REG_ARG2	(int[]) {LD, ST, ADD, SUB, AND, OR, XOR,\
 					LDI, STI, LLD, LLDI}
