@@ -1,0 +1,15 @@
+Only in ./test_err_cor/: 10_no_operations.bin
+Only in ./original_err_cor/: 11_no_new_line_at_end_of_instructions.bin
+Only in ./original_err_cor/: 15_wrong_comment_char.bin
+Only in ./original_err_cor/: 18_wrong_reg_number.bin
+Only in ./original_err_cor/: 19_above_max_champ_size.bin
+Only in ./original_err_cor/: 1_name_empty_str.bin
+Only in ./original_err_cor/: 20_invalid_spacing.bin
+Only in ./test_err_cor/: 22_empty_champ.bin
+Only in ./original_err_cor/: 25_empty_label.bin
+Only in ./original_err_cor/: 26_label_with_new_line_only.bin
+Only in ./original_err_cor/: 27_name_comment_after_ops.bin
+Files ./original_err_cor/28_name_comment_max_segf_4.bin and ./test_err_cor/28_name_comment_max_segf_4.bin differ
+Files ./original_err_cor/29_incorrect_registry_num.bin and ./test_err_cor/29_incorrect_registry_num.bin differ
+Only in ./original_err_cor/: 5_comment_empty_str.bin
+Only in ./test_err_cor/: 8_comment_is_2049_chars.bin
