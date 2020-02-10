@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 16:26:27 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/07 19:30:42 by abumbier      ########   odam.nl         */
+/*   Updated: 2020/02/08 18:32:07 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,8 @@ void		add_instruction(t_asm *data, t_parts *new)
 
 void		parse_instruction(t_asm *data, char **line_parts)
 {
-	t_parts	*new;
 	int		i;
+	t_parts	*new;
 
 	i = 0;
 	while (line_parts[i])
