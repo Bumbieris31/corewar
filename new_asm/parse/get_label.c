@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 16:29:14 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/10 16:23:02 by abumbier      ########   odam.nl         */
+/*   Updated: 2020/02/11 19:08:57 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,14 +60,17 @@ void		get_next_label(t_asm *data, char *name)
 	int		last;
 	char	**split;
 	t_label	*new;
+	int		line_nb;
 
 	split = NULL;
 	new = make_label(data, name, -1);
 	last = 1;
+	line_nb = data->lines;
 	while (get_line(data, data->rfd, &s, NULL))
 	{
 		if (s && !ft_strequ("", s))
 		{
+			// ft_printf("\n%s\n\n", s);
 			last = 0;
 			split = ft_strsplit_ws(s);
 			if (check_instruction(split[0]))
@@ -94,7 +97,8 @@ void		get_next_label(t_asm *data, char *name)
 	free_arr(&s, &split, 2);
 	if (last)
 	{
-		set_lines(new, data->lines);
+		// ft_printf("line_nb %d\n", line_nb);
+		set_lines(new, line_nb);
 		add_label(data, &new);
 	}
 }
@@ -132,6 +136,7 @@ void		get_label(t_asm *data, char **line)
 {
 	t_label		*new;
 	char		**split;
+	int			line_nb;
 
 	split = NULL;
 	label_syntax(line[0], data->lines);
@@ -142,14 +147,20 @@ void		get_label(t_asm *data, char **line)
 		add_label(data, &new);
 		ft_strclr(line[0]);
 		line[0] = ft_strdup(split[1]);
-		ft_printf("[%s][%d]\n", new->name, new->line);
 		parse_instruction(data, line);
 	}
-	else
+	else if (line[1] && check_instruction(line[1]))
 	{
-		if (line[1] && check_instruction(line[1]))
-			parse_instruction(data, &line[1]);
-		get_next_label(data, split[0]);
+		// ft_printf("\n[%s]\tlines %d\n\n", line[1], data->lines);
+		line_nb = data->lines;
+		parse_instruction(data, &line[1]);
+		// ft_printf("split[0] %s\n", split[0]);
+		new = make_label(data, split[0], line_nb);
+		add_label(data, &new);
+		// ft_printf("new->name [%s]\t\tnew->line [%d]\n\n", new->name, new->line);
+		// get_next_label(data, split[0]);
 	}
+	else
+		get_next_label(data, split[0]);
 	free_arr(NULL, &split, 1);
 }

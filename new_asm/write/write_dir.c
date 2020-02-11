@@ -6,7 +6,7 @@
 /*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/18 19:44:42 by abumbier       #+#    #+#                */
-/*   Updated: 2020/02/10 17:00:05 by abumbier      ########   odam.nl         */
+/*   Updated: 2020/02/11 19:12:09 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int	find_label(t_label *label, char *name, int line)
 	char *clean;
 
 	clean = clean_label(name);
-	ft_printf("label name ==> |%s|\n", clean);																		// CMD X
+	// ft_printf("label name ==> |%s|\n", clean);		// CMD X
 	while (label && ft_strcmp(clean, label->name))
 		label = label->next;
 	free(clean);
@@ -115,7 +115,7 @@ void		write_dir(t_asm *data, t_parts *parts, int op)
 	if (parts->value == MAX_INT)
 	{
 		label_line = find_label(data->labels, parts->name, parts->line);
-		ft_printf("to reach |%d|\ncurrent |%d|\n",label_line, parts->line);
+		// ft_printf("to reach |%d|\ncurrent |%d|\n",label_line, parts->line);
 		value = calculate_lines(data->parts, label_line, parts->line);
 	//	ft_printf("number supposed to be written => |%d|\ncurrent line => |%d|\n", value, parts->line);											// CMD X
 	}

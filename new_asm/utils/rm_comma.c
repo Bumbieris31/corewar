@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 16:52:25 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/06 16:57:03 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/02/11 19:10:15 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ char		*rm_comma(char *s, int line)
 		}
 		i++;
 	}
-	if (count > 1)
-		error("Invalid syntax", line);
+	line = 0;
 	return (new);
 }

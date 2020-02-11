@@ -1,9 +1,10 @@
 .name "zork"
 .comment "I'M ALIIIIVE"
 
-l2:sti r1, %:liv2, %1
-		and r1, %0, r1 ; :l2 as second
+l2:
+	sti r1,%:liv2,%1
+	and r1, %0, r1; :l2 as second
 
-liv2: live %1
-		zjmp %:liv2
-
+liv2:
+	live %1
+	zjmp %:liv2
