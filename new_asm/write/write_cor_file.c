@@ -6,7 +6,7 @@
 /*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/13 19:01:19 by abumbier       #+#    #+#                */
-/*   Updated: 2020/02/07 17:06:19 by abumbier      ########   odam.nl         */
+/*   Updated: 2020/02/12 20:36:00 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,10 @@ void			write_str(char *name, int limit, int wfd)
 	if (i > 0)
 		write_null_bytes(i, wfd);
 }
+
+/*
+**	
+*/
 
 void			write_cor_file(t_asm *data)
 {

@@ -6,11 +6,17 @@
 /*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/14 18:41:45 by abumbier       #+#    #+#                */
-/*   Updated: 2020/02/12 17:24:49 by abumbier      ########   odam.nl         */
+/*   Updated: 2020/02/12 20:52:26 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asm.h"
+
+/*
+**	@descr	- Determines the type of arguments for one line and sums them.
+**	@param	- int op, checks which operation and dir arg combinations add\
+**			- 2 and 4 bytes.
+*/
 
 static int	arg_sizes(t_parts **parts, int op)
 {
@@ -38,6 +44,10 @@ static int	arg_sizes(t_parts **parts, int op)
 	return (arg_size);
 }
 
+/*
+**	@descr	- Sums the size of all the lines.
+*/
+
 static int	line_sizes(t_parts *parts)
 {
 	int		op;
@@ -60,10 +70,8 @@ static int	line_sizes(t_parts *parts)
 
 /*
 **	@desc	- Writes the size of assembled champ code to the .cor file.
-**	@param	- t_asm *data, main struct holding output file info and\
-**			- parsed assembly.
-**			- t_parts *parts, token being written.
-**			- int op, operation to which the token belongs.
+**	@param	- t_parts *parts, all the tokenized champ code parts.
+**			- int wfd, file descriptor for writing.
 */
 
 void		write_size(t_parts *parts, int wfd)
