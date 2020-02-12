@@ -6,7 +6,7 @@
 /*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/14 18:41:45 by abumbier       #+#    #+#                */
-/*   Updated: 2020/02/07 17:34:22 by abumbier      ########   odam.nl         */
+/*   Updated: 2020/02/12 17:24:49 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,14 @@ static int	line_sizes(t_parts *parts)
 	}
 	return (size);
 }
+
+/*
+**	@desc	- Writes the size of assembled champ code to the .cor file.
+**	@param	- t_asm *data, main struct holding output file info and\
+**			- parsed assembly.
+**			- t_parts *parts, token being written.
+**			- int op, operation to which the token belongs.
+*/
 
 void		write_size(t_parts *parts, int wfd)
 {

@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 15:29:36 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/07 19:22:45 by abumbier      ########   odam.nl         */
+/*   Updated: 2020/02/12 19:23:45 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ int						get_value(int token, int line, char *s);
 char					*rm_comma(char *s, int line);
 int						swap_4_bytes(int num);
 short					swap_2_bytes(short nb);
+int						find_label(t_label *label, char *name, int line);
 
 /*
 **************************************FREE*************************************
@@ -113,15 +114,17 @@ int						valid_oper_line(t_parts **oper);
 /*
 **************************************WRITE************************************
 */
+int						calculate_lines(t_parts *start, int to_reach, \
+int current);
 void					create_cor(t_asm *data);
 char					encoding_byte(t_parts *oper);
 void					print_bits(unsigned char octet);
 void					write_champ_byte(t_asm *data);
 void					write_cor_file(t_asm *data);
 void					write_dir(t_asm *data, t_parts *parts, int op);
-void					write_ind(int value, int wfd);
+void					write_ind(t_asm *data, t_parts *token);
 void					write_null_bytes(int n, int wfd);
-void					write_str(char *name, int limit, int wfd);
 void					write_size(t_parts *parts, int wfd);
+void					write_str(char *name, int limit, int wfd);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 15:28:53 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/11 19:26:16 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/02/12 16:45:01 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int				main(int ac, char **av)
 	parse(data);
 	close(data->rfd);
 	check_syntax(data->parts);
-	// ft_printf("[%s]\t\t[%s]\n", data->name, data->comment);
+	// ft_printf("[%s]\t\t[%s]\n", data->name, data->comment);								// CMD X
 	create_cor(data);
 	close(data->wfd);
 	return (0);

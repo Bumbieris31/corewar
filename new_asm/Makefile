@@ -6,14 +6,14 @@
 #    By: asulliva <asulliva@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/02/06 15:28:37 by asulliva       #+#    #+#                 #
-#    Updated: 2020/02/07 17:33:44 by abumbier      ########   odam.nl          #
+#    Updated: 2020/02/12 16:59:30 by abumbier      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= asm
 SRCS	= main \
 			utils/error utils/instruction utils/label_util utils/get_value\
-			utils/rm_comma utils/swap_endian\
+			utils/rm_comma utils/swap_endian utils/find_label\
 			parse/parse parse/get_line parse/name_comment parse/label\
 			parse/parse_op parse/get_label\
 			free/free_arr\

@@ -1,18 +1,3 @@
-Only in ./original_asm_cor/: 42.bin
-Only in ./original_asm_cor/: Car.bin
-Only in ./original_asm_cor/: Gagnant.bin
-Only in ./original_asm_cor/: Octobre_Rouge_V4.2.bin
-Only in ./original_asm_cor/: barriere.bin
-Only in ./original_asm_cor/: bee_gees.bin
-Only in ./original_asm_cor/: bigzork.bin
-Only in ./original_asm_cor/: ex.bin
-Only in ./original_asm_cor/: fluttershy.bin
-Only in ./original_asm_cor/: fluttershy_explained.bin
-Only in ./original_asm_cor/: helltrain.bin
-Only in ./original_asm_cor/: jumper.bin
-Only in ./original_asm_cor/: maxidef.bin
-Only in ./original_asm_cor/: mortel.bin
-Only in ./original_asm_cor/: slider2.bin
-Only in ./original_asm_cor/: toto.bin
-Only in ./original_asm_cor/: turtle.bin
-Only in ./original_asm_cor/: zork.bin
+Files ./original_asm_cor/Gagnant.bin and ./test_asm_cor/Gagnant.bin differ
+Files ./original_asm_cor/barriere.bin and ./test_asm_cor/barriere.bin differ
+Only in ./test_asm_cor/: leeloo.bin

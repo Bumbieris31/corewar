@@ -13,7 +13,7 @@ DIM="\033[2m"
 
 #_______________________________________________________________Norminette_check
 
-ASM_PATH=../../asm_
+ASM_PATH=../../new_asm
 NRM_ERR=$(norminette $ASM_PATH | grep -v 'Not a valid file' | grep 'Error: ' | \
 			wc -l | tr -d ' ')
 NRM_WARN=$(norminette $ASM_PATH | grep -v 'Not a valid file' | grep 'Warning: ' | \
@@ -52,7 +52,7 @@ for champ in $COMPARE_CHAMPS
 do
 	$OR_ASM_PATH $champ >/dev/null
 	if [ -f ${champ/.s/.cor} ]; then
-		xxd -b ${champ/.s/.cor} > ${champ/.s/.bin}
+		xxd ${champ/.s/.cor} > ${champ/.s/.bin} # add -b for binary
 		mv ${champ/.s/.bin} original_asm_cor/
 		rm ${champ/.s/.cor}
 	fi
@@ -62,7 +62,7 @@ for champ in $ERROR_CHAMPS
 do
 	$OR_ASM_PATH $champ >/dev/null
 	if [ -f ${champ/.s/.cor} ]; then
-		xxd -b ${champ/.s/.cor} > ${champ/.s/.bin}
+		xxd ${champ/.s/.cor} > ${champ/.s/.bin} # add -b for binary
 		mv ${champ/.s/.bin} ./original_err_cor
 		rm ${champ/.s/.cor}
 	fi
@@ -84,7 +84,7 @@ do
 	#echo ${champ/.s/.cor}
 	if [ -f ${champ/.s/.cor} ]; then
 		#echo "hey"
-		xxd -b ${champ/.s/.cor} > ${champ/.s/.bin}
+		xxd ${champ/.s/.cor} > ${champ/.s/.bin} # add -b for binary
 		mv ${champ/.s/.bin} test_asm_cor/
 		rm ${champ/.s/.cor}
 	fi
@@ -96,7 +96,7 @@ do
 	./test_asm $champ #>/dev/null
 	printf "\n"
 	if [ -f ${champ/.s/.cor} ]; then
-		xxd -b ${champ/.s/.cor} > ${champ/.s/.bin}
+		xxd ${champ/.s/.cor} > ${champ/.s/.bin} # add -b for binary
 		mv ${champ/.s/.bin} ./test_err_cor
 		rm ${champ/.s/.cor}
 	fi
