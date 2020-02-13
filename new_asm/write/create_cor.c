@@ -6,11 +6,15 @@
 /*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/12 17:52:45 by abumbier       #+#    #+#                */
-/*   Updated: 2020/02/07 17:06:19 by abumbier      ########   odam.nl         */
+/*   Updated: 2020/02/13 16:11:15 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/asm.h"
+
+/*
+**	@descr	- Writes null bytes to the file descriptor specified by wfd.
+*/
 
 void		write_null_bytes(int n, int wfd)
 {
@@ -23,6 +27,10 @@ void		write_null_bytes(int n, int wfd)
 		i++;
 	}
 }
+
+/*
+**	@descr	- Creates a valid .cor file to be filled with champ information.
+*/
 
 void		create_cor(t_asm *data)
 {

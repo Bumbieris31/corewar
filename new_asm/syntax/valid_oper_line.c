@@ -6,7 +6,7 @@
 /*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/10 15:44:58 by abumbier       #+#    #+#                */
-/*   Updated: 2020/02/06 19:47:40 by abumbier      ########   odam.nl         */
+/*   Updated: 2020/02/13 16:18:33 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,10 +110,10 @@ static int	valid_registry(int arg_num, int oper_code)
 
 static int	arg_error(int line, int arg_c, int oper_code, int valid)
 {
-	char	*dir = "direct";
-	char	*ind = "indirect";
-	char	*reg = "registry";
-	char	*var;
+	const char	*var;
+	const char	*dir = "direct";
+	const char	*ind = "indirect";
+	const char	*reg = "registry";
 
 	if (valid == DIR)
 		var = dir;

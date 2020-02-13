@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 15:51:26 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/11 19:25:05 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/02/13 16:12:07 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void		choose_parse(t_asm *data, char *s)
 			parse_label(data, s);
 	}
 }
+
+// DELETE AFTER COMMENT
 
 void		print_l(t_label *labels)
 {
@@ -59,6 +61,8 @@ void		print_p(t_parts *parts)
 	}
 }
 
+// DELETE BEFORE COMMENT
+
 /*
 **	@desc	- main parsing function
 **	@param	- t_asm *data, main struct
@@ -77,8 +81,8 @@ void		parse(t_asm *data)
 	free(s);
 	if (!data->name || !data->comment)
 		error(".name or .comment missing", 0);
-	// ft_printf("lines %d\n", data->lines);
-	// ft_printf(".name %s\t.comment %s\n", data->name, data->comment);
-	// print_l(data->labels);
-	// print_p(data->parts);
+	ft_printf("lines %d\n", data->lines);
+	ft_printf(".name %s\t.comment %s\n", data->name, data->comment);
+	print_l(data->labels);
+	print_p(data->parts);
 }

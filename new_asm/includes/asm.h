@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 15:29:36 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/12 19:23:45 by abumbier      ########   odam.nl         */
+/*   Updated: 2020/02/13 17:05:59 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ int						find_label(t_label *label, char *name, int line);
 **************************************FREE*************************************
 */
 void					free_arr(char **arr1, char ***arr2, int flag);
+void					free_data(t_asm *data);
 
 /*
 *************************************SYNTAX************************************

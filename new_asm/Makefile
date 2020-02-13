@@ -6,7 +6,7 @@
 #    By: asulliva <asulliva@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/02/06 15:28:37 by asulliva       #+#    #+#                 #
-#    Updated: 2020/02/12 16:59:30 by abumbier      ########   odam.nl          #
+#    Updated: 2020/02/13 17:06:23 by abumbier      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRCS	= main \
 			utils/rm_comma utils/swap_endian utils/find_label\
 			parse/parse parse/get_line parse/name_comment parse/label\
 			parse/parse_op parse/get_label\
-			free/free_arr\
+			free/free_arr free/free_data\
 			syntax/check_syntax syntax/valid_oper_line\
 			write/write_cor_file write/write_champ_byte write/create_cor\
 			write/encoding_byte write/write_dir write/write_size
