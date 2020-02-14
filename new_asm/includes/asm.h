@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 15:29:36 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/13 17:05:59 by abumbier      ########   odam.nl         */
+/*   Updated: 2020/02/14 21:35:06 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void					add_label(t_asm *data, t_label **new);
 t_label					*make_label(t_asm *data, char *s, int line);
 int						get_token(char *s);
 int						get_value(int token, int line, char *s);
-char					*rm_comma(char *s, int line);
+char					*rm_comma(char *s);
 int						swap_4_bytes(int num);
 short					swap_2_bytes(short nb);
 int						find_label(t_label *label, char *name, int line);

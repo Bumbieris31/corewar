@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 15:28:53 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/13 17:04:40 by abumbier      ########   odam.nl         */
+/*   Updated: 2020/02/14 21:01:44 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,6 @@ int				main(int ac, char **av)
 	// ft_printf("[%s]\t\t[%s]\n", data->name, data->comment);								// CMD X
 	create_cor(data);
 	close(data->wfd);
-	free_data(data);
+//	free_data(data);
 	return (0);
 }
