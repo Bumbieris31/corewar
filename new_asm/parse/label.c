@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 16:16:05 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/14 21:36:19 by abumbier      ########   odam.nl         */
+/*   Updated: 2020/02/17 16:02:33 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,15 @@ void		parse_label(t_asm *data, char *s)
 	data->wfd = 0;
 	split = NULL;
 	split = ft_strsplit_ws(s);
-	int	i = 0;
 /* 
-*/
-	while (split[i])
+	int	i = 0;
+	while (split[i])																			//PRINTING instructions
 	{
 		ft_printf("_%s_", split[i]);
 		i++;
 	}
 	ft_printf("\n");
+*/
 	if (check_instruction(split[0]))
 		parse_instruction(data, split);
 	else

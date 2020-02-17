@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 16:52:25 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/14 21:35:06 by abumbier      ########   odam.nl         */
+/*   Updated: 2020/02/17 18:33:04 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,15 @@
 
 char		*rm_comma(char *s)
 {
-	char	*new;
 	int		i;
-	int		count;																	// NOT USED
+	char	*new;
 
-	new = ft_strdup(s);
 	i = 0;
-	count = 0;
+	new = ft_strdup(s);
 	while (new[i])
 	{
 		if (new[i] == SEPARATOR_CHAR)
-		{
-			count++;
 			new[i] = '\0';
-		}
 		i++;
 	}
 	return (new);

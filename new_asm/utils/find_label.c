@@ -6,7 +6,7 @@
 /*   By: abumbier <abumbier@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/12 16:58:48 by abumbier       #+#    #+#                */
-/*   Updated: 2020/02/12 17:09:10 by abumbier      ########   odam.nl         */
+/*   Updated: 2020/02/17 16:20:43 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static char	*clean_label(char *label)
 }
 
 /*
-**	@desc	- Finds the line on which the label with passed name is written.
+**	@desc	- Finds the line which the label with passed name represents.
 **	@param	- t_label *label, linked list of all the labels saved.
 **			- char *name, str by which the label is found.
 **			- int line, for error message.

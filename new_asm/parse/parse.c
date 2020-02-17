@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 15:51:26 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/14 21:01:44 by abumbier      ########   odam.nl         */
+/*   Updated: 2020/02/17 17:50:13 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,12 @@ void		parse(t_asm *data)
 		free(s);
 	}
 	free(s);
+	/*											// uncomment after print_parts
 	if (!data->name || !data->comment)
 		error(".name or .comment missing", 0);
 	ft_printf("lines %d\n", data->lines);
 	ft_printf(".name %s\t.comment %s\n", data->name, data->comment);
+	*/
 //	print_l(data->labels);
 //	print_p(data->parts);
 }

@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 16:26:27 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/14 22:02:31 by abumbier      ########   odam.nl         */
+/*   Updated: 2020/02/17 17:40:48 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_parts		*make_instruction(int token, int line, char *s)
 	new->line = line;
 	new->size = 0;
 	new->line_size = 0;
-	new->name = rm_comma(s);													// Sometimes holds weird values
+	new->name = rm_comma(s);
 	new->next = NULL;
 	return (new);
 }
@@ -77,15 +77,6 @@ void		parse_instruction(t_asm *data, char **line_parts)
 		{
 			line_parts = ft_strsplit(line_parts[i], SEPARATOR_CHAR);
 			i = 0;
-			//del belove
-			while (line_parts[i])
-			{
-				ft_printf("_%s_", line_parts[i]);
-				i++;
-			}
-			ft_printf("\n");
-			i = 0;
-			//del above
 		}
 		// ft_printf("line_parts[%d]\t\t[%s]\n", i, line_parts[i]);
 		new = make_instruction(get_token(line_parts[i]), data->lines, \
