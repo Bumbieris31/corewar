@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 15:28:53 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/20 16:30:35 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/02/20 19:06:46 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ void			print_parts(t_parts *parts)
 	curr = parts;
 	while (curr)
 	{
-		ft_printf("curr->name %s\n", curr->name);
+		printf("__%s__\n", curr->name);
+	//	free(curr->name);
 		curr = curr->next;
 	}
 }
@@ -74,10 +75,12 @@ int				main(int ac, char **av)
 		error("Invalid file", 0);
 	parse(data);
 	close(data->rfd);
+	printf("\n\n***   AFTER PARSE   ***\n\n");
 	print_parts(data->parts);
-	check_syntax(data->parts);
-	create_cor(data);
-	close(data->wfd);
+//	check_syntax(data->parts);
+//	create_cor(data);
+//	close(data->wfd);
 	free_data(data);
+//	while (1);
 	return (0);
 }

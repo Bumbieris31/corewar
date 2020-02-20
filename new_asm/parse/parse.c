@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 15:51:26 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/20 16:32:41 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/02/20 18:37:45 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void		choose_parse(t_asm *data, char *s)
 {
 	if (s && ft_strlen(s) > 0)
 	{
+//		if (ft_strequ(s, "hophop:"))
+//			print_parts(data->parts);
 		if (!ft_strncmp(s, NAME_CMD_STRING, ft_strlen(NAME_CMD_STRING)))
 			parse_nc(data, s, 0);
 		else if (!ft_strncmp(s, COMMENT_CMD_STRING,\

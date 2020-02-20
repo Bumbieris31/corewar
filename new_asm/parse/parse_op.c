@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 16:26:27 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/20 16:32:59 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/02/20 19:02:07 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void		add_instruction(t_asm *data, t_parts *new)
 	while (curr->next)
 		curr = curr->next;
 	curr->next = new;
+//	printf("_%s_\n", curr->name);															// CMD X
 }
 
 /*

@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 15:29:36 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/20 16:31:23 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/02/20 18:01:29 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@
 # include <unistd.h>
 # include "../../ft_printf/includes/ft_printf.h"
 # include "../../VM/includes/op.h"
+# include <stdio.h>																						//	 CMD X
 
 typedef struct s_asm	t_asm;
 typedef struct s_label	t_label;
