@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 15:29:36 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/17 17:45:28 by abumbier      ########   odam.nl         */
+/*   Updated: 2020/02/20 16:31:23 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,6 @@
 # include <unistd.h>
 # include "../../ft_printf/includes/ft_printf.h"
 # include "../../VM/includes/op.h"
-# include <stdio.h>																		// CMD X
-
 
 typedef struct s_asm	t_asm;
 typedef struct s_label	t_label;
@@ -130,7 +128,6 @@ void					write_null_bytes(int n, int wfd);
 void					write_size(t_parts *parts, int wfd);
 void					write_str(char *name, int limit, int wfd);
 
-// TRASH
 void					print_parts(t_parts *parts);
 
 #endif

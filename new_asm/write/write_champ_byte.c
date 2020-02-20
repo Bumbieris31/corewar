@@ -6,7 +6,7 @@
 /*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/16 18:33:41 by abumbier       #+#    #+#                */
-/*   Updated: 2020/02/12 19:32:27 by abumbier      ########   odam.nl         */
+/*   Updated: 2020/02/20 16:03:53 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void			write_ind(t_asm *data, t_parts *token)
 
 	if (token->value == MAX_INT)
 	{
+		ft_printf("token->name %s\n", token->name);
 		label_line = find_label(data->labels, token->name, token->line);
 		ind = (short)calculate_lines(data->parts, label_line, token->line);
 	}

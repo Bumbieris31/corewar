@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 15:51:26 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/17 17:50:13 by abumbier      ########   odam.nl         */
+/*   Updated: 2020/02/20 16:32:41 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,37 +32,6 @@ void		choose_parse(t_asm *data, char *s)
 	}
 }
 
-// DELETE AFTER COMMENT
-
-void		print_l(t_label *labels)
-{
-	t_label	*curr;
-
-	curr = labels;
-	ft_printf("\n");
-	while (curr)
-	{
-		ft_printf("[%s]\t\t[%d]\n", curr->name, curr->line);
-		curr = curr->next;
-	}
-	ft_printf("\n");
-
-}
-
-void		print_p(t_parts *parts)
-{
-	t_parts	*curr;
-
-	curr = parts;
-	while (curr)
-	{
-		ft_printf("[%d]\t[%d]\t[%d]\t\t\t[%s]\n", curr->token, curr->line, curr->value, curr->name);
-		curr = curr->next;
-	}
-}
-
-// DELETE BEFORE COMMENT
-
 /*
 **	@desc	- main parsing function
 **	@param	- t_asm *data, main struct
@@ -79,12 +48,4 @@ void		parse(t_asm *data)
 		free(s);
 	}
 	free(s);
-	/*											// uncomment after print_parts
-	if (!data->name || !data->comment)
-		error(".name or .comment missing", 0);
-	ft_printf("lines %d\n", data->lines);
-	ft_printf(".name %s\t.comment %s\n", data->name, data->comment);
-	*/
-//	print_l(data->labels);
-//	print_p(data->parts);
 }

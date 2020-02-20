@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 16:29:14 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/17 18:25:44 by abumbier      ########   odam.nl         */
+/*   Updated: 2020/02/20 16:33:51 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,6 @@ void		get_next_label(t_asm *data, char *name)
 		{
 			last = 0;
 			split = ft_strsplit_ws(s);
-//
-//			if next line is oper
 			if (check_instruction(split[0]))
 			{
 				set_lines(new, data->lines);
@@ -81,12 +79,8 @@ void		get_next_label(t_asm *data, char *name)
 				parse_instruction(data, split);
 				break ;
 			}
-//
-//			if next line is a label
 			else if (split[0][ft_strlen(s) - 1] == LABEL_CHAR)
 				add_to_label(data, split[0], &new);
-//
-//			if no ws after label and more op
 			else if (ft_strchr(split[0], LABEL_CHAR))
 			{
 				add_label(data, &new);

@@ -6,7 +6,7 @@
 /*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/09 18:06:37 by abumbier       #+#    #+#                */
-/*   Updated: 2020/02/13 17:04:23 by abumbier      ########   odam.nl         */
+/*   Updated: 2020/02/20 16:33:20 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,4 @@ void		check_syntax(t_parts *file)
 			if (!valid_oper_line(&token))
 				break ;
 	}
-	//if (!valid_oper_line)
-	//{
-	//	free_data();
-	//}
-	// exit if valid_oper_line is 0
 }

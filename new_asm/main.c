@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 15:28:53 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/17 17:44:08 by abumbier      ########   odam.nl         */
+/*   Updated: 2020/02/20 16:30:35 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,29 +34,17 @@ static t_asm	*init(int ac, char **av)
 	return (data);
 }
 
-/*
-*/
-void	print_parts(t_parts *parts)
+void			print_parts(t_parts *parts)
 {
 	t_parts	*curr;
 
-	while (parts)
+	curr = parts;
+	while (curr)
 	{
-
-		curr = parts->next;
-		if (parts->name){
-			printf("_%s_\n", parts->name);
-			free(parts->name);
-		}
-		parts = curr;
-		/*
-		*/
-		if (parts)
-			free(parts);
+		ft_printf("curr->name %s\n", curr->name);
+		curr = curr->next;
 	}
 }
-
-
 
 /*
 **	@desc	- function checks if the file is a .s file
@@ -86,11 +74,10 @@ int				main(int ac, char **av)
 		error("Invalid file", 0);
 	parse(data);
 	close(data->rfd);
-//	print_parts(data->parts);
-//	check_syntax(data->parts);
-	// ft_printf("[%s]\t\t[%s]\n", data->name, data->comment);								// CMD X
-//	create_cor(data);
-//	close(data->wfd);
-//	free_data(data);
+	print_parts(data->parts);
+	check_syntax(data->parts);
+	create_cor(data);
+	close(data->wfd);
+	free_data(data);
 	return (0);
 }
