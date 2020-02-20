@@ -135,13 +135,13 @@ torpl1:
 	add		r2, r3, r2
 	ldi		%:torpinit, r2, r4
 	sti		r4, %383, r2
-	add		r2, r3, r2
+	add		r2,r3,r2
 torpchk:
 	live	%89523
-	xor		r2, r5, r15	
+	xor		r2,, r5, r15	
 	zjmp	%362
 torploop:
-	ld		%0, r15
+	ld		%0,, r15
 	zjmp	%:torpwrite
 
 avdeftgt:

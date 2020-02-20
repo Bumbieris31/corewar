@@ -6,7 +6,7 @@
 #    By: krioliin <krioliin@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/29 17:45:05 by krioliin       #+#    #+#                 #
-#    Updated: 2020/01/30 15:19:18 by krioliin      ########   odam.nl          #
+#    Updated: 2020/02/16 13:59:03 by abumbier      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 # @ ln -fs $(PATH_DSM)dsm dsm
 ASM		:=	asm
 PATH_VM	:=	vm/
-PATH_ASM:=	asm_/
+PATH_ASM:=	new_asm/
 PATH_DSM:=	dsm_/
 LIB		:=	ft_printf/
 
@@ -23,21 +23,21 @@ all:
 	@make -C $(PATH_ASM)
 	@make -C $(PATH_VM)
 	@make -C $(PATH_DSM)
-	@ mv $(PATH_ASM)asm .
-	@ mv $(PATH_VM)corewar .
-	@ mv $(PATH_DSM)dsm .
+	@mv $(PATH_ASM)asm .
+	@mv $(PATH_VM)corewar .
+	@mv $(PATH_DSM)dsm .
 	@chmod 744 asm
 	@chmod 744 corewar
 	@chmod 744 dsm
 
 mre:
-	@ make mre -C $(PATH_ASM)
-	@ make mre -C $(PATH_VM)
-	@ make mre -C $(PATH_DSM)
-	@ ln -fs $(PATH_ASM)dsm dsm
-	@ ln -fs $(PATH_ASM)asm asm
-	@ ln -fs $(PATH_VM)corewar corewar
-	@ chmod 744 asm corewar
+	@make mre -C $(PATH_ASM)
+	@make mre -C $(PATH_VM)
+	@make mre -C $(PATH_DSM)
+	@ln -fs $(PATH_ASM)dsm dsm
+	@ln -fs $(PATH_ASM)asm asm
+	@ln -fs $(PATH_VM)corewar corewar
+	@chmod 744 asm corewar
 
 clean:
 	@make -C $(LIB) clean
