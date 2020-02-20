@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 16:44:17 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/17 16:29:25 by abumbier      ########   odam.nl         */
+/*   Updated: 2020/02/20 19:14:40 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,5 +101,6 @@ t_label		*make_label(t_asm *data, char *s, int line)
 	new->name = ft_strdup(name);
 	new->line = line;
 	new->next = NULL;
+	free(name);
 	return (new);
 }

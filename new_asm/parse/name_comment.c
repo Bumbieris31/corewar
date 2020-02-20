@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 16:02:41 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/11 16:46:38 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/02/20 19:09:35 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,5 +125,5 @@ void		parse_nc(t_asm *data, char *s, int type)
 		data->comment = ft_strdup(s);
 	else
 		error("Redefinition of .name or .comment", data->lines);
-	free_arr(&s, &split, 1);
+	free_arr(&s, &split, 2);
 }
