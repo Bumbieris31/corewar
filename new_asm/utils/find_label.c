@@ -6,7 +6,7 @@
 /*   By: abumbier <abumbier@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/12 16:58:48 by abumbier       #+#    #+#                */
-/*   Updated: 2020/02/20 16:01:32 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/02/20 19:02:13 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,7 @@ int			find_label(t_label *label, char *name, int line)
 {
 	char *clean;
 
-	ft_printf("dirty %s\n", name);
 	clean = clean_label(name);
-	ft_printf("clean %s\n", clean);
 	while (label && ft_strcmp(clean, label->name))
 		label = label->next;
 	free(clean);

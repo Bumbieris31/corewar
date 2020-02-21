@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 16:16:05 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/20 19:01:37 by abumbier      ########   odam.nl         */
+/*   Updated: 2020/02/20 20:05:49 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,5 @@ void		parse_label(t_asm *data, char *s)
 		else
 			get_label(data, split);
 	}
-	//free_arr(NULL, &split, 1);
+	free_arr(NULL, &split, 1);
 }

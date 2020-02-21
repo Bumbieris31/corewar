@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 15:28:53 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/20 19:06:46 by abumbier      ########   odam.nl         */
+/*   Updated: 2020/02/20 19:49:36 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void			print_parts(t_parts *parts)
 	while (curr)
 	{
 		printf("__%s__\n", curr->name);
-	//	free(curr->name);
+//		free(curr->name);
 		curr = curr->next;
 	}
 }

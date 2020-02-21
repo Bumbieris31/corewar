@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 16:26:27 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/20 19:02:07 by abumbier      ########   odam.nl         */
+/*   Updated: 2020/02/20 19:24:30 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void		parse_instruction(t_asm *data, char **line_parts)
 		if (ft_strchr(line_parts[i], SEPARATOR_CHAR) &&\
 		line_parts[i][ft_strlen(line_parts[i]) - 1] != SEPARATOR_CHAR)
 		{
-			line_parts = ft_strsplit(line_parts[i], SEPARATOR_CHAR);
+			line_parts = ft_strsplit(line_parts[i], SEPARATOR_CHAR);						// Breaks in arg1,arg2, arg3 situation
 			i = 0;
 		}
 		new = make_instruction(get_token(line_parts[i]), data->lines, \
