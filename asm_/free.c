@@ -6,7 +6,7 @@
 /*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/06 18:18:10 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/05 17:14:25 by abumbier      ########   odam.nl         */
+/*   Updated: 2020/02/21 18:03:41 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ void	free_arr(char **arr1, char ***arr2, int flag)
 
 	if ((!flag || flag == 2) && *arr1)
 	{
-		if (*arr1)
-			free(*arr1);
+		ft_strdel(arr1);
 		*arr1 = NULL;
 	}
 	if (flag && arr2 && *arr2)
@@ -39,8 +38,7 @@ void	free_arr(char **arr1, char ***arr2, int flag)
 			arr2[0][i] = 0;
 			i++;
 		}
-		if (*arr2)
-			free(*arr2);
+		ft_strdel(arr2);
 		*arr2 = 0;
 	}
 }

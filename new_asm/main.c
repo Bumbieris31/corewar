@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 15:28:53 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/20 19:49:36 by abumbier      ########   odam.nl         */
+/*   Updated: 2020/02/21 17:50:54 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int				main(int ac, char **av)
 //	check_syntax(data->parts);
 //	create_cor(data);
 //	close(data->wfd);
-	free_data(data);
+//	free_data(data);
 //	while (1);
 	return (0);
 }

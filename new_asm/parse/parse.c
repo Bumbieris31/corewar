@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/06 15:51:26 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/20 19:57:00 by abumbier      ########   odam.nl         */
+/*   Updated: 2020/02/21 17:59:43 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void		choose_parse(t_asm *data, char *s)
 {
 	if (s && ft_strlen(s) > 0)
 	{
-		if (ft_strequ(s, "st\t\tr1, 6"))
-			print_parts(data->parts);
+//		if (ft_strequ(s, "st\t\tr1, 6"))
+//			print_parts(data->parts);
 		if (!ft_strncmp(s, NAME_CMD_STRING, ft_strlen(NAME_CMD_STRING)))
 			parse_nc(data, s, 0);
 		else if (!ft_strncmp(s, COMMENT_CMD_STRING,\
@@ -47,7 +47,7 @@ void		parse(t_asm *data)
 	{
 		if (s && ft_strlen(s) > 0)
 			choose_parse(data, s);
-		free(s);
+		ft_strdel(&s);
 	}
-	free(s);
+	ft_strdel(&s);
 }

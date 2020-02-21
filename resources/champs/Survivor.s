@@ -4,11 +4,7 @@
 	live	%1
 	fork	%:f1
 	zjmp	%:j1
-<<<<<<< .mine
-f1:	ld	%5, r2
-=======
-f1:	ld	%4, r2
->>>>>>> .r20
+f1:	ld	%4, r2				;could be 5 instead of 4
 	zjmp	%:run
 j1:	
 run:	xor	r0, r0, r0
