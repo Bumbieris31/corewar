@@ -6,7 +6,11 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/30 19:39:31 by asulliva       #+#    #+#                */
+<<<<<<< HEAD:dsm_/exec_code.c
 /*   Updated: 2020/02/03 14:30:27 by asulliva      ########   odam.nl         */
+=======
+/*   Updated: 2020/02/23 14:38:08 by asulliva      ########   odam.nl         */
+>>>>>>> aidan:dsm_/exec_code.c
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +20,38 @@
 **	@desc	- function creates a linked list if none present
 **			- function appends to linked list if present
 **	@param	- t_dsm *data, main struct
-**	@return	- t_op *curr, pointer to the end of the list
+**	@return	- t_oper *curr, pointer to the end of the list
 */
 
+<<<<<<< HEAD:dsm_/exec_code.c
 static t_oop	*new_op(t_dsm *data)
 {
 	t_oop	*curr;
+=======
+static t_oper	*new_op(t_dsm *data)
+{
+	t_oper	*curr;
+>>>>>>> aidan:dsm_/exec_code.c
 
 	if (data->ops)
 	{
 		curr = data->ops;
 		while (curr && curr->next)
 			curr = curr->next;
+<<<<<<< HEAD:dsm_/exec_code.c
 		curr->next = (t_oop*)ft_memalloc(sizeof(t_oop));
+=======
+		curr->next = (t_oper*)ft_memalloc(sizeof(t_oper));
+>>>>>>> aidan:dsm_/exec_code.c
 		return (curr->next);
 	}
 	else
 	{
+<<<<<<< HEAD:dsm_/exec_code.c
 		data->ops = (t_oop*)ft_memalloc(sizeof(t_oop));
+=======
+		data->ops = (t_oper*)ft_memalloc(sizeof(t_oper));
+>>>>>>> aidan:dsm_/exec_code.c
 		curr = data->ops;
 		return (curr);
 	}
@@ -83,7 +101,11 @@ static char		*set_name(int op_code)
 
 void			get_line(t_dsm *data, int op, int *size)
 {
+<<<<<<< HEAD:dsm_/exec_code.c
 	t_oop	*new;
+=======
+	t_oper	*new;
+>>>>>>> aidan:dsm_/exec_code.c
 	int		ret;
 	int		s;
 

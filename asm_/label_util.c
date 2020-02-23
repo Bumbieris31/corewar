@@ -6,7 +6,11 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/12 15:12:06 by asulliva       #+#    #+#                */
+<<<<<<< HEAD:asm_/label_util.c
 /*   Updated: 2020/02/03 15:00:51 by asulliva      ########   odam.nl         */
+=======
+/*   Updated: 2020/02/03 15:33:14 by asulliva      ########   odam.nl         */
+>>>>>>> aidan:asm_/label_util.c
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,15 +111,18 @@ t_label		*make_label(t_asm *data, char *s, int line)
 void		get_next_label(t_asm *data, char *name)
 {
 	char	*s;
+	int		last;
 	char	**split;
 	t_label	*new;
 
 	split = NULL;
 	new = make_label(data, name, -1);
+	last = 1;
 	while (get_line(data, data->rfd, &s, NULL))
 	{
 		if (s && !ft_strequ("", s))
 		{
+			last = 0;
 			split = ft_strsplit_ws(s);
 			if (check_instruction(split[0]))
 			{
@@ -139,4 +146,9 @@ void		get_next_label(t_asm *data, char *name)
 		free_arr(&s, &split, 2);
 	}
 	free_arr(&s, &split, 2);
+	if (last)
+	{
+		set_lines(new, data->lines);
+		add_label(data, &new);
+	}
 }

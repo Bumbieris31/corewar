@@ -6,7 +6,11 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/05 16:38:56 by asulliva       #+#    #+#                */
+<<<<<<< HEAD:dsm_/free.c
 /*   Updated: 2020/01/30 15:13:17 by krioliin      ########   odam.nl         */
+=======
+/*   Updated: 2020/02/23 14:38:53 by asulliva      ########   odam.nl         */
+>>>>>>> aidan:dsm_/free.c
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +21,15 @@
 **	@param	- t_op *ops, the LL of operations
 */
 
+<<<<<<< HEAD:dsm_/free.c
 static void	free_ops(t_oop *ops)
 {
 	t_oop	*temp;
+=======
+static void	free_ops(t_oper *ops)
+{
+	t_oper	*temp;
+>>>>>>> aidan:dsm_/free.c
 
 	while (ops)
 	{

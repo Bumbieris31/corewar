@@ -6,7 +6,11 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/30 20:09:35 by asulliva       #+#    #+#                */
+<<<<<<< HEAD:dsm_/includes/dsm.h
 /*   Updated: 2020/01/30 16:26:15 by asulliva      ########   odam.nl         */
+=======
+/*   Updated: 2020/02/23 14:33:11 by asulliva      ########   odam.nl         */
+>>>>>>> aidan:dsm_/includes/dsm.h
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +20,11 @@
 
 # include <fcntl.h>
 # include <unistd.h>
+<<<<<<< HEAD:dsm_/includes/dsm.h
 # include "../../ft_printf/includes/ft_printf.h"
+=======
+# include "../../LIBFT_SRCS/libft/libft.h"
+>>>>>>> aidan:dsm_/includes/dsm.h
 # include "../../VM/includes/op.h"
 
 # define LIVE		0x01
@@ -41,7 +49,11 @@
 # define IND		-3
 
 typedef struct s_dsm	t_dsm;
+<<<<<<< HEAD:dsm_/includes/dsm.h
 typedef struct s_oop	t_oop;
+=======
+typedef struct s_oper	t_oper;
+>>>>>>> aidan:dsm_/includes/dsm.h
 
 struct		s_dsm
 {
@@ -51,6 +63,7 @@ struct		s_dsm
 	char	*name;
 	char	*comment;
 	char	*file_name;
+<<<<<<< HEAD:dsm_/includes/dsm.h
 	t_oop	*ops;
 };
 
@@ -59,12 +72,26 @@ struct		s_oop
 	char	*op_name;
 	char	**args;
 	t_oop	*next;
+=======
+	t_oper	*ops;
+};
+
+struct		s_oper
+{
+	char	*op_name;
+	char	**args;
+	t_oper	*next;
+>>>>>>> aidan:dsm_/includes/dsm.h
 };
 
 /*
 **	args.c
 */
+<<<<<<< HEAD:dsm_/includes/dsm.h
 int			find_args(t_oop *curr, int enc_byte, int arg_amnt, int op);
+=======
+int			find_args(t_oper *curr, int enc_byte, int arg_amnt, int op);
+>>>>>>> aidan:dsm_/includes/dsm.h
 
 /*
 **	convert.c

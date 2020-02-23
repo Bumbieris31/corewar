@@ -6,6 +6,7 @@
 #    By: asulliva <asulliva@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/21 19:23:26 by asulliva       #+#    #+#                 #
+<<<<<<< HEAD
 #    Updated: 2020/01/30 15:23:07 by krioliin      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
@@ -13,6 +14,15 @@
 FLAGS		= -Wall -Wextra -Werror -g -lncurses
 LIB			= ../ft_printf/libftprintf.a
 HEADER		= -I../ft_printf/includes -I includes/
+=======
+#    Updated: 2020/02/23 14:43:06 by asulliva      ########   odam.nl          #
+#                                                                              #
+# **************************************************************************** #
+
+FLAGS		= -Wall -Wextra -Werror -lncurses
+LIB			= ft_printf/libftprintf.a
+HEADER		= -I /ft_printf/includes -I includes/
+>>>>>>> aidan
 NAME		= corewar
 
 SRC			= main.c\

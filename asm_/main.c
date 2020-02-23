@@ -6,7 +6,11 @@
 /*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/05 14:17:50 by asulliva       #+#    #+#                */
+<<<<<<< HEAD:asm_/main.c
 /*   Updated: 2020/02/03 14:33:03 by asulliva      ########   odam.nl         */
+=======
+/*   Updated: 2020/02/23 14:24:00 by asulliva      ########   odam.nl         */
+>>>>>>> aidan:asm_/main.c
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,31 +52,6 @@ static void		check_file(char *file)
 		return ;
 	else
 		error("File exstension must be .s", 0);
-}
-
-void			print_labels(t_label *head)
-{
-	t_label	*curr;
-
-	curr = head;
-	while (curr)
-	{
-		ft_printf("%-15s\tline %d\n", curr->name, curr->line);
-		curr = curr->next;
-	}
-}
-
-void			print_parts(t_parts *head)
-{
-	t_parts	*curr;
-
-	curr = head;
-	while (curr)
-	{
-		ft_printf("%-10s : %-15d = %-10d\tline %d\n",\
-		curr->name, curr->token, curr->value, curr->line);
-		curr = curr->next;
-	}
 }
 
 /*
