@@ -6,13 +6,13 @@
 #    By: asulliva <asulliva@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/21 19:23:26 by asulliva       #+#    #+#                 #
-#    Updated: 2020/02/23 14:13:09 by asulliva      ########   odam.nl          #
+#    Updated: 2020/02/23 14:16:00 by asulliva      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 FLAGS		= -Wall -Wextra -Werror -g -lncurses
 LIB			= ft_printf/libftprintf.a
-HEADER		= -I../ft_printf/includes -I includes/
+HEADER		= -I /ft_printf/includes -I includes/
 NAME		= corewar
 
 SRC			= main.c\

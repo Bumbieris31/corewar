@@ -6,7 +6,7 @@
 /*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/05 14:15:46 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/13 15:32:14 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/02/23 14:22:12 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,18 +50,14 @@ enum					e_oper {
 	AFF = 0x10
 };
 
-# define DIR_ARG1	(int[]) {LIVE, LD, AND, OR, XOR, ZJMP,\
-					LDI, FORK, LLD, LLDI, LFORK}
-# define DIR_ARG2	(int[]) {AND, OR, XOR, LDI, STI, LLDI}
+# define DIR_ARG1	(int[]) {LIVE,LD,AND,OR,XOR,ZJMP,LDI,FORK,LLD,LLDI,LFORK}
+# define DIR_ARG2	(int[]) {AND,OR,XOR,LDI,STI,LLDI}
 # define DIR_ARG3	(int[]) {STI}
-# define IND_ARG1	(int[]) {LD, AND, OR, XOR, LDI, LLD, LLDI}
-# define IND_ARG2	(int[]) {ST, AND, OR, XOR, STI}
-# define REG_ARG1	(int[]) {ST, ADD, SUB, OR, XOR, LDI,\
-					STI, LLDI, AFF}
-# define REG_ARG2	(int[]) {LD, ST, ADD, SUB, AND, OR, XOR,\
-					LDI, STI, LLD, LLDI}
-# define REG_ARG3	(int[]) {ADD, SUB, AND, OR, XOR, LDI,\
-					STI, LLDI}
+# define IND_ARG1	(int[]) {LD,AND,OR,XOR,LDI,LLD,LLDI}
+# define IND_ARG2	(int[]) {ST,AND,OR,XOR,STI}
+# define REG_ARG1	(int[]) {ST,ADD,SUB,OR,XOR,LDI,STI,LLDI,AFF}
+# define REG_ARG2	(int[]) {LD,ST,ADD,SUB,AND,OR,XOR,LDI,STI,LLD,LLDI}
+# define REG_ARG3	(int[]) {ADD,SUB,AND,OR,XOR,LDI,STI,LLDI}
 
 struct					s_parts {
 	char				*name;
