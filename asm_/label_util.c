@@ -6,11 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/12 15:12:06 by asulliva       #+#    #+#                */
-<<<<<<< HEAD:asm_/label_util.c
-/*   Updated: 2020/02/03 15:00:51 by asulliva      ########   odam.nl         */
-=======
 /*   Updated: 2020/02/03 15:33:14 by asulliva      ########   odam.nl         */
->>>>>>> aidan:asm_/label_util.c
 /*                                                                            */
 /* ************************************************************************** */
 

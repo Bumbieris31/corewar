@@ -6,11 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/30 15:55:51 by asulliva       #+#    #+#                */
-<<<<<<< HEAD:dsm_/parse.c
-/*   Updated: 2020/01/29 18:58:33 by krioliin      ########   odam.nl         */
-=======
 /*   Updated: 2020/02/23 14:37:13 by asulliva      ########   odam.nl         */
->>>>>>> aidan:dsm_/parse.c
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +19,7 @@
 
 static void	get_magic_header(t_dsm *data)
 {
-<<<<<<< HEAD:dsm_/parse.c
-	unsigned char	s[4 + 1];
-=======
 	unsigned char	s[4];
->>>>>>> aidan:dsm_/parse.c
 	int				magic;
 
 	magic = read(data->rfd, (void*)s, 4);

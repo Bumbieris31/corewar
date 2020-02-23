@@ -6,11 +6,7 @@
 /*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/10 15:44:58 by abumbier       #+#    #+#                */
-<<<<<<< HEAD:asm_/valid_oper_line.c
-/*   Updated: 2020/02/03 14:38:22 by asulliva      ########   odam.nl         */
-=======
 /*   Updated: 2020/02/23 14:25:27 by asulliva      ########   odam.nl         */
->>>>>>> aidan:asm_/valid_oper_line.c
 /*                                                                            */
 /* ************************************************************************** */
 

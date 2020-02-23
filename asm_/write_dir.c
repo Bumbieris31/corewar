@@ -6,13 +6,13 @@
 /*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/18 19:44:42 by abumbier       #+#    #+#                */
-/*   Updated: 2020/02/03 14:41:24 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/01/05 17:00:17 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/asm.h"
 
-char		*clean_label(char *label)
+static char	*clean_label(char *label)
 {
 	char	*new;
 	int		i;
@@ -31,6 +31,19 @@ char		*clean_label(char *label)
 		i++;
 	}
 	return (new);
+}
+
+static int	find_label(t_label *label, char *name, int line)
+{
+	char *clean;
+
+	clean = clean_label(name);
+	while (label && ft_strcmp(clean, label->name))
+		label = label->next;
+	free(clean);
+	if (!label)
+		error("Label not found", line);
+	return (label->line);
 }
 
 static int	label_ahead(t_parts *start, int to_reach, int current)

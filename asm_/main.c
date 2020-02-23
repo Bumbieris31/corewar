@@ -6,11 +6,7 @@
 /*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/05 14:17:50 by asulliva       #+#    #+#                */
-<<<<<<< HEAD:asm_/main.c
-/*   Updated: 2020/02/03 14:33:03 by asulliva      ########   odam.nl         */
-=======
 /*   Updated: 2020/02/23 14:24:00 by asulliva      ########   odam.nl         */
->>>>>>> aidan:asm_/main.c
 /*                                                                            */
 /* ************************************************************************** */
 
