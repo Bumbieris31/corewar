@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/04 18:25:09 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/06 15:13:31 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/02/23 14:38:44 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	write_header(t_dsm *data)
 
 static void	write_code(t_dsm *data)
 {
-	t_op	*curr;
+	t_oper	*curr;
 	int		i;
 
 	curr = data->ops;

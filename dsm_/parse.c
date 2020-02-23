@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/30 15:55:51 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/05 16:57:25 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/02/23 14:37:13 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@
 
 static void	get_magic_header(t_dsm *data)
 {
-	unsigned char	s[MAGIC_LENGTH + 1];
+	unsigned char	s[4];
 	int				magic;
 
 	magic = read(data->rfd, (void*)s, 4);
-	if (magic < MAGIC_LENGTH)
+	if (magic < 4)
 		error("File is corrupted\nMight be the magic header", 0);
-	magic = convert(s, MAGIC_LENGTH);
+	magic = convert(s, 4);
 	if (magic != COREWAR_EXEC_MAGIC)
 		error("File is corrupted\nMight be the magic header", 0);
 }

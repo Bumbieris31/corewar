@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/05 16:38:56 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/05 16:57:32 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/02/23 14:38:53 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 **	@param	- t_op *ops, the LL of operations
 */
 
-static void	free_ops(t_op *ops)
+static void	free_ops(t_oper *ops)
 {
-	t_op	*temp;
+	t_oper	*temp;
 
 	while (ops)
 	{

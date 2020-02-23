@@ -6,7 +6,7 @@
 /*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/10 15:44:58 by abumbier       #+#    #+#                */
-/*   Updated: 2020/01/13 15:32:40 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/02/23 14:25:27 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,11 +110,14 @@ static int	valid_registry(int arg_num, int oper_code)
 
 static int	arg_error(int line, int arg_c, int oper_code, int valid)
 {
-	char	*dir = "direct";
-	char	*ind = "indirect";
-	char	*reg = "registry";
+	char	*dir;
+	char	*ind;
+	char	*reg;
 	char	*var;
 
+	dir = ft_strdup("direct");
+	ind = ft_strdup("indirect");
+	reg = ft_strdup("registry");
 	if (valid == DIR)
 		var = dir;
 	else if (valid == IND)
@@ -123,6 +126,9 @@ static int	arg_error(int line, int arg_c, int oper_code, int valid)
 		var = reg;
 	ft_printf("Error in line: %d\nOperation with an op_code %#X does not take \
 an argument of type -%s- as argument #%d", line, oper_code, var, arg_c);
+	free(dir);
+	free(ind);
+	free(reg);
 	return (0);
 }
 

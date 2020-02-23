@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/22 17:55:13 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/29 15:21:48 by krioliin      ########   odam.nl         */
+/*   Updated: 2020/02/23 14:26:58 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,7 @@ void		execute(t_vm *vm)
 		if (!c->wait_cycles && (c->opcode >= 1 && c->opcode <= 16))
 			execute_op(vm, c);
 		else if (!c->wait_cycles)
-			mv_cursor( c, 1);
+			mv_cursor(c, 1);
 		c = c->next;
 	}
 	if (FLAG->v)
