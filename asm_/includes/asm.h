@@ -6,7 +6,7 @@
 /*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/05 14:15:46 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/03 14:41:34 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/02/23 17:52:25 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 # include <fcntl.h>
 # include <unistd.h>
-# include "../../ft_printf/includes/ft_printf.h"
+# include "../../LIBFT_SRCS/libft/libft.h"
 # include "../../VM/includes/op.h"
 
 typedef enum e_arg		t_arg;
@@ -87,31 +87,37 @@ struct					s_asm {
 };
 
 void					print_parts(t_parts *head);
+
 /*
 **	calculate.c
 */
+
 void					calc_line_byte(t_asm *data);
 
 /*
-**  error.c
+**	error.c
 */
+
 void					error(char *message, int line);
 
 /*
 **	free.c
 */
+
 void					free_arr(char **arr1, char ***arr2, int flag);
 void					free_data(t_asm *data);
 
 /*
 **	instruction.c
 */
+
 void					parse_instruction(t_asm *data, char **line);
 int						get_argument(char *s);
 
 /*
 **	label.c
 */
+
 void					parse_label(t_asm *data, char *s);
 int						check_instruction(char *s);
 void					add_label(t_asm *data, t_label **new);
@@ -121,25 +127,27 @@ void					get_label(t_asm *data, char **line);
 /*
 **	label_utils.c
 */
+
 void					get_next_label(t_asm *data, char *name);
 t_label					*make_label(t_asm *data, char *s, int line);
-int						find_label(t_label *label, char *name, int line);
-char					*clean_label(char *label);
 
 /*
 **	name_comment.c
 */
+
 void					parse_nc(t_asm *data, char *s, int type);
 
 /*
 **	parse.c
 */
+
 void					parse(t_asm *data);
 int						get_line(t_asm *data, int fd, char **s, char **split);
 
 /*
 **	token.c
 */
+
 int						get_token(char *s);
 int						get_value(int token, int line, char *s);
 
@@ -199,5 +207,11 @@ void					write_champ_byte(t_asm *data);
 */
 
 void					write_dir(t_asm *data, t_parts *parts, int op);
+
+/*
+**	controlla.c
+*/
+
+char					*clean_label(char *label);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/12 15:12:06 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/05 15:49:15 by abumbier      ########   odam.nl         */
+/*   Updated: 2020/02/23 16:52:34 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,15 +107,18 @@ t_label		*make_label(t_asm *data, char *s, int line)
 void		get_next_label(t_asm *data, char *name)
 {
 	char	*s;
+	int		last;
 	char	**split;
 	t_label	*new;
 
 	split = NULL;
 	new = make_label(data, name, -1);
+	last = 1;
 	while (get_line(data, data->rfd, &s, NULL))
 	{
 		if (s && !ft_strequ("", s))
 		{
+			last = 0;
 			split = ft_strsplit_ws(s);
 			if (check_instruction(split[0]))
 			{
@@ -139,4 +142,9 @@ void		get_next_label(t_asm *data, char *name)
 		free_arr(&s, &split, 2);
 	}
 	free_arr(&s, &split, 2);
+	if (last)
+	{
+		set_lines(new, data->lines);
+		add_label(data, &new);
+	}
 }

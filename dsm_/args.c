@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/02 21:34:48 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/30 15:07:36 by krioliin      ########   odam.nl         */
+/*   Updated: 2020/02/23 14:38:25 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ static char	*prep_arg(int enc_byte, int nb_arg)
 /*
 **	@desc	- function finds out what type of arguments are coming
 **			- and fills them in accordingly
-**	@param	- t_op *curr, the current op
+**	@param	- t_oper *curr, the current op
 **			- int enc_byte, the encoding byte, already shifted (enc_byte >> 2)
 **			- use enc_byte to find out what argument types are coming up
 **			- int arg_amnt, amount of arguments expected for this operation
@@ -109,7 +109,7 @@ static char	*prep_arg(int enc_byte, int nb_arg)
 **	@return	- int size, amount of bytes read
 */
 
-int			find_args(t_oop *curr, int enc_byte, int arg_amnt, int op)
+int			find_args(t_oper *curr, int enc_byte, int arg_amnt, int op)
 {
 	int		i;
 	int		size;

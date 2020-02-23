@@ -6,7 +6,7 @@
 /*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/10 15:44:58 by abumbier       #+#    #+#                */
-/*   Updated: 2020/02/03 14:38:22 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/02/23 14:25:27 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,9 @@ static int	arg_error(int line, int arg_c, int oper_code, int valid)
 		var = reg;
 	ft_printf("Error in line: %d\nOperation with an op_code %#X does not take \
 an argument of type -%s- as argument #%d", line, oper_code, var, arg_c);
+	free(dir);
+	free(ind);
+	free(reg);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/30 20:09:35 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/30 16:26:15 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/02/23 14:33:11 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 # include <fcntl.h>
 # include <unistd.h>
-# include "../../ft_printf/includes/ft_printf.h"
+# include "../../LIBFT_SRCS/libft/libft.h"
 # include "../../VM/includes/op.h"
 
 # define LIVE		0x01
@@ -41,7 +41,7 @@
 # define IND		-3
 
 typedef struct s_dsm	t_dsm;
-typedef struct s_oop	t_oop;
+typedef struct s_oper	t_oper;
 
 struct		s_dsm
 {
@@ -51,20 +51,20 @@ struct		s_dsm
 	char	*name;
 	char	*comment;
 	char	*file_name;
-	t_oop	*ops;
+	t_oper	*ops;
 };
 
-struct		s_oop
+struct		s_oper
 {
 	char	*op_name;
 	char	**args;
-	t_oop	*next;
+	t_oper	*next;
 };
 
 /*
 **	args.c
 */
-int			find_args(t_oop *curr, int enc_byte, int arg_amnt, int op);
+int			find_args(t_oper *curr, int enc_byte, int arg_amnt, int op);
 
 /*
 **	convert.c

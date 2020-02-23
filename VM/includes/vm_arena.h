@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   vm_arena.h                                         :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
+/*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/21 19:25:13 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/29 18:57:29 by krioliin      ########   odam.nl         */
+/*   Updated: 2020/02/23 14:16:33 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include "op.h"
-# include "ft_printf.h"
+# include "../ft_printf/includes/ft_printf.h"
 # include "operations.h"
 # include "corewar_visual.h"
 

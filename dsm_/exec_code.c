@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/30 19:39:31 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/03 14:30:27 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/02/23 14:38:08 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,24 @@
 **	@desc	- function creates a linked list if none present
 **			- function appends to linked list if present
 **	@param	- t_dsm *data, main struct
-**	@return	- t_op *curr, pointer to the end of the list
+**	@return	- t_oper *curr, pointer to the end of the list
 */
 
-static t_oop	*new_op(t_dsm *data)
+static t_oper	*new_op(t_dsm *data)
 {
-	t_oop	*curr;
+	t_oper	*curr;
 
 	if (data->ops)
 	{
 		curr = data->ops;
 		while (curr && curr->next)
 			curr = curr->next;
-		curr->next = (t_oop*)ft_memalloc(sizeof(t_oop));
+		curr->next = (t_oper*)ft_memalloc(sizeof(t_oper));
 		return (curr->next);
 	}
 	else
 	{
-		data->ops = (t_oop*)ft_memalloc(sizeof(t_oop));
+		data->ops = (t_oper*)ft_memalloc(sizeof(t_oper));
 		curr = data->ops;
 		return (curr);
 	}
@@ -46,7 +46,7 @@ static t_oop	*new_op(t_dsm *data)
 **	@return	- string with the name of the operation with a space at the end
 */
 
-static char		*set_name(int op_code)
+static char	*set_name(int op_code)
 {
 	static char **names = NULL;
 
@@ -81,9 +81,9 @@ static char		*set_name(int op_code)
 **			- int *size, the total size read given as a pointer
 */
 
-void			get_line(t_dsm *data, int op, int *size)
+void		get_line(t_dsm *data, int op, int *size)
 {
-	t_oop	*new;
+	t_oper	*new;
 	int		ret;
 	int		s;
 
@@ -104,7 +104,7 @@ void			get_line(t_dsm *data, int op, int *size)
 **	@param	- t_dsm *data, main struct
 */
 
-void			get_exec_code(t_dsm *data)
+void		get_exec_code(t_dsm *data)
 {
 	int	s;
 	int	ret;
