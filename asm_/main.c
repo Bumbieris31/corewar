@@ -6,7 +6,7 @@
 /*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/05 14:17:50 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/23 17:57:49 by abumbier      ########   odam.nl         */
+/*   Updated: 2020/02/25 15:14:56 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,5 @@ int				main(int ac, char **av)
 	create_cor(data);
 	close(data->wfd);
 	free_data(data);
-	ft_printf("Here\n");
 	return (0);
 }
