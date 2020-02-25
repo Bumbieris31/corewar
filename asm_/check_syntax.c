@@ -6,7 +6,7 @@
 /*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/09 18:06:37 by abumbier       #+#    #+#                */
-/*   Updated: 2020/01/05 16:59:01 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/02/25 18:02:55 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,25 @@
 **	@param	- t_parts file, tokenized file
 */
 
-void		check_syntax(t_parts *file)
+void		check_syntax(t_asm *data)
 {
-	t_parts *token;
+	int		invalid;
+	t_parts	*token;
 
-	token = file;
+	token = data->parts;
+	invalid = 0;
 	while (token)
 	{
 		if (token->token >= LIVE && token->token <= AFF)
 			if (!valid_oper_line(&token))
 			{
+				invalid = 1;
 				break ;
 			}
+	}
+	if (invalid)
+	{
+		free_data(data);
+		exit(1);
 	}
 }

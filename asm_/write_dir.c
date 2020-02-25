@@ -6,24 +6,11 @@
 /*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/18 19:44:42 by abumbier       #+#    #+#                */
-/*   Updated: 2020/02/25 14:48:55 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/02/25 17:31:04 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/asm.h"
-
-static int	find_label(t_label *label, char *name, int line)
-{
-	char *clean;
-
-	clean = clean_label(name);
-	while (label && ft_strcmp(clean, label->name))
-		label = label->next;
-	free(clean);
-	if (!label)
-		error("Label not found", line);
-	return (label->line);
-}
 
 static int	label_ahead(t_parts *start, int to_reach, int current)
 {
@@ -72,7 +59,18 @@ static int	label_behind(t_parts *start, int to_reach, int current)
 	return (bytes);
 }
 
-static int	calculate_lines(t_parts *start, int to_reach, int current)
+/*
+**	@desc	- writes a direct argument to the .cor file.
+**	@param	- t_parts *start, all the parts of .s file tokenized.
+**			- int to_reach, label line towards which instruction sizes will be\
+**			- calculated.
+**			- int current, label line from which instruction sizes will be\
+**			- calcualted.
+**	@ret	- difference between current token line and line represented by\
+**			- label(to_reach).
+*/
+
+int			calculate_lines(t_parts *start, int to_reach, int current)
 {
 	int	bytes;
 
@@ -84,19 +82,28 @@ static int	calculate_lines(t_parts *start, int to_reach, int current)
 	return (bytes);
 }
 
-void		write_dir(t_asm *data, t_parts *parts, int op)
+/*
+**	@desc	- writes a direct argument to the .cor file.
+**	@param	- t_asm *data, main struct holding output file info and\
+**			- parsed assembly.
+**			- t_parts *parts, token being written.
+**			- int op, operation to which the token belongs.
+*/
+
+void		write_dir(t_asm *data, t_parts *token, int op)
 {
 	int		value;
 	int		label_line;
 	int		four_bytes;
 
-	if (parts->value == MAX_INT)
+	if (token->value == MAX_INT)
 	{
-		label_line = find_label(data->labels, parts->name, parts->line);
-		value = calculate_lines(data->parts, label_line, parts->line);
+		label_line = find_label(data->labels, token->name, token->line);
+		value = calculate_lines(data->parts, label_line, token->line);
+		token->value = value;
 	}
 	else
-		value = parts->value;
+		value = token->value;
 	if ((op >= 0x01 && op <= 0x08) || op == 0x0d || op == 0x10)
 	{
 		if (!value)
@@ -108,5 +115,5 @@ void		write_dir(t_asm *data, t_parts *parts, int op)
 		write(data->wfd, &four_bytes, 4);
 	}
 	else
-		write_ind(value, data->wfd);
+		write_ind(data, token);
 }

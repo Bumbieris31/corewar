@@ -6,7 +6,7 @@
 /*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/05 14:15:46 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/25 15:13:55 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/02/25 20:58:19 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,6 @@ int						get_argument(char *s);
 */
 
 void					parse_label(t_asm *data, char *s);
-int						check_instruction(char *s);
 void					add_label(t_asm *data, t_label **new);
 int						check_label(char *label);
 void					get_label(t_asm *data, char **line);
@@ -128,8 +127,16 @@ void					get_label(t_asm *data, char **line);
 **	label_utils.c
 */
 
-void					get_next_label(t_asm *data, char *name);
+void					set_lines(t_label *head, int line);
+void					add_to_label(t_asm *data, char *s, t_label **head);
 t_label					*make_label(t_asm *data, char *s, int line);
+
+/*
+**	get_next_label.c
+*/
+
+void					get_next_label(t_asm *data, char *name);
+
 
 /*
 **	name_comment.c
@@ -155,7 +162,7 @@ int						get_value(int token, int line, char *s);
 **	check_syntax.c
 */
 
-void					check_syntax(t_parts *file);
+void					check_syntax(t_asm *data);
 
 /*
 **	valid_oper_line.c
@@ -199,19 +206,27 @@ void					write_size(t_parts *parts, int wfd);
 **	write_champ_byte.c
 */
 
-void					write_ind(int value, int wfd);
 void					write_champ_byte(t_asm *data);
+void					write_ind(t_asm *data, t_parts *token);
 
 /*
 **	write_dir.c
 */
 
 void					write_dir(t_asm *data, t_parts *parts, int op);
+int						calculate_lines(t_parts *start, int to_reach, int current);
 
 /*
-**	controlla.c
+**	clean_label.c
 */
 
 char					*clean_label(char *label);
+int						find_label(t_label *label, char *name, int line);
+
+/*
+**	check_instruction.c
+*/
+
+int						check_instruction(char *s);
 
 #endif

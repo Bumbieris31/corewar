@@ -6,7 +6,7 @@
 /*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/16 18:33:41 by abumbier       #+#    #+#                */
-/*   Updated: 2020/01/05 17:00:11 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/02/25 17:06:42 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,27 @@ static void		write_reg(int value, int wfd)
 		write(wfd, &reg, 1);
 }
 
-void			write_ind(int value, int wfd)
+void			write_ind(t_asm *data, t_parts *token)
 {
-	short ind;
-	short swap;
+	int		label_line;
+	short	ind;
+	short	swap;
 
-	ind = (short)value;
+	if (token->value == MAX_INT)
+	{
+		ft_printf("token->name %s\n", token->name);
+		label_line = find_label(data->labels, token->name, token->line);
+		ind = (short)calculate_lines(data->parts, label_line, token->line);
+	}
+	else
+		ind = (short)token->value;
 	if (!ind)
 	{
-		write_null_bytes(2, wfd);
+		write_null_bytes(2, data->wfd);
 		return ;
 	}
 	swap = swap_2_bytes(ind);
-	write(wfd, &swap, 2);
+	write(data->wfd, &swap, 2);
 }
 
 static t_parts	*write_line(t_asm *data, t_parts *parts)
@@ -51,7 +59,7 @@ static t_parts	*write_line(t_asm *data, t_parts *parts)
 		if (parts->token == REG)
 			write_reg(parts->value, data->wfd);
 		else if (parts->token == IND)
-			write_ind(parts->value, data->wfd);
+			write_ind(data, parts);
 		else if (parts->token == DIR)
 			write_dir(data, parts, op);
 		parts = parts->next;

@@ -6,7 +6,7 @@
 /*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/12 15:12:06 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/25 15:03:31 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/02/25 19:42:45 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static char	*rm_label_char(char *s, int line)
 **			- t_label *head, to already existing label
 */
 
-static void	add_to_label(t_asm *data, char *s, t_label **head)
+void	add_to_label(t_asm *data, char *s, t_label **head)
 {
 	t_label	*curr;
 	t_label	*new;
@@ -65,7 +65,7 @@ static void	add_to_label(t_asm *data, char *s, t_label **head)
 **			- int line, line number to set to
 */
 
-static void	set_lines(t_label *head, int line)
+void	set_lines(t_label *head, int line)
 {
 	t_label	*curr;
 
@@ -96,55 +96,4 @@ t_label		*make_label(t_asm *data, char *s, int line)
 	new->line = line;
 	new->next = NULL;
 	return (new);
-}
-
-/*
-**	@desc	- function get the label variables if its not on the same line
-**	@param	- t_asm *data, main struct
-**			- char *name, name of the label
-*/
-
-void		get_next_label(t_asm *data, char *name)
-{
-	char	*s;
-	int		last;
-	char	**split;
-	t_label	*new;
-
-	split = NULL;
-	new = make_label(data, name, -1);
-	last = 1;
-	while (get_line(data, data->rfd, &s, NULL))
-	{
-		if (s && !ft_strequ("", s))
-		{
-			last = 0;
-			split = ft_strsplit_ws(s);
-			if (check_instruction(split[0]))
-			{
-				set_lines(new, data->lines);
-				add_label(data, &new);
-				parse_instruction(data, split);
-				break ;
-			}
-			else if (split[0][ft_strlen(s) - 1] == LABEL_CHAR)
-				add_to_label(data, split[0], &new);
-			else if (ft_strchr(split[0], LABEL_CHAR))
-			{
-				add_label(data, &new);
-				set_lines(new, data->lines);
-				get_label(data, split);
-				break ;
-			}
-			else
-				error("Invalid label", data->lines);
-		}
-		free_arr(&s, &split, 2);
-	}
-	free_arr(&s, &split, 2);
-	if (last)
-	{
-		set_lines(new, data->lines);
-		add_label(data, &new);
-	}
 }

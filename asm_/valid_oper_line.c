@@ -6,7 +6,7 @@
 /*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/10 15:44:58 by abumbier       #+#    #+#                */
-/*   Updated: 2020/02/23 14:25:27 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/02/25 21:06:52 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,10 @@ static int	valid_indirect(int arg_num, int oper_code)
 
 	i = 0;
 	if (arg_num == 3)
-		return (0);
+	{
+		ft_printf("wtf\n");
+		return (IND);
+	}
 	while (i < 7)
 	{
 		if (arg_num == 1)

@@ -155,7 +155,7 @@ $(NAME):
 clean:
 		@rm -f $(OBJ)
 
-fclean:	clean
+fclean: clean
 		@rm -f $(NAME)
 
-re:	fclean all
+re: fclean all

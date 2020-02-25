@@ -6,7 +6,7 @@
 /*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/05 14:17:50 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/25 15:14:56 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/02/25 18:02:55 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int				main(int ac, char **av)
 		error("Invalid file", 0);
 	parse(data);
 	close(data->rfd);
-	check_syntax(data->parts);
+	check_syntax(data);
 	create_cor(data);
 	close(data->wfd);
 	free_data(data);

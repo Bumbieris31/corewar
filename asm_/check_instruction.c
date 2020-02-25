@@ -6,7 +6,7 @@
 /*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/03 14:34:26 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/05 15:48:48 by abumbier      ########   odam.nl         */
+/*   Updated: 2020/02/25 17:27:19 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,17 +62,4 @@ int			check_instruction(char *s)
 		return (XOR);
 	else
 		return (check_instruction2(s));
-}
-
-int			find_label(t_label *label, char *name, int line)
-{
-	char *clean;
-
-	clean = clean_label(name);
-	while (label && ft_strcmp(clean, label->name))
-		label = label->next;
-	free(clean);
-	if (!label)
-		error("Label not found", line);
-	return (label->line);
 }

@@ -6,11 +6,16 @@
 /*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/13 19:01:19 by abumbier       #+#    #+#                */
-/*   Updated: 2020/01/05 17:00:13 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/02/25 16:57:45 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/asm.h"
+
+/*
+**	@descr	- For writing the magic header at the beginning of the file to be\
+**			- recognized as a valid .cor.
+*/
 
 void		write_magic_header(int wfd)
 {
@@ -19,6 +24,10 @@ void		write_magic_header(int wfd)
 	magic = swap_4_bytes(COREWAR_EXEC_MAGIC);
 	write(wfd, &magic, 4);
 }
+
+/*
+**	@descr	- For writing strings in the format necesary for .cor files.
+*/
 
 void		write_str(char *name, int limit, int wfd)
 {
@@ -36,6 +45,11 @@ void		write_str(char *name, int limit, int wfd)
 	if (i > 0)
 		write_null_bytes(i, wfd);
 }
+
+/*
+**	@descr	- Main writing function that executes functions for all the .cor\
+**			- file parts.
+*/
 
 void		write_cor_file(t_asm *data)
 {

@@ -6,29 +6,11 @@
 /*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/16 16:58:59 by abumbier       #+#    #+#                */
-/*   Updated: 2020/01/05 16:59:15 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/02/25 17:22:06 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/asm.h"
-
-void		print_bits(unsigned char octet)
-{
-	int z;
-	int	oct;
-
-	oct = octet;
-	z = 128;
-	while (z > 0)
-	{
-		if (oct & z)
-			write(1, "1", 1);
-		else
-			write(1, "0", 1);
-		z >>= 1;
-	}
-	write(1, "\n", 1);
-}
 
 static void	add_reg(char *enc, int argc)
 {
