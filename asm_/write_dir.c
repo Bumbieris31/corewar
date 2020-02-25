@@ -6,32 +6,11 @@
 /*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/18 19:44:42 by abumbier       #+#    #+#                */
-/*   Updated: 2020/02/23 17:50:07 by abumbier      ########   odam.nl         */
+/*   Updated: 2020/02/25 14:48:55 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/asm.h"
-
-char	*clean_label(char *label)
-{
-	char	*new;
-	int		i;
-	int		j;
-
-	new = ft_strnew(ft_strlen(label));
-	i = 0;
-	j = 0;
-	while (label[i])
-	{
-		if (ft_strchr(LABEL_CHARS, label[i]))
-		{
-			new[j] = label[i];
-			j++;
-		}
-		i++;
-	}
-	return (new);
-}
 
 static int	find_label(t_label *label, char *name, int line)
 {
