@@ -6,7 +6,7 @@
 /*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/10 17:29:07 by asulliva       #+#    #+#                */
-/*   Updated: 2020/01/05 16:59:29 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/02/26 16:43:25 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,11 @@ void		parse_instruction(t_asm *data, char **line)
 	i = 0;
 	while (line[i])
 	{
+		if (line[i][ft_strlen(line[i]) - 1] != ',' && ft_strchr(line[i], ','))
+		{
+			line = ft_strsplit(line[i], ',');
+			i = 0;
+		}
 		new = make_instruction(get_token(line[i]), data->lines, line[i]);
 		add_instruction(data, new);
 		i++;
