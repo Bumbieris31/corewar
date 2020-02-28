@@ -6,7 +6,7 @@
 /*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/10 17:29:07 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/25 21:23:33 by abumbier      ########   odam.nl         */
+/*   Updated: 2020/02/28 16:10:30 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,22 +109,20 @@ int			get_argument(char *s)
 **			- char **line, line split on whitespace
 */
 
-void		parse_instruction(t_asm *data, char **line_parts)
+void		parse_instruction(t_asm *data, char **line)
 {
 	t_parts	*new;
 	int		i;
 
 	i = 0;
-	while (line_parts[i])
+	while (line[i])
 	{
-		if (ft_strchr(line_parts[i], SEPARATOR_CHAR) &&\
-		line_parts[i][ft_strlen(line_parts[i]) - 1] != SEPARATOR_CHAR)
+		if (line[i][ft_strlen(line[i]) - 1] != ',' && ft_strchr(line[i], ','))
 		{
-			line_parts = ft_strsplit(line_parts[i], SEPARATOR_CHAR);						// Breaks in arg1,arg2, arg3 situation
+			line = ft_strsplit(line[i], ',');
 			i = 0;
 		}
-		new = make_instruction(get_token(line_parts[i]), data->lines, \
-		line_parts[i]);
+		new = make_instruction(get_token(line[i]), data->lines, line[i]);
 		add_instruction(data, new);
 		i++;
 	}

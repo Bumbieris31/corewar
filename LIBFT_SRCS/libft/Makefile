@@ -70,7 +70,8 @@ SRC = ft_memset.c \
 		ft_str_is_digit.c \
 		ft_lstrev.c \
 		ft_strndup.c \
-		ft_strsplit_ws.c
+		ft_strsplit_ws.c \
+		ft_wordlen.c
 
 OBJ = ft_memset.o \
 		ft_memmove.o \
@@ -142,7 +143,8 @@ OBJ = ft_memset.o \
 		ft_str_is_digit.o \
 		ft_lstrev.o \
 		ft_strndup.o \
-		ft_strsplit_ws.o
+		ft_strsplit_ws.o \
+		ft_wordlen.o
 
 HEADER = ./libft.h
 

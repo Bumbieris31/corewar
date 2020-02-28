@@ -6,12 +6,14 @@
 /*   By: abumbier <abumbier@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/25 19:41:35 by abumbier       #+#    #+#                */
-/*   Updated: 2020/02/25 21:01:12 by abumbier      ########   odam.nl         */
+/*   Updated: 2020/02/28 18:30:25 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/asm.h"
 
+/*
+*/
 static int	add_instr_line(t_label *new, t_asm *data, char ***split)
 {
 	set_lines(new, data->lines);
@@ -46,13 +48,11 @@ int			add_parts_to_data(char *str, t_asm *data, t_label *new)
 	}
 	return (0);
 }
-
 /*
 **	@desc	- function get the label variables if its not on the same line
 **	@param	- t_asm *data, main struct
 **			- char *name, name of the label
 */
-
 void		get_next_label(t_asm *data, char *name)
 {
 	int		last;
@@ -80,8 +80,8 @@ void		get_next_label(t_asm *data, char *name)
 		add_label(data, &new);
 	}
 }
-
 /*
+
 void		get_next_label(t_asm *data, char *name)
 {
 	char	*str;

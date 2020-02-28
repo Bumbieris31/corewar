@@ -6,7 +6,7 @@
 /*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/10 14:31:21 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/23 17:42:01 by abumbier      ########   odam.nl         */
+/*   Updated: 2020/02/28 19:30:37 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ void		get_label(t_asm *data, char **line)
 {
 	t_label		*new;
 	char		**split;
+	int			line_nb;
 
 	split = NULL;
 	label_syntax(line[0], data->lines);
@@ -92,6 +93,13 @@ void		get_label(t_asm *data, char **line)
 		ft_strclr(line[0]);
 		line[0] = ft_strdup(split[1]);
 		parse_instruction(data, line);
+	}
+	else if (line[1] && check_instruction(line[1]))
+	{
+		line_nb = data->lines;
+		parse_instruction(data, &line[1]);
+		new = make_label(data, split[0], line_nb);
+		add_label(data, &new);
 	}
 	else
 		get_next_label(data, split[0]);

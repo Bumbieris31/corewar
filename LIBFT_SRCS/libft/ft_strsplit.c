@@ -3,86 +3,76 @@
 /*                                                        ::::::::            */
 /*   ft_strsplit.c                                      :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: asulliva <marvin@codam.nl>                   +#+                     */
+/*   By: abumbier <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/17 13:41:09 by asulliva       #+#    #+#                */
-/*   Updated: 2019/12/12 17:44:11 by asulliva      ########   odam.nl         */
+/*   Created: 2019/02/03 20:12:01 by abumbier      #+#    #+#                 */
+/*   Updated: 2019/02/15 20:05:13 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-static int	ft_countwords(char const *s, char c)
+static int	split_count(char const *s, char c)
 {
-	int word_count;
-	int i;
+	int	i;
+	int count;
 
-	word_count = 0;
+	count = 0;
 	i = 0;
-	while (s[i] != 0)
+	while (s[i])
 	{
-		if (s[i] != c && (s[i + 1] == c || s[i + 1] == '\0'))
-			word_count++;
-		i++;
-	}
-	return (word_count);
-}
-
-static void	ft_cpychars(char const *s, char *word, int start, int stop)
-{
-	int i;
-
-	i = 0;
-	while (start < stop)
-	{
-		word[i] = s[start];
-		start++;
-		i++;
-	}
-	word[i] = '\0';
-}
-
-static char	**ft_cpwrds(char **words, char const *s, char c)
-{
-	int i;
-	int j;
-	int start;
-	int stop;
-
-	i = -1;
-	j = 0;
-	start = 0;
-	stop = 0;
-	while (s[i] != '\0')
-	{
-		if (s[i] == c || s[i] == '\0')
-			start = i + 1;
-		if (s[i] != '\0' && s[i] != c && (s[i + 1] == '\0' ||
-			s[i + 1] == c))
+		if (s[i] != c)
 		{
-			stop = i + 1;
-			words[j] = (char*)ft_memalloc(sizeof(char) * (stop - start + 1));
-			ft_cpychars(s, words[j], start, stop);
-			j++;
+			count++;
+			while (s[i] && s[i] != c)
+				i++;
 		}
+		else
+			i++;
+	}
+	return (count);
+}
+
+static char	**get_split(char **split, const char *s, char c)
+{
+	int	i;
+	int n;
+	int x;
+
+	i = 0;
+	x = 0;
+	while (i < split_count(s, c))
+	{
+		n = 0;
+		while (s[x] && s[x] == c)
+			x++;
+		split[i] = ft_strnew(ft_wordlen(&s[x], c) + 1);
+		if (split[i] == NULL)
+			return (NULL);
+		while (s[x] && s[x] != c)
+		{
+			split[i][n] = s[x];
+			n++;
+			x++;
+		}
+		split[i][n] = '\0';
 		i++;
 	}
-	words[j] = 0;
-	return (words);
+	split[i] = NULL;
+	return (split);
 }
 
 char		**ft_strsplit(char const *s, char c)
 {
-	char	**words;
-	int		w_count;
+	char	**split;
 
-	if (s && c)
-	{
-		w_count = ft_countwords(s, c);
-		words = (char**)ft_memalloc(sizeof(char*) * (w_count + 1));
-		if (words)
-			return (ft_cpwrds(words, s, c));
-	}
-	return (0);
+	if (!s)
+		return (NULL);
+	split = (char**)malloc(sizeof(char*) * split_count(s, c) + 1);
+	if (!split)
+		return (NULL);
+	split = get_split(split, s, c);
+	if (split == NULL)
+		return (NULL);
+	return (split);
 }

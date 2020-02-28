@@ -6,7 +6,7 @@
 /*   By: asulliva <asulliva@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/01/17 21:46:10 by awehlbur       #+#    #+#                */
-/*   Updated: 2019/12/10 14:42:13 by asulliva      ########   odam.nl         */
+/*   Updated: 2020/02/28 18:12:49 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,4 +98,5 @@ char				*ft_strjoinone(char *s, char c);
 int					str_is_digit(char *str);
 void				ft_lstrev(t_list **list);
 char				**ft_strsplit_ws(char const *s);
+int					ft_wordlen(const char *s, char c);
 #endif
