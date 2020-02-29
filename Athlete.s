@@ -1,4 +1,4 @@
-.name "Athlete"
+.name "Athlete1"
 .comment "Keep running boy but not too fast"
 
 start:
@@ -8,6 +8,8 @@ start:
 	and r1, %0, r1
 boom2:
 	ld %0, r5
+	sti r1, %:aliveloop, %1
+	live %1
 	sti r5, -500, %:start
 	sti r5, -490, %:start
 	sti r5, -480, %:start
@@ -19,6 +21,7 @@ boom2:
 	sti r5, -420, %:start
 	sti r5, -410, %:start
 	sti r5, -400, %:start
+	zjmp %:boom2
 
 aliveloop:
 	live %1
@@ -97,6 +100,9 @@ next2:
 	and r1, %0, r1
 	and r1, %0, r1
 boom:
+	sti r1, %next2, %1
+next2:
+	live %1
 	ld %0, r5
 	sti r5, 500, %:end
 	sti r5, 490, %:end
@@ -109,6 +115,7 @@ boom:
 	sti r5, 420, %:end
 	sti r5, 410, %:end
 	sti r5, 400, %:end
-
+	fork %:start
+	zjmp %:boom
 end:
 	aff r1
