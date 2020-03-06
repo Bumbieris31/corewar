@@ -2,12 +2,12 @@
 .comment "Keep running boy but not too fast"
 
 start:
-	sti r1, %:aliveloop, %1
+	sti r1, %:aliveloop, %1		; %1 to 1 for syntax test
     live %1
 	fork %:continue
 	and r1, %0, r1
 boom2:
-	ld %0, r5
+	ld %0, r5					; r5 to %5 for syntax test
 	sti r1, %:aliveloop, %1
 	live %1
 	sti r5, -500, %:start
