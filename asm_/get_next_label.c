@@ -6,7 +6,7 @@
 /*   By: abumbier <abumbier@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/25 19:41:35 by abumbier       #+#    #+#                */
-/*   Updated: 2020/03/06 18:04:12 by abumbier      ########   odam.nl         */
+/*   Updated: 2020/03/06 20:04:01 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int			add_parts_to_data(char *str, t_asm *data, t_label *new)
 	else
 	{
 		free_arr(&str, &split, 2);
-		error("Invalid label", data->lines);									// free data
+		error("Invalid label", data->lines);
 	}
 	free_arr(NULL, &split, 1);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/05 14:17:50 by asulliva       #+#    #+#                */
-/*   Updated: 2020/03/06 18:40:37 by abumbier      ########   odam.nl         */
+/*   Updated: 2020/03/06 20:04:01 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,19 +50,6 @@ static void		check_file(char *file)
 		error("File exstension must be .s", 0);
 }
 
-void			print_parts(t_parts *parts)
-{
-	t_parts	*curr;
-
-	curr = parts;
-	while (curr)
-	{
-		printf("__%s__\n", curr->name);
-//		free(curr->name);
-		curr = curr->next;
-	}
-}
-
 /*
 **	@desc	- main controller function
 **	@param	- int ac, the number of arguments
@@ -82,7 +69,6 @@ int				main(int ac, char **av)
 		error("Invalid file", 0);
 	parse(data);
 	close(data->rfd);
-//	print_parts(data->parts);
 	check_syntax(data);
 	create_cor(data);
 	close(data->wfd);

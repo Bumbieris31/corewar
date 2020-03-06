@@ -6,7 +6,7 @@
 /*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/05 14:15:46 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/25 20:58:19 by abumbier      ########   odam.nl         */
+/*   Updated: 2020/03/06 14:52:42 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,6 @@ t_label					*make_label(t_asm *data, char *s, int line);
 
 void					get_next_label(t_asm *data, char *name);
 
-
 /*
 **	name_comment.c
 */
@@ -214,7 +213,8 @@ void					write_ind(t_asm *data, t_parts *token);
 */
 
 void					write_dir(t_asm *data, t_parts *parts, int op);
-int						calculate_lines(t_parts *start, int to_reach, int current);
+int						calculate_lines(t_parts *start,
+						int to_reach, int current);
 
 /*
 **	clean_label.c

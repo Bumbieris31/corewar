@@ -6,7 +6,7 @@
 /*   By: abumbier <abumbier@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/12 15:12:06 by asulliva       #+#    #+#                */
-/*   Updated: 2020/02/25 19:42:45 by abumbier      ########   odam.nl         */
+/*   Updated: 2020/03/06 14:51:46 by asulliva      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static char	*rm_label_char(char *s, int line)
 **			- t_label *head, to already existing label
 */
 
-void	add_to_label(t_asm *data, char *s, t_label **head)
+void		add_to_label(t_asm *data, char *s, t_label **head)
 {
 	t_label	*curr;
 	t_label	*new;
@@ -65,7 +65,7 @@ void	add_to_label(t_asm *data, char *s, t_label **head)
 **			- int line, line number to set to
 */
 
-void	set_lines(t_label *head, int line)
+void		set_lines(t_label *head, int line)
 {
 	t_label	*curr;
 
