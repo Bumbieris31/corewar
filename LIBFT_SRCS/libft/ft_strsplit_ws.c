@@ -6,7 +6,7 @@
 /*   By: abumbier <abumbier@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/28 16:36:48 by abumbier       #+#    #+#                */
-/*   Updated: 2020/02/28 19:25:59 by abumbier      ########   odam.nl         */
+/*   Updated: 2020/03/06 18:29:45 by abumbier      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 /*MOVE TO HEADER*/																	//		CMD X
 #define SPACE	32
 #define TAB		9
+#define COMMA	44
 
 int			count_words(char const *s)
 {
@@ -25,8 +26,9 @@ int			count_words(char const *s)
 	words = 0;
 	while (s[i])
 	{
-		if ((s[i] != SPACE || s[i] != TAB) && \
-		(s[i + 1] == SPACE || s[i + 1] == TAB || s[i + 1] == '\0'))
+		if ((s[i] != SPACE || s[i] != TAB || s[i] != COMMA) && \
+		(s[i + 1] == SPACE || s[i + 1] == TAB || \
+		s[i + 1] == COMMA || s[i + 1] == '\0'))
 			words++;
 		i++;
 	}
@@ -63,7 +65,7 @@ int			find_ws(const char *s)
 	i = 0;
 	while (s[i] != '\0')
 	{
-		if (s[i] == SPACE || s[i] == TAB)
+		if (s[i] == SPACE || s[i] == TAB || s[i] == COMMA)
 			return (i);
 		i++;
 	}
@@ -86,7 +88,7 @@ char		**ft_strsplit_ws(char const *s)
 		return (NULL);
 	while (s[i] && y < word_c)
 	{
-		while (s[i] == SPACE || s[i] == TAB)
+		while (s[i] == SPACE || s[i] == TAB || s[i] == COMMA)
 			i++;
 		end = find_ws(&s[i]);
 		if ((end > -1)
