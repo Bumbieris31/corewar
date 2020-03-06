@@ -23,10 +23,10 @@ ardefgen:
 	fork 	%:ardefgen
 
 ardefinit:
-	sti		r1, %:ardefl1, %1
+	sti		r1,%:ardefl1,%1
 	st		r1, 6
 	live	%43123
-	sti		r1, %:ardefchk, %1
+	sti		r1, %:ardefchk,%1
 	ld		%-6, r2
 	ld		%-6, r3
 	ld		%150994953, r4
