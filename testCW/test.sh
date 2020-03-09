@@ -1,9 +1,9 @@
     #!/bin/bash
     PATH_YOUR_CW="./CoreWarYours/corewar"
     PATH_ORGN_CW="./CoreWarOrigin/corewar"
-    PATH_PLAYERS="./champions/"
+    PATH_PLAYERS="../vm_champs/champs"
 
-    players=("helltrain" "zork" "bee_gees" "bigzork" "turtle" "fluttershy" "toto" "Gagnant")
+    players=("bee_gees" "bigzork" "fluttershy" "helltrain" "turtle" "zork")
 #( ( i <= $CYCLES ) && ( $error == 0 ) )
     function    test_players()
     {
@@ -33,7 +33,7 @@
         done
     }
 
-	if [ $1 == "-help" ] ; then
+	if [ "$1" == "-help" ] ; then
         echo "usage: sh vm_tester.sh <filename1.cor> <filename2.cor> <cycles>"
 		exit 1
     elif [ $# -lt 2 ] ; then
