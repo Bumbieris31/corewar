@@ -1,6 +1,6 @@
 NAME = libft.a
 
-SRC = ft_memset.c \
+SRC 	= ft_memset.c \
 		ft_memmove.c \
 		ft_strcpy.c \
 		ft_strncpy.c \
@@ -72,92 +72,25 @@ SRC = ft_memset.c \
 		ft_strndup.c \
 		ft_strsplit_ws.c \
 		ft_wordlen.c
+FLAGS	= -Wall -Werror -Wextra
+CC		= gcc
+OBJS	:= $(SRC:%.c=%.o)
 
-OBJ = ft_memset.o \
-		ft_memmove.o \
-		ft_strcpy.o \
-		ft_strncpy.o \
-		ft_memcpy.o \
-		ft_memccpy.o \
-		ft_strlen.o \
-		ft_memdel.o \
-		ft_strsplit.o \
-		ft_bzero.o \
-		ft_memalloc.o \
-		ft_memchr.o \
-		ft_memcmp.o \
-		ft_strdup.o \
-		ft_strcat.o \
-		ft_strncat.o \
-		ft_strlcat.o \
-		ft_strrchr.o \
-		ft_strchr.o \
-		ft_strstr.o \
-		ft_strncmp.o \
-		ft_strnstr.o \
-		ft_strcmp.o \
-		ft_atoi.o \
-		ft_isalnum.o \
-		ft_isalpha.o \
-		ft_isascii.o \
-		ft_isdigit.o \
-		ft_isprint.o \
-		ft_tolower.o \
-		ft_toupper.o \
-		ft_strnew.o \
-		ft_strdel.o \
-		ft_striter.o \
-		ft_striteri.o \
-		ft_putstr_fd.o \
-		ft_putchar_fd.o \
-		ft_putnbr_fd.o \
-		ft_putendl_fd.o \
-		ft_strclr.o \
-		ft_strmap.o \
-		ft_strmapi.o \
-		ft_strequ.o \
-		ft_strnequ.o \
-		ft_putchar.o \
-		ft_putstr.o \
-		ft_putendl.o \
-		ft_putnbr.o \
-		ft_strsub.o \
-		ft_strjoin.o \
-		ft_strtrim.o \
-		ft_itoa.o \
-		ft_lstnew.o \
-		ft_lstdelone.o \
-		ft_lstdel.o \
-		ft_lstadd.o \
-		ft_lstiter.o \
-		ft_lstmap.o \
-		ft_count_words.o \
-		ft_str_toupper.o \
-		ft_str_tolower.o \
-		ft_putwchar.o \
-		ft_putwstr.o \
-		ft_print_int_array.o \
-		get_next_line.o \
-		ft_list_add_back.o \
-		ft_strjoinone.o \
-		ft_str_is_digit.o \
-		ft_lstrev.o \
-		ft_strndup.o \
-		ft_strsplit_ws.o \
-		ft_wordlen.o
-
-HEADER = ./libft.h
+HEADER 	= ./libft.h
 
 all: $(NAME)
 
-$(NAME):
-		@gcc -Wall -Wextra -Werror -c $(SRC) -I $(HEADER)
-		@ar rc $(NAME) $(OBJ)
+$(NAME): $(OBJS)
+	@ar rc $(NAME) $(OBJS)
+	@echo "\033[0;32mlibft.a successfully created\033[0m"
+	@ranlib $(NAME)
 
+$(OBJS):
+	@gcc $(FLAGS) -c $(SRC) -I $(HEADER)
 clean:
-		@rm -f $(OBJ)
+	@rm -f $(OBJS)
 
 fclean: clean
-		@rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
